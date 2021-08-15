@@ -2,7 +2,6 @@ import styled from "styled-components/native";
 
 export const ListWrapper = styled.View`
   margin-left: -8.5px;
-  margin-top: -15px;
 `;
 
 export const TaskItemName = styled.Text`
@@ -10,6 +9,15 @@ export const TaskItemName = styled.Text`
   font-size: 20px;
   font-weight: 400;
   margin: 10px;
+`;
+
+export const TaskItemDateAndTime = styled.Text`
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 10px;
+  margin-bottom: 10px;
 `;
 
 export const TaskItemWrapper = styled.View`

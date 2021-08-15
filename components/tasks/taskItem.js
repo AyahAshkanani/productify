@@ -3,8 +3,8 @@ import React from "react";
 import { List } from "native-base";
 
 //styled components
-import { TaskItemName } from "./styles";
-import { TaskItemWrapper } from "./styles";
+import { TaskItemWrapper, TaskItemDateAndTime, TaskItemName } from "./styles";
+
 //observer
 import { observer } from "mobx-react";
 
@@ -17,7 +17,7 @@ const TaskItem = ({ task }) => {
     <List.Item>
       <TaskItemWrapper>
         <TaskItemName>{task.name}</TaskItemName>
-        <TaskItemName>{task.endDate}</TaskItemName>
+        <TaskItemDateAndTime>{task.endDate}</TaskItemDateAndTime>
       </TaskItemWrapper>
     </List.Item>
   );
