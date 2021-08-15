@@ -32,6 +32,7 @@ class AuthStore {
     runInAction(() => {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       this.user = decode(token);
+      profileStore.setUserProfile(this.user.profile); //get profile when user logs/signs in
     });
   };
 
