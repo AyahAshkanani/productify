@@ -5,6 +5,7 @@ import { NativeBaseProvider } from "native-base";
 
 //styles
 import { ThemeProvider } from "styled-components";
+import { Text } from "react-native";
 
 //navigation
 import 'react-native-gesture-handler';
@@ -19,6 +20,7 @@ const theme = {
   green: "#00af87",
 };
 export default function App() {
+  
   return (
     <NativeBaseProvider>
       <ThemeProvider theme={theme}>

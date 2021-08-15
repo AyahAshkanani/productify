@@ -11,10 +11,10 @@ export const AuthContainer = styled.View`
 `;
 
 export const AuthTitle = styled.Text`
-  color: ${(props) => props.theme.green};
+  color: ${(props) => props.theme.pink};
   font-size: 24px;
   margin-bottom: 20px;
-  border-bottom-color: ${(props) => props.theme.green};
+  border-bottom-color: ${(props) => props.theme.pink};
 `;
 
 export const AuthTextInput = styled.TextInput`
@@ -33,7 +33,7 @@ export const AuthButton = styled.TouchableOpacity`
   width: 75%;
   padding: 7%;
   border-radius: 40px;
-  background-color: ${(props) => props.theme.green};
+  background-color: ${(props) => props.theme.pink};
   margin-top: 30px;
 `;
 
@@ -44,6 +44,6 @@ export const AuthButtonText = styled.Text`
 `;
 
 export const AuthOther = styled.Text`
-  color: ${(props) => props.theme.green};
+  color: ${(props) => props.theme.pink};
   margin-top: 15px;
 `;

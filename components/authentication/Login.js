@@ -10,7 +10,7 @@ import {
 } from "./styles";
 
  //stores
-//import authStore from "../../stores/authStore";
+import authStore from "../../stores/authStore";
 
 //observer
 import { observer } from "mobx-react";
@@ -20,12 +20,11 @@ const Login = ({ navigation }) => {
     username: "",
     password: "",
   });
-  //TO CHECK
-//   const handleSubmit = async () => {
-//     await authStore.login(user);
-//     // what if the login failed? and there is no user in authStore.user?
-//     if (authStore.user) navigation.replace("TaskList");
-//   };
+  const handleSubmit = async () => {
+    await authStore.login(user);
+    // what if the login failed? and there is no user in authStore.user?
+    if (authStore.user) navigation.replace("TaskList");
+  };
   return (
     <AuthContainer>
       <AuthTitle>Log in</AuthTitle>
