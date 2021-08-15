@@ -1,4 +1,5 @@
 import React from "react";
+
 //native-base
 import { List } from "native-base";
 
@@ -7,10 +8,6 @@ import { TaskItemWrapper, TaskItemDateAndTime, TaskItemName } from "./styles";
 
 //observer
 import { observer } from "mobx-react";
-
-//stores
-
-//icons
 
 const TaskItem = ({ task }) => {
   return (
