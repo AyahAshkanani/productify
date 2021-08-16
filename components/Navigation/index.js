@@ -6,6 +6,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TaskList from "../tasks/taskList";
+import Home from "../Home";
+// import Signin from "../authentication/Signin";
+import Signup from "../authentication/Signup";
+//import ProfilePage from "../profile/ProfilePage";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -72,7 +76,26 @@ export default function MyTabs() {
   }
   return (
     //screen navigations
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Signup"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#c77dff",
+        },
+        headerTintColor: "white",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={{
+          headerShown: false,
+        }}
+      />
+
       <Stack.Screen
         name="Main"
         component={Main}
@@ -83,3 +106,4 @@ export default function MyTabs() {
     </Stack.Navigator>
   );
 }
+
