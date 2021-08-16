@@ -2,11 +2,11 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //stores
+import authStore from "../../stores/authStore";
 
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TaskList from "../tasks/taskList";
-import Home from "../Home";
 // import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 //import ProfilePage from "../profile/ProfilePage";
@@ -19,7 +19,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function MyTabs() {
+export default function MyTabs({ theme }) {
   function Main() {
     return (
       //bottom tab bar
@@ -77,7 +77,7 @@ export default function MyTabs() {
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName={!authStore.user ? "Signup" : "Main"}
       screenOptions={{
         headerStyle: {
           backgroundColor: "#c77dff",
@@ -88,13 +88,13 @@ export default function MyTabs() {
         },
       }}
     >
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Signup"
         component={Signup}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
 
       <Stack.Screen
         name="Main"
@@ -106,4 +106,3 @@ export default function MyTabs() {
     </Stack.Navigator>
   );
 }
-

@@ -14,7 +14,7 @@ class AuthStore {
       const res = await instance.post("/signup", newUser);
       runInAction(() => {
         this.setUser(res.data.token);
-        navigation.replace("Home");
+        navigation.replace("Main");
       });
     } catch (error) {
       console.error(error);
