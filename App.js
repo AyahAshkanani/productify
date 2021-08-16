@@ -1,25 +1,22 @@
 import React from "react";
 import "react-native-gesture-handler";
-const theme = {
-  mainColor: "#222222",
-  backgroundColor: "white",
-  purple: "#c77dff",
-  pink: "#ED3293",
-  darkPink: "#a4133c",
-  red: "red",
-  white: "#fff",
-  blue: "#90d4ed",
-  black: "#000000",
-};
-
-// styles
-import { ThemeProvider } from "styled-components";
 
 // navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider } from "native-base";
-
 import RootNavigator from "./components/Navigation/index";
+
+// styles
+import { ThemeProvider } from "styled-components";
+const theme = {
+  mainColor: "#DE3E50",
+  backgroundColor: "#F8E5E0",
+  secondaryColor: "#837B7C",
+  mainTextColor: "#292D50",
+  secondaryTextColor: "#FFFFFF",
+  complementaryOne: "#0ACEDC",
+  complementaryTwo: "#3EDEBB",
+};
 
 export default function App() {
   return (

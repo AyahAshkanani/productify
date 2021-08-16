@@ -4,6 +4,7 @@ import decode from "jwt-decode";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 class AuthStore {
+  loading = true;
   user = null;
   constructor() {
     makeAutoObservable(this);
@@ -20,6 +21,17 @@ class AuthStore {
       console.error(error);
     }
   };
+
+  login = async (userData) => {
+    try {
+      const res = await instance.post("/login", userData);
+      this.setUser(res.data.token);
+      await profileStore.setProfile(this.user.id);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   signout = async () => {
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
@@ -29,26 +41,23 @@ class AuthStore {
   };
   setUser = async (token) => {
     await AsyncStorage.setItem("myToken", token);
-    runInAction(() => {
-      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-      this.user = decode(token);
-      profileStore.setUserProfile(this.user.profile); //get profile when user logs/signs in
-    });
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    this.user = decode(token);
+    await profileStore.setProfile(this.user.id);
+    this.loading = false;
   };
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("myToken");
-    runInAction(() => {
-      if (token) {
-        const currentTime = Date.now();
-        const user = decode(token);
-        if (user.exp >= currentTime) {
-          this.setUser(token);
-        } else {
-          this.signout();
-        }
+    if (token) {
+      const currentTime = Date.now();
+      const user = decode(token);
+      if (user.exp >= currentTime) {
+        this.setUser(token);
+      } else {
+        this.logout();
       }
-    });
+    }
   };
 }
 const authStore = new AuthStore();
