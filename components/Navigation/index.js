@@ -9,7 +9,7 @@ import TaskList from "../tasks/taskList";
 import Home from "../Home";
 // import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
-//import ProfilePage from "../profile/ProfilePage";
+//import ProgressPage from "../progress/ProgressPage";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -103,7 +103,13 @@ export default function MyTabs() {
           headerShown: false,
         }}
       />
+      {/* <Stack.Screen
+        name="ProgressPage"
+        component={ProgressPage}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
     </Stack.Navigator>
   );
 }
-

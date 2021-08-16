@@ -7,40 +7,35 @@ import {
   TextInput,
 } from "react-native";
 import { observer } from "mobx-react";
-import { Spinner } from "native-base";
+//import { Spinner } from "native-base";
 
 //store
 import authStore from "../../stores/authStore";
-import profileStore from "../../stores/profileStore";
+import progressStore from "../../stores/progressStore";
 
-const ProfilePage = () => {
-  //if (profileStore.loading) return <Spinner />;
-
-  const [profile, setProfile] = useState(
-    profileStore.profile || {
+const ProgressPage = () => {
+  const [progress, setProgress] = useState(
+    progressStore.progress || {
       days: "",
       hours: "",
     }
   );
 
-  const updateProfile = () => {
-    if (profile.days === "") setProfile({ ...profile, days: null });
-    if (profile.hours === "") setProfile({ ...profile, hours: null });
-    profileStore.ProfileUpdate(profile);
+  const updateProgress = () => {
+    if (progress.days === "") setProgress({ ...progress, days: null });
+    if (progress.hours === "") setProgress({ ...progress, hours: null });
+    progressStore.ProgressUpdate(progress);
   };
 
-  console.log(profileStore.profiles);
-  console.log(profileStore.profile);
+  console.log(progressStore.progress);
   return (
     <View style={styles.container}>
       {/* <Text>{authStore.user.username}</Text> */}
-      <Text>Hello</Text>
-
       <TextInput
         autoFocus={true}
-        value={profile.days}
+        value={progress.days}
         onChangeText={(days) => {
-          setProfile({ ...profile, days });
+          setProgress({ ...progress, days });
         }}
         placeholder={"Add working days"}
         maxLength={30}
@@ -49,9 +44,9 @@ const ProfilePage = () => {
 
       <TextInput
         autoFocus={true}
-        value={profile.hours}
+        value={progress.hours}
         onChangeText={(hours) => {
-          setProfile({ ...profile, hours });
+          setProgress({ ...progress, hours });
         }}
         placeholder={"Add working hours"}
         maxLength={30}
@@ -59,10 +54,10 @@ const ProfilePage = () => {
       />
 
       <TouchableOpacity
-        style={styles.SaveProfileButton}
-        onPress={updateProfile}
+        style={styles.SaveProgressButton}
+        onPress={updateProgress}
       >
-        <Text style={styles.SaveProfileButtonText}>Save changes</Text>
+        <Text style={styles.SaveProgressButtonText}>Save changes</Text>
       </TouchableOpacity>
     </View>
   );
@@ -84,17 +79,17 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
     fontSize: 20,
   },
-  SaveProfileButton: {
+  SaveProgressButton: {
     alignItems: "center",
     padding: 20,
     margin: 60,
     backgroundColor: "lightgray",
     marginTop: 30,
   },
-  SaveProfileButtonText: {
+  SaveProgressButtonText: {
     color: "black",
     fontSize: 18,
   },
 });
 
-export default observer(ProfilePage);
+export default observer(ProgressPage);
