@@ -88,13 +88,13 @@ export default function MyTabs({ theme }) {
         },
       }}
     >
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Signup"
         component={Signup}
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
 
       <Stack.Screen
         name="Main"
