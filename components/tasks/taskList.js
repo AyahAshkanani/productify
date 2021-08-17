@@ -19,13 +19,13 @@ import taskStore from "../../stores/taskStore";
 import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
 
-const TaskList = () => {
+const TaskList = ({ navigation }) => {
   //{ navigation }
   if (taskStore.loading) return <Spinner />;
 
   let tasks = taskStore.tasks;
   const taskList = tasks.map((task) => (
-    <TaskItem task={task} key={task.id} /> //navigation={navigation}
+    <TaskItem task={task} key={task.id} navigation={navigation} /> //navigation={navigation}
   ));
 
   return (

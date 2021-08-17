@@ -32,11 +32,14 @@ export const TaskItemWrapper = styled.View`
   border-color: transparent;
   background-color: white;
 `;
-
+export const TaskDetailWrapper = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
 export const TaskDetailsStyle = styled.Text`
   font-size: 40px;
   font-weight: bold;
-  color: white;
+  color: ${(props) => props.theme.mainTextColor};
   align-items: center;
   justify-content: center;
   padding-bottom: 10px;
