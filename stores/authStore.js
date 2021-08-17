@@ -24,10 +24,15 @@ class AuthStore {
     }
   };
 
-  login = async (userData) => {
+  login = async (userData, navigation) => {
     try {
       const res = await instance.post("/login", userData);
-      this.setUser(res.data.token);
+      runInAction(() => {
+        this.setUser(res.data.token);
+        navigation.replace("Main");
+      });
+      // this.setUser(res.data.token);
+      
     } catch (error) {
       console.error(error);
     }
