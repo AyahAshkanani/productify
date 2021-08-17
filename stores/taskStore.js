@@ -20,6 +20,19 @@ class TaskStore {
       console.error("fetchTasks", error);
     }
   };
+
+  // ****************** Add Task METHOD ******************
+  taskAdd = async (newTask, navigation) => {
+    try {
+      const response = await instance.post("/tasks", newTask);
+      runInAction(() => {
+        this.tasks.push(response.data);
+        navigation.navigate("Home");
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 const taskStore = new TaskStore();
