@@ -11,12 +11,10 @@ import Home from "../Home";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 
-//import ProgressPage from "../progress/ProgressPage";
-
-
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import ProgressPage from "../progress/ProgressPage";
 
 //navigation
 const Stack = createStackNavigator();
@@ -65,8 +63,8 @@ export default function MyTabs({ theme }) {
         />
 
         <Tab.Screen
-          name="Preferences"
-          component={TaskList}
+          name="ProgressPage"
+          component={ProgressPage}
           options={{
             tabBarLabel: "Preferences",
             tabBarIcon: ({ color, size }) => (
@@ -114,14 +112,13 @@ export default function MyTabs({ theme }) {
         }}
       />
 
-      {/* <Stack.Screen
+      <Stack.Screen
         name="ProgressPage"
         component={ProgressPage}
         options={{
           headerShown: false,
         }}
-      /> */}
-
+      />
     </Stack.Navigator>
   );
 }
