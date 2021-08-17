@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //stores
+import authStore from "../../stores/authStore";
 
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -19,7 +20,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function MyTabs() {
+export default function MyTabs({ theme }) {
   function Main() {
     return (
       //bottom tab bar
