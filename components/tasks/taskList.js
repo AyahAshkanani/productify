@@ -17,6 +17,7 @@ import taskStore from "../../stores/taskStore";
 
 //observer
 import { observer } from "mobx-react";
+import Logout from "../authentication/Logout";
 
 const TaskList = () => {
   //{ navigation }
@@ -30,6 +31,7 @@ const TaskList = () => {
   return (
     <>
       <ScrollView>
+        <Logout />
         <ListWrapper>
           <List>{taskList}</List>
         </ListWrapper>

@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 const Logout = () => {
   const navigation = useNavigation();
   handleSignout = async () => {
-    await authStore.signout(navigation);
+    await authStore.logout(navigation);
     navigation.navigate("Register");
   };
   return (

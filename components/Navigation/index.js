@@ -11,6 +11,7 @@ import Home from "../Home";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 
+import AddTask from "../tasks/AddTask";
 //import ProgressPage from "../progress/ProgressPage";
 
 
@@ -55,7 +56,7 @@ export default function MyTabs({ theme }) {
         />
         <Tab.Screen
           name="Add"
-          component={TaskList}
+          component={AddTask}
           options={{
             tabBarLabel: "Add Task",
             tabBarIcon: ({ color, size }) => (
