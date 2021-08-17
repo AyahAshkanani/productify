@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+//react-native
 import {
+  SafeAreaView,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   TextInput,
 } from "react-native";
+import NumericInput from "react-native-numeric-input";
+
 import { observer } from "mobx-react";
 //import { Spinner } from "native-base";
 
@@ -21,43 +25,62 @@ const ProgressPage = () => {
     }
   );
 
+  const [number, onChangeNumber] = useState(0);
+
   const updateProgress = () => {
     if (progress.days === "") setProgress({ ...progress, days: null });
     if (progress.hours === "") setProgress({ ...progress, hours: null });
     progressStore.ProgressUpdate(progress);
   };
 
-  console.log(progressStore.progress);
   return (
     <View style={styles.container}>
-      {/* <Text>{authStore.user.username}</Text> */}
-      <TextInput
-        autoFocus={true}
-        value={progress.days}
-        onChangeText={(days) => {
-          setProgress({ ...progress, days });
-        }}
-        placeholder={"Add working days"}
-        maxLength={30}
-        style={[styles.input, { outline: "none" }]}
-      />
-
-      <TextInput
-        autoFocus={true}
-        value={progress.hours}
-        onChangeText={(hours) => {
-          setProgress({ ...progress, hours });
-        }}
-        placeholder={"Add working hours"}
-        maxLength={30}
-        style={[styles.input, { outline: "none" }]}
-      />
-
+      <Text>User name: {authStore.user.username}</Text>
+      <View style={styles.box}>
+        <Text style={styles.text}>Add working days</Text>
+        <NumericInput
+          value={number}
+          minValue={0}
+          onChange={(days) => {
+            setProgress({ ...progress, days });
+          }}
+          totalWidth={100}
+          totalHeight={40}
+          iconSize={25}
+          step={1}
+          valueType="real"
+          rounded
+          textColor="#3d5a80"
+          iconStyle={{ color: "white" }}
+          rightButtonBackgroundColor="#3d5a80"
+          leftButtonBackgroundColor="#98c1d9"
+        />
+      </View>
+      <View style={styles.box}>
+        <Text style={styles.text}>Add working hours</Text>
+        <NumericInput
+          value={number}
+          minValue={0}
+          onChange={(hours) => {
+            setProgress({ ...progress, hours });
+          }}
+          totalWidth={100}
+          totalHeight={40}
+          iconSize={25}
+          step={1}
+          valueType="real"
+          rounded
+          textColor="#3d5a80"
+          iconStyle={{ color: "white" }}
+          rightButtonBackgroundColor="#3d5a80"
+          leftButtonBackgroundColor="#98c1d9"
+        />
+      </View>
       <TouchableOpacity
         style={styles.SaveProgressButton}
         onPress={updateProgress}
       >
-        <Text style={styles.SaveProgressButtonText}>Save changes</Text>
+        <Text style={styles.SaveProgressButtonText}>Save</Text>
       </TouchableOpacity>
     </View>
   );
@@ -70,6 +93,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  box: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  text: {
+    height: 40,
+    margin: 20,
+    borderWidth: 1,
+    padding: 10,
+  },
   input: {
     height: 100,
     margin: 12,
@@ -81,10 +115,11 @@ const styles = StyleSheet.create({
   },
   SaveProgressButton: {
     alignItems: "center",
-    padding: 20,
-    margin: 60,
-    backgroundColor: "lightgray",
-    marginTop: 30,
+    padding: 10,
+    margin: 20,
+    backgroundColor: "#98c1d9",
+    marginTop: 10,
+    borderRadius: 10,
   },
   SaveProgressButtonText: {
     color: "black",

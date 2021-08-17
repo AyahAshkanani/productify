@@ -18,6 +18,7 @@ import taskStore from "../../stores/taskStore";
 
 //observer
 import { observer } from "mobx-react";
+import Logout from "../authentication/Logout";
 
 const TaskList = () => {
   //{ navigation }
@@ -70,6 +71,7 @@ const TaskList = () => {
         ) : (
           <NoTasksText>No tasks for this day</NoTasksText>
         )}
+        <Logout />
       </ScrollView>
     </>
   );
