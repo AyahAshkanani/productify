@@ -12,19 +12,19 @@ import authStore from "../../stores/authStore";
 
 import { observer } from "mobx-react";
 
-const Signup = ({ navigation }) => {
+const Register = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
   const handleSubmit = async () => {
-    await authStore.signup(user, navigation);
+    await authStore.register(user, navigation);
   };
 
   return (
     <AuthContainer>
-      <AuthTitle>Sign up</AuthTitle>
+      <AuthTitle>Register</AuthTitle>
       <AuthTextInput
         placeholder="username"
         autoCapitalize="none"
@@ -37,13 +37,13 @@ const Signup = ({ navigation }) => {
         onChangeText={(password) => setUser({ ...user, password })}
       />
       <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Sign up</AuthButtonText>
+        <AuthButtonText>Register</AuthButtonText>
       </AuthButton>
-      <AuthOther onPress={() => navigation.navigate("Signin")}>
-        Click here to sign in
+      <AuthOther onPress={() => navigation.navigate("Login")}>
+        Click here to Login
       </AuthOther>
     </AuthContainer>
   );
 };
 
-export default observer(Signup);
+export default observer(Register);
