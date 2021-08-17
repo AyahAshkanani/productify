@@ -17,7 +17,8 @@ class TaskStore {
         this.loading = false;
       });
     } catch (error) {
-      console.error("fetchTasks", error);
+      console.error(error);
+      // network error when we have "fetchTasks", 
     }
   };
 
@@ -32,6 +33,17 @@ class TaskStore {
       console.error(error);
     }
   };
+
+  deleteTask = async(taskId) => {
+    try {
+      await instance.delete(`/tasks/${taskId}`);
+       const updatedTask = this.tasks.filter((task) => task.id !== taskId);
+       this.tasks = updatedTask;
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
 }
 
 const taskStore = new TaskStore();

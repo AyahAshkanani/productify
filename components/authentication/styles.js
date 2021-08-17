@@ -27,11 +27,14 @@ export const AuthTextInput = styled.TextInput`
 `;
 
 export const AuthButton = styled.TouchableOpacity`
-  align-self: stretch;
+  ${'' /* align-self: stretch; */}
   align-items: center;
+  justify-content: center;
+  width: 75%;
   padding: 20px;
   background-color: ${(props) => props.theme.mainColor};
   margin-top: 30px;
+  border-radius: 40px;
 `;
 
 export const AuthButtonText = styled.Text`
