@@ -47,6 +47,7 @@ export const TodaysTasksText = styled.Text`
   font-size: 20px;
   font-weight: 400;
   margin: 10px;
+`;
 
 export const TaskDetailsStyle = styled.Text`
   font-size: 40px;
@@ -148,5 +149,4 @@ export const AddTaskButtonText = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-weight: bold;
   font-size: 18px;
-
 `;
