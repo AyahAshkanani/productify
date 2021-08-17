@@ -33,10 +33,9 @@ const ProgressPage = () => {
     progressStore.ProgressUpdate(progress);
   };
 
-  console.log(progressStore.progress);
   return (
     <View style={styles.container}>
-      {/* <Text>{authStore.user.username}</Text> */}
+      <Text>User name: {authStore.user.username}</Text>
       <View style={styles.box}>
         <Text style={styles.text}>Add working days</Text>
         <NumericInput
