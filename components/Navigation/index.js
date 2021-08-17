@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //stores
+import authStore from "../../stores/authStore";
 
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -9,7 +10,9 @@ import TaskList from "../tasks/taskList";
 import Home from "../Home";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
-//import ProfilePage from "../profile/ProfilePage";
+
+//import ProgressPage from "../progress/ProgressPage";
+
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -19,7 +22,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function MyTabs() {
+export default function MyTabs({ theme }) {
   function Main() {
     return (
       //bottom tab bar
@@ -54,7 +57,7 @@ export default function MyTabs() {
           name="Add"
           component={TaskList}
           options={{
-            tabBarLabel: "Add Trip",
+            tabBarLabel: "Add Task",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="add-circle-outline" size={30} color="black" />
             ),
@@ -110,7 +113,15 @@ export default function MyTabs() {
           headerShown: false,
         }}
       />
+
+      {/* <Stack.Screen
+        name="ProgressPage"
+        component={ProgressPage}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
+
     </Stack.Navigator>
   );
 }
-

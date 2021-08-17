@@ -24,7 +24,8 @@ const Register = ({ navigation }) => {
 
   return (
     <AuthContainer>
-      <AuthTitle>Sign Up</AuthTitle>
+      <AuthTitle>Register</AuthTitle>
+
       <AuthTextInput
         placeholder="username"
         autoCapitalize="none"
@@ -41,6 +42,7 @@ const Register = ({ navigation }) => {
       </AuthButton>
       <AuthOther onPress={() => navigation.navigate("Login")}>
         Click here to Log in
+
       </AuthOther>
     </AuthContainer>
   );
