@@ -65,7 +65,8 @@ const TaskList = () => {
           <>
             <TodaysTasksText>Today's tasks</TodaysTasksText>
             <ListWrapper>
-              <List>{taskList}</List>
+              <List>{taskList}
+              </List>
             </ListWrapper>
           </>
         ) : (

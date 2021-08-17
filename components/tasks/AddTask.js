@@ -25,6 +25,7 @@ const AddTask = () => {
     name: "",
     startDate: "",
     endDate: "",
+    tag:"none",
     hours: 0,
   });
 
@@ -54,9 +55,16 @@ const AddTask = () => {
           placeholder="Hours"
           keyboardType="numeric"
         />
+        <AddTaskLabels>Task Tag</AddTaskLabels>
+        <TaskTextInput
+          style={styles.input}
+          onChangeText={(tag) => setTask({ ...task, tag })}
+          placeholder="Tag"
+        />
 
         <DatePick setTask={setTask} task={task} />
         <AddTaskButton onPress={handleAddTask}>
+
           <AddTaskButtonText>Add</AddTaskButtonText>
         </AddTaskButton>
       </TaskContainer>

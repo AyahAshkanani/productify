@@ -22,9 +22,6 @@ class TaskStore {
     }
   };
 
- 
- 
-
   // ****************** Add Task METHOD ******************
   taskAdd = async (newTask, navigation) => {
     try {

@@ -66,7 +66,9 @@ const TaskItem = ({ task }) => {
             toggleTask();
           }}
         />
+        <TaskItemDateAndTime style={{ color: "blue" }}>{task.tag}</TaskItemDateAndTime>
         <TaskItemDateAndTime>{task.endDate}</TaskItemDateAndTime>
+        
       </TaskItemWrapper>
       <TouchableOpacity
           style={{ flex: 1 }}

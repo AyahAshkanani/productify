@@ -126,11 +126,11 @@ export const AddTaskTitle = styled.Text`
   font-size: 30px;
   margin: 20px;
   margin-left: 10px;
-  margin-top: 90px;
+  margin-top: 50px;
 `;
 
 export const AddTaskLabels = styled.Text`
-  font-weight: 500;
+  font-weight: 400;
   font-size: 15px;
   margin-top: 20px;
   margin-left: 15px;
