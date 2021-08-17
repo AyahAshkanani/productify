@@ -21,7 +21,7 @@ import { observer } from "mobx-react";
 import taskStore from "../../stores/taskStore";
 import authStore from "../../stores/authStore";
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, navigation }) => {
   const [done, markTask] = useState(task.done);
   const toggleTask = async () => {
     await taskStore.markTask(task);
@@ -34,7 +34,9 @@ const TaskItem = ({ task }) => {
     ]);
   };
   return (
-    <List.Item>
+    <List.Item
+      onPress={() => navigation.navigate("TaskDetail", { task: task })}
+    >
       <TaskItemWrapper>
         <BouncyCheckbox
           isChecked={done}
