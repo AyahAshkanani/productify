@@ -7,8 +7,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TaskList from "../tasks/taskList";
 import Home from "../Home";
-// import Signin from "../authentication/Signin";
-import Signup from "../authentication/Signup";
+import Login from "../authentication/Login";
+import Register from "../authentication/Register";
 //import ProfilePage from "../profile/ProfilePage";
 
 //icons
@@ -77,7 +77,7 @@ export default function MyTabs() {
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName="Register"
       screenOptions={{
         headerStyle: {
           backgroundColor: "#c77dff",
@@ -89,8 +89,8 @@ export default function MyTabs() {
       }}
     >
       <Stack.Screen
-        name="Signup"
-        component={Signup}
+        name="Register"
+        component={Register}
         options={{
           headerShown: false,
         }}
@@ -99,6 +99,13 @@ export default function MyTabs() {
       <Stack.Screen
         name="Main"
         component={Main}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
         options={{
           headerShown: false,
         }}

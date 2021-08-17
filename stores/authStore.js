@@ -10,12 +10,12 @@ class AuthStore {
     makeAutoObservable(this);
   }
 
-  signup = async (newUser, navigation) => {
+  register = async (newUser, navigation) => {
     try {
-      const res = await instance.post("/signup", newUser);
+      const res = await instance.post("/register", newUser);
       runInAction(() => {
         this.setUser(res.data.token);
-        navigation.replace("Home");
+        navigation.replace("Main");
       });
     } catch (error) {
       console.error(error);
