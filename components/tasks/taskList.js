@@ -20,11 +20,15 @@ import taskStore from "../../stores/taskStore";
 import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
 
-const TaskList = () => {
+const TaskList = ({ navigation }) => {
   //{ navigation }
   if (taskStore.loading) return <Spinner />;
 
   let tasks = taskStore.tasks;
+
+ 
+   
+
   //get today's date
   function formatDate(date) {
     var d = new Date(date),
@@ -49,7 +53,8 @@ const TaskList = () => {
     updateTodaysTasks(tasks.filter((task) => task.startDate === todaysDate));
   };
   const taskList = todaysTasks.map((task) => (
-    <TaskItem task={task} key={task.id} /> //navigation={navigation}
+     <TaskItem task={task} key={task.id} navigation={navigation} />
+   
   ));
 
   console.log(taskList.length);

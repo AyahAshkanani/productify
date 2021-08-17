@@ -33,6 +33,10 @@ export const TaskItemWrapper = styled.View`
   background-color: white;
 `;
 
+export const TaskDetailWrapper = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
 export const NoTasksText = styled.Text`
   align-self: center;
   color: ${(props) => props.theme.secondaryColor};
@@ -48,22 +52,13 @@ export const TodaysTasksText = styled.Text`
   font-weight: 400;
   margin: 10px;
 `;
-
 export const TaskDetailsStyle = styled.Text`
   font-size: 40px;
   font-weight: bold;
-  color: white;
+  color: ${(props) => props.theme.mainTextColor};
   align-items: center;
   justify-content: center;
   padding-bottom: 10px;
-`;
-
-export const TaskDescasktionStyle = styled.Text`
-  font-size: 17px;
-  font-weight: bold;
-  align-items: center;
-  justify-content: center;
-  padding-top: 30px;
 `;
 
 export const TaskTextStyled = styled.Text`
