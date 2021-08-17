@@ -3,17 +3,17 @@ import authStore from "../../stores/authStore";
 import { Button, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { observer } from "mobx-react";
-const Signout = () => {
+const Logout = () => {
   const navigation = useNavigation();
   handleSignout = async () => {
     await authStore.signout(navigation);
-    navigation.navigate("Signup");
+    navigation.navigate("Register");
   };
   return (
     <>
       {authStore.user ? (
-        <Button onPress={handleSignout} title="Signout">
-          <Text>Signout</Text>
+        <Button onPress={handleSignout} title="Logout">
+          <Text>Logout</Text>
         </Button>
       ) : (
         <></>
@@ -22,4 +22,4 @@ const Signout = () => {
   );
 };
 
-export default observer(Signout);
+export default observer(Logout);
