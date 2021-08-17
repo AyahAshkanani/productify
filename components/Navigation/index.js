@@ -7,9 +7,10 @@ import authStore from "../../stores/authStore";
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TaskList from "../tasks/taskList";
-// import Signin from "../authentication/Signin";
-import Signup from "../authentication/Signup";
-//import ProfilePage from "../profile/ProfilePage";
+import Home from "../Home";
+import Login from "../authentication/Login";
+import Register from "../authentication/Register";
+//import ProgressPage from "../progress/ProgressPage";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -54,7 +55,7 @@ export default function MyTabs({ theme }) {
           name="Add"
           component={TaskList}
           options={{
-            tabBarLabel: "Add Trip",
+            tabBarLabel: "Add Task",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="add-circle-outline" size={30} color="black" />
             ),
@@ -77,7 +78,7 @@ export default function MyTabs({ theme }) {
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName={!authStore.user ? "Signup" : "Main"}
+      initialRouteName="Register"
       screenOptions={{
         headerStyle: {
           backgroundColor: "#c77dff",
@@ -89,8 +90,8 @@ export default function MyTabs({ theme }) {
       }}
     >
       <Stack.Screen
-        name="Signup"
-        component={Signup}
+        name="Register"
+        component={Register}
         options={{
           headerShown: false,
         }}
@@ -103,6 +104,20 @@ export default function MyTabs({ theme }) {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
+        name="ProgressPage"
+        component={ProgressPage}
+        options={{
+          headerShown: false,
+        }}
+      /> */}
     </Stack.Navigator>
   );
 }
