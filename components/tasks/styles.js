@@ -33,6 +33,21 @@ export const TaskItemWrapper = styled.View`
   background-color: white;
 `;
 
+export const NoTasksText = styled.Text`
+  align-self: center;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 20px;
+  font-weight: 200;
+  margin: 50px;
+`;
+
+export const TodaysTasksText = styled.Text`
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 20px;
+  font-weight: 400;
+  margin: 10px;
+
 export const TaskDetailsStyle = styled.Text`
   font-size: 40px;
   font-weight: bold;
@@ -133,4 +148,5 @@ export const AddTaskButtonText = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-weight: bold;
   font-size: 18px;
+
 `;
