@@ -32,3 +32,19 @@ export const TaskItemWrapper = styled.View`
   border-color: transparent;
   background-color: white;
 `;
+
+export const NoTasksText = styled.Text`
+  align-self: center;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 20px;
+  font-weight: 200;
+  margin: 50px;
+`;
+
+export const TodaysTasksText = styled.Text`
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 20px;
+  font-weight: 400;
+  margin: 10px;
+`;
