@@ -9,7 +9,7 @@ import { List } from "native-base";
 
 //styled components
 import { TaskItemWrapper, TaskItemDateAndTime, TaskItemName } from "./styles";
-import {TouchableOpacity,  Alert } from "react-native"; 
+import { TouchableOpacity, Alert } from "react-native";
 
 //libs
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -68,11 +68,13 @@ const TaskItem = ({ task, navigation }) => {
             toggleTask();
           }}
         />
-        <TaskItemDateAndTime style={{ color: "blue" }}>{task.tag}</TaskItemDateAndTime>
+        <TaskItemDateAndTime style={{ color: "blue" }}>
+          {task.tag}
+        </TaskItemDateAndTime>
         <TaskItemDateAndTime>{task.endDate}</TaskItemDateAndTime>
-        
       </TaskItemWrapper>
-      <TouchableOpacity
+      {/* DELETE should be in details page */}
+      {/* <TouchableOpacity
           style={{ flex: 1 }}
           onPress={submitHandler}
           // taskStore.deleteTask(task.id)
@@ -85,7 +87,7 @@ const TaskItem = ({ task, navigation }) => {
             <></>
           )}
           
-        </TouchableOpacity>
+        </TouchableOpacity> */}
     </List.Item>
   );
 };
