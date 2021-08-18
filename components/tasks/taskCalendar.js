@@ -1,17 +1,27 @@
 import React from "react";
+
+//component
 import { Calendar } from "react-native-calendars";
+
+//observer
+import { observer } from "mobx-react";
 
 const TaskCalendar = ({ tasks, changeTodaysTasks }) => {
   let markedDays = {};
   tasks.map((task) => (markedDays[task.startDate] = { marked: true }));
   return (
     <Calendar
+      enableSwipeMonths={true}
       onDayPress={(day) => {
         changeTodaysTasks(day.dateString);
       }}
       markedDates={markedDays}
+      theme={{
+        selectedDayBackgroundColor: "#DE3E50",
+        selectedDayTextColor: "white",
+      }}
     />
   );
 };
 
-export default TaskCalendar;
+export default observer(TaskCalendar);

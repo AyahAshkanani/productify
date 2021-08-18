@@ -21,9 +21,6 @@ class TaskStore {
     }
   };
 
- 
- 
-
   // ****************** Add Task METHOD ******************
   taskAdd = async (newTask, navigation) => {
     try {
@@ -37,20 +34,17 @@ class TaskStore {
     }
   };
 
-
   markTask = async (updatedTask) => {
     try {
       await instance.put(`/tasks/mark/${updatedTask.id}`);
       runInAction(() => {
         const foundTask = this.tasks.find((task) => task.id === updatedTask.id);
         foundTask["done"] = !foundTask["done"];
-
       });
     } catch (error) {
       console.error(error);
     }
-  }
-  
+  };
 }
 
 const taskStore = new TaskStore();

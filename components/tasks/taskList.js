@@ -40,6 +40,7 @@ const TaskList = () => {
 
   let today = new Date().toString();
   let todaysDate = formatDate(today);
+  console.log(todaysDate);
 
   const [todaysTasks, updateTodaysTasks] = useState(
     tasks.filter((task) => task.startDate == todaysDate)
@@ -52,8 +53,7 @@ const TaskList = () => {
     <TaskItem task={task} key={task.id} /> //navigation={navigation}
   ));
 
-  console.log(taskList.length);
-
+  console.log(todaysTasks);
   return (
     <>
       <TaskCalendar
