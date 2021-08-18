@@ -6,14 +6,14 @@ import { Calendar } from "react-native-calendars";
 //observer
 import { observer } from "mobx-react";
 
-const TaskCalendar = ({ tasks, changeTodaysTasks }) => {
+const TaskCalendar = ({ tasks, updateTaskDate }) => {
   let markedDays = {};
   tasks.map((task) => (markedDays[task.startDate] = { marked: true }));
   return (
     <Calendar
       enableSwipeMonths={true}
       onDayPress={(day) => {
-        changeTodaysTasks(day.dateString);
+        updateTaskDate(day.dateString);
       }}
       markedDates={markedDays}
       theme={{
