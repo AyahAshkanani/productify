@@ -20,8 +20,10 @@ import taskStore from "../../stores/taskStore";
 import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
 
+// capitalize filename
+
 const TaskList = ({ navigation }) => {
-  //{ navigation }
+  //{ navigation } <-- ??
   if (taskStore.loading) return <Spinner />;
   let tasks = taskStore.tasks;
 
@@ -47,7 +49,7 @@ const TaskList = ({ navigation }) => {
   const taskList = tasks
     .filter((task) => task.startDate == taskDate)
     .map((task) => (
-      <TaskItem task={task} key={task.id} /> //navigation={navigation}
+      <TaskItem task={task} key={task.id} /> //navigation={navigation} remove this if you don't need it.
     ));
 
   return (
@@ -61,8 +63,7 @@ const TaskList = ({ navigation }) => {
           <>
             <TodaysTasksText>Today's tasks</TodaysTasksText>
             <ListWrapper>
-              <List>{taskList}
-              </List>
+              <List>{taskList}</List>
             </ListWrapper>
           </>
         ) : (

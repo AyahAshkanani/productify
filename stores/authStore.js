@@ -31,8 +31,7 @@ class AuthStore {
         this.setUser(res.data.token);
         navigation.replace("Main");
       });
-      // this.setUser(res.data.token);
-      
+      // this.setUser(res.data.token); <-- why remove this?
     } catch (error) {
       console.error(error);
     }
@@ -45,6 +44,7 @@ class AuthStore {
       this.user = null;
     });
   };
+
   setUser = async (token) => {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;

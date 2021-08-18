@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //stores
-import authStore from "../../stores/authStore";
+import authStore from "../../stores/authStore"; // remove unused import
 
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -11,18 +11,25 @@ import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TaskDetail from "../tasks/TaskDetail";
 import AddTask from "../tasks/AddTask";
-//import ProgressPage from "../progress/ProgressPage";
+//import ProgressPage from "../progress/ProgressPage"; // remove unused import
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons"; // remove unused import
 import ProgressPage from "../progress/ProgressPage";
 
 //navigation
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+// give it a better name that makes it clear what this component is
+// I don't think this is the tab navigator
+// I think Main below is the tab navigator.
+// so fix naming please.
 export default function MyTabs({ theme }) {
+  // this Main here should be moved as a component in another file inside the Navigation folder
+  // then imported and used here
+  // also give it a more meaningful descriptive name. What's Main? The name should tell me exactly what it is.
   function Main() {
     return (
       //bottom tab bar

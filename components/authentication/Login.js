@@ -17,9 +17,11 @@ const Login = ({ navigation }) => {
     username: "",
     password: "",
   });
+
   const handleSubmit = async () => {
     await authStore.login(user, navigation);
   };
+
   return (
     <AuthContainer>
       <AuthTitle>Log in</AuthTitle>

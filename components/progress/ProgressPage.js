@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 //react-native
 import {
-  SafeAreaView,
+  SafeAreaView, // remove unused import
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  TextInput,
+  TextInput, // remove unused import
 } from "react-native";
 import NumericInput from "react-native-numeric-input";
 
 import { observer } from "mobx-react";
-//import { Spinner } from "native-base";
+//import { Spinner } from "native-base"; // remove unused import
 
 //store
 import authStore from "../../stores/authStore";

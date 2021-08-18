@@ -6,6 +6,8 @@ import { Calendar } from "react-native-calendars";
 //observer
 import { observer } from "mobx-react";
 
+// capitalize filename
+
 const TaskCalendar = ({ tasks, updateTaskDate }) => {
   let markedDays = {};
   tasks.map((task) => (markedDays[task.startDate] = { marked: true }));

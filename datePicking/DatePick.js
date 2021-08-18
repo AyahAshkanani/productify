@@ -6,6 +6,13 @@ import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 //import DatePicker from the package we installed
 import DatePicker from "react-native-datepicker";
 
+// I feel like this should be moved to components/
+// I assume this isn't ready yet, not complete yet.
+// if it isn't, it's a bad habit to add code that
+// doesn't do anything for the app in the main branch.
+// you generally wanna exercise restraint when dealing
+// with the main branch.
+
 const DatePick = ({ setTask, task }) => {
   const [date, setDate] = useState();
   const [date2, setDate2] = useState();

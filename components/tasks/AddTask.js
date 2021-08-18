@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { observer } from "mobx-react";
 import taskStore from "../../stores/taskStore";
 import { useNavigation } from "@react-navigation/native";
-import { View, StyleSheet } from "react-native";
-import { TextInput } from "react-native";
-// import DatePicker from "react-native-datepicker";
+import { View, StyleSheet } from "react-native"; // remove unused import
+import { TextInput } from "react-native"; // remove unused import
+// import DatePicker from "react-native-datepicker"; // remove unused import
 import {
-  TaskTitle,
+  TaskTitle, // remove unused import
   TaskContainer,
   TaskTextInput,
-  TaskButtonText,
-  TaskButton,
+  TaskButtonText, // remove unused import
+  TaskButton, // remove unused import
   AddTaskTitle,
   AddTaskLabels,
   AddTaskButton,
@@ -25,7 +25,7 @@ const AddTask = () => {
     name: "",
     startDate: "",
     endDate: "",
-    tag:"none",
+    tag: "none",
     hours: 0,
   });
 
@@ -64,7 +64,6 @@ const AddTask = () => {
 
         <DatePick setTask={setTask} task={task} />
         <AddTaskButton onPress={handleAddTask}>
-
           <AddTaskButtonText>Add</AddTaskButtonText>
         </AddTaskButton>
       </TaskContainer>

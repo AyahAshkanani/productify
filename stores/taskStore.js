@@ -18,7 +18,7 @@ class TaskStore {
       });
     } catch (error) {
       console.error(error);
-      // network error when we have "fetchTasks", 
+      // network error when we have "fetchTasks",
     }
   };
 
@@ -35,6 +35,7 @@ class TaskStore {
     }
   };
 
+  // comments relating to this in BE code review
   markTask = async (updatedTask) => {
     try {
       await instance.put(`/tasks/mark/${updatedTask.id}`);
@@ -47,11 +48,11 @@ class TaskStore {
     }
   };
 
-  deleteTask = async(taskId) => {
+  deleteTask = async (taskId) => {
     try {
       await instance.delete(`/tasks/${taskId}`);
-       const updatedTask = this.tasks.filter((task) => task.id !== taskId);
-       this.tasks = updatedTask;
+      const updatedTask = this.tasks.filter((task) => task.id !== taskId);
+      this.tasks = updatedTask;
     } catch (error) {
       console.error(error);
     }

@@ -23,6 +23,7 @@ export default function App() {
     <NativeBaseProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
+          {/* theme prop not being used in navigator, remove it */}
           <RootNavigator theme={theme} />
         </NavigationContainer>
       </ThemeProvider>

@@ -1,9 +1,13 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
+// I think maybe you don't need this store at all
+// but if you end up needing it, here're my comments....
+
 class ProgressStore {
   progress = null;
 
+  // spelling
   // progres = {
   //   days: 5,
   //   hours: 8,
@@ -12,6 +16,7 @@ class ProgressStore {
   //   username: "Sara",
   // };
 
+  // do you need loading?
   loading = false;
 
   constructor() {
@@ -22,6 +27,7 @@ class ProgressStore {
     this.progress = progress;
   };
 
+  // camelCase, not PascalCase. progressUpdate not ProgressUpdate.
   ProgressUpdate = async (updatedProgress) => {
     try {
       await instance.put(`/progress/${updatedProgress.id}`, updatedProgress);
