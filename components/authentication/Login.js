@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
   AuthTitle,
   AuthContainer,
@@ -8,11 +7,9 @@ import {
   AuthButton,
   AuthOther,
 } from "./styles";
-
- //stores
+// stores
 import authStore from "../../stores/authStore";
 
-//observer
 import { observer } from "mobx-react";
 
 const Login = ({ navigation }) => {
@@ -21,9 +18,7 @@ const Login = ({ navigation }) => {
     password: "",
   });
   const handleSubmit = async () => {
-    await authStore.login(user);
-    // what if the login failed? and there is no user in authStore.user?
-    if (authStore.user) navigation.replace("Main");
+    await authStore.login(user, navigation);
   };
   return (
     <AuthContainer>

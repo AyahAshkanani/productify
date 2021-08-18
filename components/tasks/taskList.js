@@ -20,7 +20,7 @@ import taskStore from "../../stores/taskStore";
 import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
 
-const TaskList = () => {
+const TaskList = ({ navigation }) => {
   //{ navigation }
   if (taskStore.loading) return <Spinner />;
   let tasks = taskStore.tasks;
@@ -61,7 +61,8 @@ const TaskList = () => {
           <>
             <TodaysTasksText>Today's tasks</TodaysTasksText>
             <ListWrapper>
-              <List>{taskList}</List>
+              <List>{taskList}
+              </List>
             </ListWrapper>
           </>
         ) : (

@@ -7,10 +7,9 @@ import authStore from "../../stores/authStore";
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TaskList from "../tasks/taskList";
-import Home from "../Home";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
-
+import TaskDetail from "../tasks/TaskDetail";
 import AddTask from "../tasks/AddTask";
 //import ProgressPage from "../progress/ProgressPage";
 
@@ -120,6 +119,17 @@ export default function MyTabs({ theme }) {
         component={ProgressPage}
         options={{
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TaskDetail"
+        component={TaskDetail}
+        options={({ route }) => {
+          const { task } = route.params;
+
+          return {
+            title: task.name,
+          };
         }}
       />
     </Stack.Navigator>
