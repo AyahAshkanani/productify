@@ -23,13 +23,15 @@ import Logout from "../authentication/Logout";
 const TaskList = ({ navigation }) => {
   //{ navigation }
   if (taskStore.loading) return <Spinner />;
-
   let tasks = taskStore.tasks;
 
- 
-   
-
   //get today's date
+  let today = new Date().toString();
+  let todaysDate = formatDate(today);
+
+  const [taskDate, updateTaskDate] = useState(todaysDate);
+
+  //format date
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -42,28 +44,17 @@ const TaskList = ({ navigation }) => {
     return [year, month, day].join("-");
   }
 
-  let today = new Date().toString();
-  let todaysDate = formatDate(today);
-
-  const [todaysTasks, updateTodaysTasks] = useState(
-    tasks.filter((task) => task.startDate == todaysDate)
-  );
-
-  const changeTodaysTasks = (todaysDate) => {
-    updateTodaysTasks(tasks.filter((task) => task.startDate === todaysDate));
-  };
-  const taskList = todaysTasks.map((task) => (
-     <TaskItem task={task} key={task.id} navigation={navigation} />
-   
-  ));
-
-  console.log(taskList.length);
+  const taskList = tasks
+    .filter((task) => task.startDate == taskDate)
+    .map((task) => (
+      <TaskItem task={task} key={task.id} /> //navigation={navigation}
+    ));
 
   return (
     <>
       <TaskCalendar
         tasks={tasks}
-        changeTodaysTasks={changeTodaysTasks}
+        updateTaskDate={updateTaskDate}
       ></TaskCalendar>
       <ScrollView>
         {taskList.length > 0 ? (

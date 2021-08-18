@@ -19,7 +19,7 @@ const DatePick = ({ setTask, task }) => {
             date={date} // Initial date from state
             mode="date" // The enum of date, datetime and time
             placeholder="select date"
-            format="DD-MM-YYYY"
+            format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             customStyles={{
@@ -50,7 +50,7 @@ const DatePick = ({ setTask, task }) => {
             date={date2} // Initial date from state
             mode="date" // The enum of date, datetime and time
             placeholder="select date"
-            format="DD-MM-YYYY"
+            format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             customStyles={{
