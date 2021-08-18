@@ -22,14 +22,15 @@ import Logout from "../authentication/Logout";
 
 const TaskList = ({ navigation }) => {
   //{ navigation }
-  if (taskStore.loading) return <Spinner />;
-  let tasks = taskStore.tasks;
-
   //get today's date
   let today = new Date().toString();
   let todaysDate = formatDate(today);
-
   const [taskDate, updateTaskDate] = useState(todaysDate);
+  const handleTaskUpdate = (date) => {
+    updateTaskDate(date);
+  };
+  if (taskStore.loading) return <Spinner />;
+  let tasks = taskStore.tasks;
 
   //format date
   function formatDate(date) {
@@ -54,15 +55,14 @@ const TaskList = ({ navigation }) => {
     <>
       <TaskCalendar
         tasks={tasks}
-        updateTaskDate={updateTaskDate}
+        handleTaskUpdate={handleTaskUpdate}
       ></TaskCalendar>
       <ScrollView>
         {taskList.length > 0 ? (
           <>
             <TodaysTasksText>Today's tasks</TodaysTasksText>
             <ListWrapper>
-              <List>{taskList}
-              </List>
+              <List>{taskList}</List>
             </ListWrapper>
           </>
         ) : (
