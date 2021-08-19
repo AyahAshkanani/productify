@@ -9,14 +9,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TaskList from "../tasks/taskList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
+import PreferencesPage from "../preferences/PreferencesPage";
 import TaskDetail from "../tasks/TaskDetail";
 import AddTask from "../tasks/AddTask";
-//import ProgressPage from "../progress/ProgressPage";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import ProgressPage from "../progress/ProgressPage";
 
 //navigation
 const Stack = createStackNavigator();
@@ -65,8 +64,8 @@ export default function MyTabs({ theme }) {
         />
 
         <Tab.Screen
-          name="ProgressPage"
-          component={ProgressPage}
+          name="PreferencesPage"
+          component={PreferencesPage}
           options={{
             tabBarLabel: "Preferences",
             tabBarIcon: ({ color, size }) => (
@@ -115,8 +114,8 @@ export default function MyTabs({ theme }) {
       />
 
       <Stack.Screen
-        name="ProgressPage"
-        component={ProgressPage}
+        name="PreferencesPage"
+        component={PreferencesPage}
         options={{
           headerShown: false,
         }}

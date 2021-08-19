@@ -2,12 +2,15 @@ import instance from "./instance";
 import { makeAutoObservable, runInAction } from "mobx";
 import decode from "jwt-decode";
 
-import progressStore from "./progressStore";
+//stores
+import preferencesStore from "./preferencesStore";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 class AuthStore {
   loading = true;
   user = null;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -32,7 +35,6 @@ class AuthStore {
         navigation.replace("Main");
       });
       // this.setUser(res.data.token);
-      
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +51,8 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
-    progressStore.setUserProgress(this.user.progress); //get progress when user logs/signs in
+    preferencesStore.setUserPreferences(this.user.preferences); //get preferences when user logs/signs in
+    console.log(this.user.preferences);
     this.loading = false;
   };
 
