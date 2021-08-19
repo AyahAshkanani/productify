@@ -10,6 +10,7 @@ import WorkTime from "./WorkTime";
 //store
 import authStore from "../../stores/authStore";
 import preferencesStore from "../../stores/preferencesStore";
+import ProgressChart from "./progressChart";
 
 const PreferencesPage = () => {
   const [preferences, setPreferences] = useState(
@@ -77,6 +78,7 @@ const PreferencesPage = () => {
       >
         <Text style={styles.SavePreferencesButtonText}>Save</Text>
       </TouchableOpacity>
+      {/* <ProgressChart /> */}
     </View>
   );
 };

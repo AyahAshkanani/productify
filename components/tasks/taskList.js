@@ -29,6 +29,7 @@ const TaskList = ({ navigation }) => {
   const handleTaskUpdate = (date) => {
     updateTaskDate(date);
   };
+
   if (taskStore.loading) return <Spinner />;
   let tasks = taskStore.tasks;
 
@@ -48,7 +49,7 @@ const TaskList = ({ navigation }) => {
   const taskList = tasks
     .filter((task) => task.startDate == taskDate)
     .map((task) => (
-      <TaskItem task={task} key={task.id} /> //navigation={navigation}
+      <TaskItem task={task} key={task.id} navigation={navigation} />
     ));
 
   return (
