@@ -22,14 +22,17 @@ import Logout from "../authentication/Logout";
 
 const TaskList = ({ navigation }) => {
   //{ navigation }
+  //get today's date
+  let today = new Date().toString();
+  let todaysDate = formatDate(today);
+  const [taskDate, updateTaskDate] = useState(todaysDate);
+  const handleTaskUpdate = (date) => {
+    updateTaskDate(date);
+  };
   if (taskStore.loading) return <Spinner />;
-
   let tasks = taskStore.tasks;
 
- 
-   
-
-  //get today's date
+  //format date
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -42,36 +45,24 @@ const TaskList = ({ navigation }) => {
     return [year, month, day].join("-");
   }
 
-  let today = new Date().toString();
-  let todaysDate = formatDate(today);
-
-  const [todaysTasks, updateTodaysTasks] = useState(
-    tasks.filter((task) => task.startDate == todaysDate)
-  );
-
-  const changeTodaysTasks = (todaysDate) => {
-    updateTodaysTasks(tasks.filter((task) => task.startDate === todaysDate));
-  };
-  const taskList = todaysTasks.map((task) => (
-     <TaskItem task={task} key={task.id} navigation={navigation} />
-   
-  ));
-
-  console.log(taskList.length);
+  const taskList = tasks
+    .filter((task) => task.startDate == taskDate)
+    .map((task) => (
+      <TaskItem task={task} key={task.id} /> //navigation={navigation}
+    ));
 
   return (
     <>
       <TaskCalendar
         tasks={tasks}
-        changeTodaysTasks={changeTodaysTasks}
+        handleTaskUpdate={handleTaskUpdate}
       ></TaskCalendar>
       <ScrollView>
         {taskList.length > 0 ? (
           <>
             <TodaysTasksText>Today's tasks</TodaysTasksText>
             <ListWrapper>
-              <List>{taskList}
-              </List>
+              <List>{taskList}</List>
             </ListWrapper>
           </>
         ) : (
