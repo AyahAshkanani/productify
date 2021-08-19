@@ -20,13 +20,14 @@ const PreferencesPage = () => {
     }
   );
 
-  const [number, onChangeNumber] = useState(0);
-
-  const [sunday, setSunday] = useState(preferences.sunday);
-
-  const toggleSunday = async () => {
-    setSunday(!sunday);
-    setPreferences({ ...preferences, sunday });
+  const toggleSunday = () => {
+    setPreferences({ ...preferences, sunday: !preferences.sunday });
+  };
+  const toggleMonday = () => {
+    setPreferences({ ...preferences, monday: !preferences.monday });
+  };
+  const toggleTuesday = () => {
+    setPreferences({ ...preferences, tuesday: !preferences.tuesday });
   };
 
   const updatePreferences = () => {
@@ -41,35 +42,34 @@ const PreferencesPage = () => {
     <View style={styles.container}>
       <Text>User name: {authStore.user.username}</Text>
 
-      {/* <View style={styles.box}>
-        <Text style={styles.text}>Add start time</Text>
-        <NumericInput
-          value={number}
-          minValue={0}
-          onChange={(timeStart) => {
-            setPreferences({ ...preferences, timeStart });
-          }}
-          totalWidth={100}
-          totalHeight={40}
-          iconSize={25}
-          step={1}
-          valueType="real"
-          rounded
-          textColor="#3d5a80"
-          iconStyle={{ color: "white" }}
-          rightButtonBackgroundColor="#DE3E50"
-          leftButtonBackgroundColor="#837B7C"
-        />
-      </View> */}
-
       <WorkTime />
 
-      <TouchableOpacity
-        onPress={() => {
-          toggleSunday();
-        }}
-      >
-        <CheckBox title="Sunday" />
+      <TouchableOpacity>
+        <CheckBox
+          title="Sunday"
+          checked={preferences.sunday}
+          onPress={() => {
+            toggleSunday();
+          }}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <CheckBox
+          title="Monday"
+          checked={preferences.monday}
+          onPress={() => {
+            toggleMonday();
+          }}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <CheckBox
+          title="Tuesday"
+          checked={preferences.tuesday}
+          onPress={() => {
+            toggleTuesday();
+          }}
+        />
       </TouchableOpacity>
 
       <TouchableOpacity

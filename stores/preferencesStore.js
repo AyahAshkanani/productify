@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class PreferencesStore {
-  preferences = null;
+  preferences = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -10,7 +10,6 @@ class PreferencesStore {
 
   setUserPreferences = (preferences) => {
     this.preferences = preferences;
-    console.log("this" + preferences);
   };
 
   PreferencesUpdate = async (updatedPreferences) => {
