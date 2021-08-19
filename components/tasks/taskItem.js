@@ -9,7 +9,7 @@ import { List } from "native-base";
 
 //styled components
 import { TaskItemWrapper, TaskItemDateAndTime, TaskItemName } from "./styles";
-import {TouchableOpacity,  Alert } from "react-native"; 
+import { TouchableOpacity, Alert } from "react-native";
 
 //libs
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -27,12 +27,7 @@ const TaskItem = ({ task, navigation }) => {
     await taskStore.markTask(task);
     markTask(!done);
   };
-  const submitHandler = () => {
-    Alert.alert("Are you sure you want to delete task!", "", [
-      { text: "OK", onPress: () => taskStore.deleteTask(task.id) },
-      { text: "cancel", onPress: () => console.log("cancel"), style: "cancel" },
-    ]);
-  };
+
   return (
     <List.Item
       onPress={() => navigation.navigate("TaskDetail", { task: task })}
@@ -70,20 +65,6 @@ const TaskItem = ({ task, navigation }) => {
         />
         <TaskItemDateAndTime>{task.endDate}</TaskItemDateAndTime>
       </TaskItemWrapper>
-      <TouchableOpacity
-          style={{ flex: 1 }}
-          onPress={submitHandler}
-          // taskStore.deleteTask(task.id)
-          
-        >
-        
-          {authStore.user?.id === task.userId ? (
-            <FontAwesome5 name="trash" size={24} color="red" />
-          ) : (
-            <></>
-          )}
-          
-        </TouchableOpacity>
     </List.Item>
   );
 };

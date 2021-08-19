@@ -18,12 +18,9 @@ class TaskStore {
       });
     } catch (error) {
       console.error(error);
-      // network error when we have "fetchTasks", 
+      // network error when we have "fetchTasks",
     }
   };
-
- 
- 
 
   // ****************** Add Task METHOD ******************
   taskAdd = async (newTask, navigation) => {
@@ -38,27 +35,45 @@ class TaskStore {
     }
   };
 
-
   markTask = async (updatedTask) => {
     try {
       await instance.put(`/tasks/mark/${updatedTask.id}`);
       runInAction(() => {
         const foundTask = this.tasks.find((task) => task.id === updatedTask.id);
         foundTask["done"] = !foundTask["done"];
-
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  deleteTask = async(taskId) => {
+  taskDelete = async (TaskId) => {
     try {
-      await instance.delete(`/tasks/${taskId}`);
-       const updatedTask = this.tasks.filter((task) => task.id !== taskId);
-       this.tasks = updatedTask;
+      await instance.delete(`/tasks/${TaskId}`);
+      runInAction(() => {
+        const updatedTasks = this.tasks.filter((task) => task.id !== TaskId);
+        this.tasks = updatedTasks;
+      });
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  taskUpdate = async (updateTask, navigation) => {
+    console.log(updateTask);
+    try {
+      const response = await instance.put(
+        `/tasks/${updateTask.id}`,
+        updateTask
+      );
+      // response.data.tasks = oldTask;
+      const task = this.tasks.find((task) => task.id === response.data.id);
+
+      for (const key in task) task[key] = response.data[key];
+      // console.log(task);
+      navigation.replace("TaskDetail", { task: task });
+    } catch (error) {
+      console.log(error);
     }
   };
 }

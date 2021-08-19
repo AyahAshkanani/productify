@@ -118,12 +118,24 @@ export const TaskButton = styled.TouchableOpacity`
 `;
 export const AddTaskTitle = styled.Text`
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
   margin: 20px;
   margin-left: 10px;
   margin-top: 90px;
+  text-align: center;
 `;
-
+export const UpdateTaskTitle = styled.Text`
+  font-weight: bold;
+  font-size: 30px;
+  margin: 20px;
+  margin-left: 10px;
+`;
+export const DeleteTaskTitle = styled.Text`
+  font-weight: bold;
+  font-size: 30px;
+  /* margin: 20px; */
+  margin-left: 10px;
+`;
 export const AddTaskLabels = styled.Text`
   font-weight: 500;
   font-size: 15px;
@@ -144,4 +156,30 @@ export const AddTaskButtonText = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-weight: bold;
   font-size: 18px;
+`;
+export const AddContainer = styled.View`
+  flex: 1;
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  padding-right: 60px;
+  padding-left: 60px;
+`;
+
+export const AddTitle = styled.Text`
+  color: ${({ theme }) => theme.white};
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom-color: ${({ theme }) => theme.yellow};
+`;
+
+export const AddTextInput = styled.TextInput`
+  margin-top: 20px;
+  align-self: stretch;
+  text-align: left;
+  height: 40px;
+  margin-bottom: 30px;
+  border-bottom-width: 1px;
+  color: ${({ theme }) => theme.white};
 `;

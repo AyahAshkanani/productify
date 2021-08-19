@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-// import all the components we are going to use
+// components
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-//import DatePicker from the package we installed
+//DatePicker
 import DatePicker from "react-native-datepicker";
 
 const DatePick = ({ setTask, task }) => {
@@ -14,14 +14,16 @@ const DatePick = ({ setTask, task }) => {
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
           <Text>Start Date</Text>
+
           <DatePicker
             style={styles.datePickerStyle}
             date={date} // Initial date from state
             mode="date" // The enum of date, datetime and time
-            placeholder="select date"
+            placeholder="select start date"
             format="DD-MM-YYYY"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
+            minDate={new Date()} //user cannot pick a start date before present day
             customStyles={{
               dateIcon: {
                 //display: 'none',
@@ -32,6 +34,7 @@ const DatePick = ({ setTask, task }) => {
               },
               dateInput: {
                 marginLeft: 36,
+                marginTop: 2,
               },
             }}
             onDateChange={(date) => {
@@ -49,7 +52,7 @@ const DatePick = ({ setTask, task }) => {
             style={styles.datePickerStyle}
             date={date2} // Initial date from state
             mode="date" // The enum of date, datetime and time
-            placeholder="select date"
+            placeholder="select end date"
             format="DD-MM-YYYY"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
@@ -63,6 +66,7 @@ const DatePick = ({ setTask, task }) => {
               },
               dateInput: {
                 marginLeft: 36,
+                marginBottom: 7,
               },
             }}
             onDateChange={(date2) => {
