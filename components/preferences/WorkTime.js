@@ -4,22 +4,17 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 const WorkTime = () => {
   const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
+    //console.log(selectedDate);
     setShow(Platform.OS === "ios");
     setDate(currentDate);
   };
 
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
   const showTimepicker = () => {
-    showMode("time");
+    setShow(true);
   };
 
   return (
@@ -31,7 +26,7 @@ const WorkTime = () => {
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={mode}
+          mode="time"
           is24Hour={true}
           display="default"
           onChange={onChange}
@@ -44,7 +39,7 @@ const WorkTime = () => {
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={mode}
+          mode="time"
           is24Hour={true}
           display="default"
           onChange={onChange}
