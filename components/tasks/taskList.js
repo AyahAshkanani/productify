@@ -32,7 +32,11 @@ const TaskList = ({ navigation }) => {
   if (taskStore.loading) return <Spinner />;
   let tasks = taskStore.tasks;
 
+<<<<<<< HEAD
   //format date
+=======
+  //get today's date
+>>>>>>> changes
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -45,11 +49,29 @@ const TaskList = ({ navigation }) => {
     return [year, month, day].join("-");
   }
 
+<<<<<<< HEAD
   const taskList = tasks
     .filter((task) => task.startDate == taskDate)
     .map((task) => (
       <TaskItem task={task} key={task.id} /> //navigation={navigation}
     ));
+=======
+  let today = new Date().toString();
+  let todaysDate = formatDate(today);
+
+  const [todaysTasks, updateTodaysTasks] = useState(
+    tasks.filter((task) => task.startDate == todaysDate)
+  );
+
+  const changeTodaysTasks = (todaysDate) => {
+    updateTodaysTasks(tasks.filter((task) => task.startDate === todaysDate));
+  };
+  const taskList = todaysTasks.map((task) => (
+    <TaskItem task={task} key={task.id} navigation={navigation} />
+  ));
+
+  console.log(taskList.length);
+>>>>>>> changes
 
   return (
     <>
