@@ -27,7 +27,7 @@ const AddTask = () => {
     name: "",
     startDate: "",
     endDate: "",
-    tag:"none",
+    tag: "none",
     hours: 0,
   });
 
@@ -40,44 +40,41 @@ const AddTask = () => {
   return (
     <>
       {/* <TaskContainer> */}
+      <AddContainer></AddContainer>
+      <AddTaskTitle> Add New Task</AddTaskTitle>
+
+      <AddTaskLabels>Task Name</AddTaskLabels>
+      <Input
+        style={styles.input}
+        onChangeText={(name) => setTask({ ...task, name })}
+        placeholder="Task name"
+      />
+      <AddTaskLabels>Hours</AddTaskLabels>
+
+      <Input
+        style={styles.input}
+        onChangeText={(event) => setTask({ ...task, hours: event })}
+        value={number}
+        placeholder="Hours"
+        keyboardType="numeric"
+      />
+
+      <AddTaskLabels>Task Tag</AddTaskLabels>
+      <TaskTextInput
+        style={styles.input}
+        onChangeText={(tag) => setTask({ ...task, tag })}
+        placeholder="Tag"
+      />
+
+      <DatePick setTask={setTask} task={task} />
+
       <AddContainer>
-        <AddTaskTitle> Add New Task</AddTaskTitle>
-
-        <AddTaskLabels>Task Name</AddTaskLabels>
-        <Input
-          style={styles.input}
-          onChangeText={(name) => setTask({ ...task, name })}
-          placeholder="Task name"
-        />
-        <AddTaskLabels>Hours</AddTaskLabels>
-
-        <Input
-          style={styles.input}
-          onChangeText={(event) => setTask({ ...task, hours: event })}
-          value={number}
-          placeholder="Hours"
-          keyboardType="numeric"
-        />
-<<<<<<< HEAD
-        <AddTaskLabels>Task Tag</AddTaskLabels>
-        <TaskTextInput
-          style={styles.input}
-          onChangeText={(tag) => setTask({ ...task, tag })}
-          placeholder="Tag"
-        />
-
         <DatePick setTask={setTask} task={task} />
-=======
-        <AddContainer>
-          <DatePick setTask={setTask} task={task} />
-        </AddContainer>
->>>>>>> changes
-        <AddTaskButton onPress={handleAddTask}>
-
-          <AddTaskButtonText>Add</AddTaskButtonText>
-        </AddTaskButton>
-        {/* </TaskContainer> */}
       </AddContainer>
+      <AddTaskButton onPress={handleAddTask}>
+        <AddTaskButtonText>Add</AddTaskButtonText>
+      </AddTaskButton>
+      {/* </TaskContainer> */}
     </>
   );
 };
