@@ -42,7 +42,6 @@ const AddTask = () => {
       {/* <TaskContainer> */}
       <AddContainer></AddContainer>
       <AddTaskTitle> Add New Task</AddTaskTitle>
-
       <AddTaskLabels>Task Name</AddTaskLabels>
       <Input
         style={styles.input}
@@ -50,7 +49,6 @@ const AddTask = () => {
         placeholder="Task name"
       />
       <AddTaskLabels>Hours</AddTaskLabels>
-
       <Input
         style={styles.input}
         onChangeText={(event) => setTask({ ...task, hours: event })}
@@ -66,11 +64,9 @@ const AddTask = () => {
         placeholder="Tag"
       />
 
+      {/* <AddContainer> */}
       <DatePick setTask={setTask} task={task} />
-
-      <AddContainer>
-        <DatePick setTask={setTask} task={task} />
-      </AddContainer>
+      {/* </AddContainer> */}
       <AddTaskButton onPress={handleAddTask}>
         <AddTaskButtonText>Add</AddTaskButtonText>
       </AddTaskButton>
