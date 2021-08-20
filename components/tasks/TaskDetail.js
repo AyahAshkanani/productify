@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Button, View, Text } from "native-base";
 // stores
 import { useNavigation } from "@react-navigation/native";
+import TaskTodoList from "../taskTodos/TaskTodoList";
 
 const TaskDetail = ({ route }) => {
   const { task } = route.params;
@@ -21,6 +22,8 @@ const TaskDetail = ({ route }) => {
       <UpdateButton oldTask={task} />
       <Text>Due Date</Text>
       <Text>{task.endDate}</Text>
+
+      <TaskTodoList task={task} />
     </TaskDetailWrapper>
   );
 };
