@@ -76,16 +76,20 @@ class TaskStore {
       console.log(error);
     }
   };
-  // ****************** Add Task METHOD ******************
-  taskTodoItemAdd = async (newTaskTodoItem, navigation) => {
+
+  // ****************** Add Task Todo Item METHOD ******************
+  taskTodoItemAdd = async (newTaskTodoItem, taskId) => {
     try {
       const response = await instance.post(
-        `/tasks/${task.id}/taskTodoItems`,
+        `/tasks/${taskId}/taskTodoItems`,
         newTaskTodoItem
       );
       runInAction(() => {
-        this.tasks.taskTodoItems.push({ id: response.data.id });
-        //navigation.navigate("Home");
+        this.tasks.taskTodoItems.push({
+          id: response.data.id,
+          text: response.data.text,
+          done: response.data.done,
+        });
       });
     } catch (error) {
       console.error(error);

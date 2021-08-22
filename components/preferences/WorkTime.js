@@ -9,7 +9,7 @@ const WorkTime = ({ preferences, setPreferences, isStart }) => {
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);
-    const timeFormat = date.getHours() + ":" + date.getMinutes();
+    const timeFormat = currentDate.getHours() + ":" + currentDate.getMinutes();
     isStart
       ? setPreferences({ ...preferences, timeStart: timeFormat })
       : setPreferences({ ...preferences, timeEnd: timeFormat });
