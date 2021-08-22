@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 //react-native
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { CheckBox } from "react-native-elements";
 
 import { observer } from "mobx-react";
@@ -33,6 +39,12 @@ const WorkingWeekDays = () => {
   const toggleThursday = () => {
     setPreferences({ ...preferences, thursday: !preferences.thursday });
   };
+  const toggleFriday = () => {
+    setPreferences({ ...preferences, friday: !preferences.friday });
+  };
+  const toggleSaturday = () => {
+    setPreferences({ ...preferences, saturday: !preferences.saturday });
+  };
 
   const updatePreferences = () => {
     if (preferences.timeStart === "")
@@ -60,53 +72,73 @@ const WorkingWeekDays = () => {
           isStart={false}
         />
       </View>
-      <View style={styles.box}>
-        <TouchableOpacity>
-          <CheckBox
-            title="Sunday"
-            checked={preferences.sunday}
-            onPress={() => {
-              toggleSunday();
-            }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <CheckBox
-            title="Monday"
-            checked={preferences.monday}
-            onPress={() => {
-              toggleMonday();
-            }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <CheckBox
-            title="Tuesday"
-            checked={preferences.tuesday}
-            onPress={() => {
-              toggleTuesday();
-            }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <CheckBox
-            title="Wednesday"
-            checked={preferences.wednesday}
-            onPress={() => {
-              toggleWednesday();
-            }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <CheckBox
-            title="Thursday"
-            checked={preferences.thursday}
-            onPress={() => {
-              toggleThursday();
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View style={styles.box}>
+          <TouchableOpacity>
+            <CheckBox
+              title="Sunday"
+              checked={preferences.sunday}
+              onPress={() => {
+                toggleSunday();
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CheckBox
+              title="Monday"
+              checked={preferences.monday}
+              onPress={() => {
+                toggleMonday();
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CheckBox
+              title="Tuesday"
+              checked={preferences.tuesday}
+              onPress={() => {
+                toggleTuesday();
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CheckBox
+              title="Wednesday"
+              checked={preferences.wednesday}
+              onPress={() => {
+                toggleWednesday();
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CheckBox
+              title="Thursday"
+              checked={preferences.thursday}
+              onPress={() => {
+                toggleThursday();
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CheckBox
+              title="Friday"
+              checked={preferences.friday}
+              onPress={() => {
+                toggleFriday();
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CheckBox
+              title="Saturday"
+              checked={preferences.saturday}
+              onPress={() => {
+                toggleSaturday();
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
       <TouchableOpacity
         style={styles.SavePreferencesButton}
         onPress={updatePreferences}

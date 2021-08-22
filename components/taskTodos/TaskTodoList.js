@@ -25,7 +25,6 @@ const TaskTodoList = ({ task }) => {
   const taskTodoItemsList = task.taskTodoItems.map((todo) => (
     <TaskTodoItem todo={todo} key={todo.id} />
   ));
-  console.log(taskTodoItemsList);
 
   return (
     <>
