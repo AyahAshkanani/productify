@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 //react-native
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 
 //native-base
 import { List, Spinner } from "native-base";
@@ -12,18 +12,12 @@ import TaskTodoItem from "./TaskTodoItem";
 //styles
 import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
 
-//stores
-import taskStore from "../../stores/taskStore";
-
 //observer
 import { observer } from "mobx-react";
 
 const TaskTodoList = ({ task }) => {
-  //if (taskStore.loading) return <Spinner />;
-  //let tasks = taskStore.tasks;
-
   const taskTodoItemsList = task.taskTodoItems.map((todo) => (
-    <TaskTodoItem todo={todo} key={todo.id} />
+    <TaskTodoItem todo={todo} key={todo.id} task={task} />
   ));
 
   return (
@@ -31,13 +25,13 @@ const TaskTodoList = ({ task }) => {
       <ScrollView>
         {taskTodoItemsList.length > 0 ? (
           <>
-            <TodaysTasksText>Task's todo items</TodaysTasksText>
-            <ListWrapper>
+            <TodaysTasksText>Task's Checklist items</TodaysTasksText>
+            <View>
               <List>{taskTodoItemsList}</List>
-            </ListWrapper>
+            </View>
           </>
         ) : (
-          <NoTasksText>No todo items for this task</NoTasksText>
+          <NoTasksText>No checklist items for this task</NoTasksText>
         )}
       </ScrollView>
     </>
