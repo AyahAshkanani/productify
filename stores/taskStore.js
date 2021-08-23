@@ -17,7 +17,7 @@ class TaskStore {
         this.loading = false;
       });
     } catch (error) {
-      console.error(error);
+      console.error("fetch error", error);
       // network error when we have "fetchTasks",
     }
   };
@@ -91,6 +91,12 @@ class TaskStore {
           done: response.data.done,
         });
       });
+      
+  deleteTask = async (taskId) => {
+    try {
+      await instance.delete(`/tasks/${taskId}`);
+      const updatedTask = this.tasks.filter((task) => task.id !== taskId);
+      this.tasks = updatedTask;
     } catch (error) {
       console.error(error);
     }
