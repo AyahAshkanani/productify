@@ -10,7 +10,7 @@ const TaskTodoAdd = ({ task }) => {
   });
 
   const todoAddHandler = () => {
-    taskTodoStore.taskTodoItemAdd(todo, task.id);
+    taskTodoStore.taskTodoItemAdd(todo, task.id, task);
     setTodo({ text: "", done: false });
   };
 
@@ -22,9 +22,10 @@ const TaskTodoAdd = ({ task }) => {
           placeholder="add todo.."
           onChangeText={(text) => setTodo({ ...todo, text })}
         />
+
         <Button
           onPress={todoAddHandler}
-          title="Add Todo"
+          title="Add a todo"
           color="#DE3E50"
         ></Button>
       </View>
@@ -37,6 +38,8 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 2,
     borderColor: "#ddd",
+    borderRadius: 10,
+    padding: 5,
     width: 200,
     height: 30,
   },
