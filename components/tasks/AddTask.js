@@ -60,47 +60,31 @@ const AddTask = () => {
   }
 
   const scheduelSubTasks = async (task) => {
-    let subTasksNum = 1;
-    //check if start and end dates are not equal, otherwise it will remain 1 task
-    if (task.startDate !== task.endDate) {
-      //if not, calculate the days between the two (format: 2021-08-18)
-      const firstDate = task.startDate.split("-");
-      const secondDate = task.endDate.split("-");
-      //years, months, days
-      const years = parseInt(secondDate[0]) - parseInt(firstDate[0]);
-      const months = parseInt(secondDate[1]) - parseInt(firstDate[1]);
-      const days = parseInt(secondDate[2]) - parseInt(firstDate[2]);
-      //total
-      const totalDays = 365 * years + 30 * months + 1 * days + 1;
-      //check hours and days
-      // if (+task.hours >= totalDays) {
-      //   //hours over days
-      //   // subTasksHrs = Math.ceil(+task.hours / totalDays);
-      //   subTasksNum = totalDays;
-      // } else {
-      //   subTasksNum = task.hours;
-      // }
-    }
-
+    // let subTasksNum = 1;
     const UserTasks = taskStore.tasks;
-
     let day = new Date(task.startDate);
     let taskDays = [];
-    while (day <= new Date(task.endDate)) {
-      let dayTasks = UserTasks.filter(
-        (task) => task.startDate === formatDate(day)
-      ).sort(function (a, b) {
-        return +a.time.slice(0, 2) - +b.time.slice(0, 2);
-      });
+    //check if start and end dates are not equal, otherwise it will remain 1 task
+    if (task.startDate === task.endDate) {
+      taskDays.push(task.startDate);
+    } else {
+      while (day <= new Date(task.endDate)) {
+        // let dayTasks = UserTasks.filter(
+        //   (task) => task.startDate === formatDate(day)
+        // ).sort(function (a, b) {
+        //   return +a.time.slice(0, 2) - +b.time.slice(0, 2);
+        // });
 
-      if (preferencesStore.preferences[days[day.getDay()]]) {
-        taskDays.push(formatDate(day));
+        if (preferencesStore.preferences[days[day.getDay()]]) {
+          taskDays.push(formatDate(day));
+        }
+        day.setDate(day.getDate() + 1);
       }
-      day.setDate(day.getDate() + 1);
     }
-    subTasksNum = taskDays.length;
 
-    for (let i = 0; i < subTasksNum; i++) {
+    // subTasksNum = taskDays.length;
+
+    for (let i = 0; i < taskDays.length; i++) {
       let subTaskTime = 0;
       let dayTasks = UserTasks.filter(
         (task) => task.startDate === taskDays[i]
@@ -120,7 +104,7 @@ const AddTask = () => {
       await taskStore.taskAdd(
         {
           ...task,
-          hours: +task.hours / subTasksNum,
+          hours: +task.hours / taskDays.length,
           startDate: taskDays[i],
           endDate: taskDays[i],
           time: subTaskTime,
