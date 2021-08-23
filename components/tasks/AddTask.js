@@ -107,8 +107,7 @@ const AddTask = () => {
     //scheduel first
     //then add each new subtask
     scheduelSubTasks(task);
-    // await taskStore.taskAdd({ ...task, hours: +task.hours }, navigation);
-    // setTask({ name: "", startDate: "", endDate: "", hours: 0 });
+    setTask({ name: "", startDate: "", endDate: "", hours: 0 });
   };
 
   const [number, onChangeNumber] = useState(null);
@@ -118,12 +117,14 @@ const AddTask = () => {
         <AddTaskTitle> Add New Task</AddTaskTitle>
         <AddTaskLabels>Task Name</AddTaskLabels>
         <TaskTextInput
+          value={task.name}
           style={styles.input}
           onChangeText={(name) => setTask({ ...task, name })}
           placeholder="Task name"
         />
         <AddTaskLabels>Hours</AddTaskLabels>
         <TaskTextInput
+          value={task.hours}
           style={styles.input}
           onChangeText={(event) => setTask({ ...task, hours: event })}
           value={number}
@@ -132,6 +133,7 @@ const AddTask = () => {
         />
         <AddTaskLabels>Task Tag</AddTaskLabels>
         <TaskTextInput
+          value={task.tag}
           style={styles.input}
           onChangeText={(tag) => setTask({ ...task, tag })}
           placeholder="Tag"
