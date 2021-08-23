@@ -13,6 +13,9 @@ import PreferencesPage from "../preferences/PreferencesPage";
 import TaskDetail from "../tasks/TaskDetail";
 import AddTask from "../tasks/AddTask";
 
+//import ProgressPage from "../progress/ProgressPage";
+import UpdateTask from "../tasks/UpdateTask";
+
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -77,7 +80,7 @@ export default function MyTabs({ theme }) {
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="Login"
       screenOptions={{
         headerStyle: {
           backgroundColor: "#c77dff",
@@ -89,6 +92,13 @@ export default function MyTabs({ theme }) {
       }}
     >
       <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Register"
         component={Register}
         options={{
@@ -99,13 +109,6 @@ export default function MyTabs({ theme }) {
       <Stack.Screen
         name="Main"
         component={Main}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Login"
-        component={Login}
         options={{
           headerShown: false,
         }}
@@ -127,6 +130,13 @@ export default function MyTabs({ theme }) {
           return {
             title: task.name,
           };
+        }}
+      />
+      <Stack.Screen
+        name="UpdateTask"
+        component={UpdateTask}
+        options={{
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

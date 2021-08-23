@@ -27,12 +27,7 @@ const TaskItem = ({ task, navigation }) => {
     await taskStore.markTask(task);
     markTask(!done);
   };
-  const submitHandler = () => {
-    Alert.alert("Are you sure you want to delete task!", "", [
-      { text: "OK", onPress: () => taskStore.deleteTask(task.id) },
-      { text: "cancel", onPress: () => console.log("cancel"), style: "cancel" },
-    ]);
-  };
+
   return (
     <List.Item
       onPress={() => navigation.navigate("TaskDetail", { task: task })}

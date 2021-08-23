@@ -16,6 +16,7 @@ const theme = {
   secondaryTextColor: "#FFFFFF",
   complementaryOne: "#0ACEDC",
   complementaryTwo: "#3EDEBB",
+  white: "white",
 };
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
     <NativeBaseProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <RootNavigator theme={theme} />
+          <RootNavigator />
         </NavigationContainer>
       </ThemeProvider>
     </NativeBaseProvider>

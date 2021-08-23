@@ -47,6 +47,51 @@ class TaskStore {
     }
   };
 
+  taskDelete = async (TaskId) => {
+    try {
+      await instance.delete(`/tasks/${TaskId}`);
+      runInAction(() => {
+        const updatedTasks = this.tasks.filter((task) => task.id !== TaskId);
+        this.tasks = updatedTasks;
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  taskUpdate = async (updateTask, navigation) => {
+    console.log(updateTask);
+    try {
+      const response = await instance.put(
+        `/tasks/${updateTask.id}`,
+        updateTask
+      );
+      // response.data.tasks = oldTask;
+      const task = this.tasks.find((task) => task.id === response.data.id);
+
+      for (const key in task) task[key] = response.data[key];
+      // console.log(task);
+      navigation.replace("TaskDetail", { task: task });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // ****************** Add Task Todo Item METHOD ******************
+  taskTodoItemAdd = async (newTaskTodoItem, taskId) => {
+    try {
+      const response = await instance.post(
+        `/tasks/${taskId}/taskTodoItems`,
+        newTaskTodoItem
+      );
+      runInAction(() => {
+        this.tasks.taskTodoItems.push({
+          id: response.data.id,
+          text: response.data.text,
+          done: response.data.done,
+        });
+      });
+      
   deleteTask = async (taskId) => {
     try {
       await instance.delete(`/tasks/${taskId}`);

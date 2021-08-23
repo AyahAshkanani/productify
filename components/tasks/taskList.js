@@ -52,7 +52,7 @@ const TaskList = ({ navigation }) => {
       return +a.time.slice(0, 2) - +b.time.slice(0, 2);
     })
     .map((task) => (
-      <TaskItem task={task} key={task.id} /> //navigation={navigation}
+      <TaskItem task={task} key={task.id} navigation={navigation} />
     ));
   return (
     <>
