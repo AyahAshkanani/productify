@@ -26,11 +26,9 @@ export default function MyTabs({ theme }) {
     return (
       //bottom tab bar
       <Tab.Navigator
-        tabBarOptions={{
-          screenOptions: {
-            activeTintColor: "blue",
-          },
-          showLabel: false,
+        screenOptions={{
+          activeTintColor: "blue",
+          tabBarShowLabel: false,
           style: {
             backgroundColor: "transparent",
             borderTopWidth: 0,
@@ -79,7 +77,7 @@ export default function MyTabs({ theme }) {
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName="Register"
+      initialRouteName="Main"
       screenOptions={{
         headerStyle: {
           backgroundColor: "#c77dff",

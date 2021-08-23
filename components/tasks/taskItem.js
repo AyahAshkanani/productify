@@ -71,23 +71,10 @@ const TaskItem = ({ task, navigation }) => {
         <TaskItemDateAndTime style={{ color: "blue" }}>
           {task.tag}
         </TaskItemDateAndTime>
-        <TaskItemDateAndTime>{task.endDate}</TaskItemDateAndTime>
+        <TaskItemDateAndTime>
+          {task.time} - {+task.time.slice(0, 2) + +task.hours}:00
+        </TaskItemDateAndTime>
       </TaskItemWrapper>
-      {/* DELETE should be in details page */}
-      {/* <TouchableOpacity
-          style={{ flex: 1 }}
-          onPress={submitHandler}
-          // taskStore.deleteTask(task.id)
-          
-        >
-        
-          {authStore.user?.id === task.userId ? (
-            <FontAwesome5 name="trash" size={24} color="red" />
-          ) : (
-            <></>
-          )}
-          
-        </TouchableOpacity> */}
     </List.Item>
   );
 };
