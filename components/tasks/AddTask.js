@@ -13,13 +13,11 @@ import { useNavigation } from "@react-navigation/native";
 
 //styled components
 import {
-  TaskContainer,
   TaskTextInput,
   AddTaskTitle,
   AddTaskLabels,
   AddTaskButton,
   AddTaskButtonText,
-  AddTextInput,
   AddContainer,
 } from "./styles";
 
@@ -42,7 +40,7 @@ const AddTask = () => {
     name: "",
     startDate: "",
     endDate: "",
-    tag: "none",
+    tag: "",
     hours: 0,
   });
 
@@ -59,8 +57,8 @@ const AddTask = () => {
     return [year, month, day].join("-");
   }
 
+  //code to scheduel task into subtasks.. good luck reading this
   const scheduelSubTasks = async (task) => {
-    // let subTasksNum = 1;
     const UserTasks = taskStore.tasks;
     let day = new Date(task.startDate);
     let taskDays = [];
@@ -69,21 +67,33 @@ const AddTask = () => {
       taskDays.push(task.startDate);
     } else {
       while (day <= new Date(task.endDate)) {
-        // let dayTasks = UserTasks.filter(
-        //   (task) => task.startDate === formatDate(day)
-        // ).sort(function (a, b) {
-        //   return +a.time.slice(0, 2) - +b.time.slice(0, 2);
-        // });
-
-        if (preferencesStore.preferences[days[day.getDay()]]) {
+        let dayTasks = UserTasks.filter(
+          (task) => task.startDate === formatDate(day)
+        ).sort(function (a, b) {
+          return +a.time.slice(0, 2) - +b.time.slice(0, 2);
+        });
+        //initially
+        let lastTaskTime = "00:00";
+        //check for last task time
+        if (dayTasks.length !== 0) {
+          lastTaskTime = `${
+            +dayTasks[dayTasks.length - 1].time.slice(0, 2) +
+            +dayTasks[dayTasks.length - 1].hours
+          }:00`;
+          console.log(`lastTaskTime: ${lastTaskTime}`);
+        }
+        //add day if 1. is a work day, 2. there is time left
+        if (
+          preferencesStore.preferences[days[day.getDay()]] &&
+          +lastTaskTime.slice(0, 2) <
+            +preferencesStore.preferences.timeEnd.slice(0, 2)
+        ) {
           taskDays.push(formatDate(day));
         }
         day.setDate(day.getDate() + 1);
       }
     }
-
-    // subTasksNum = taskDays.length;
-
+    //add tasks based on days i have
     for (let i = 0; i < taskDays.length; i++) {
       let subTaskTime = 0;
       let dayTasks = UserTasks.filter(
@@ -111,7 +121,6 @@ const AddTask = () => {
         },
         navigation
       );
-      // day.setDate(day.getDate() + 1);
     }
   };
 
