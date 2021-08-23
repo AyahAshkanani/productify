@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 
 //stores
 import taskStore from "../../stores/taskStore";
+import preferencesStore from "../../stores/preferencesStore";
 
 //nav
 import { useNavigation } from "@react-navigation/native";
@@ -27,6 +28,15 @@ import { Input } from "galio-framework";
 import DatePick from "../../datePicking/DatePick";
 
 const AddTask = () => {
+  var days = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
   const navigation = useNavigation();
   const [task, setTask] = useState({
     name: "",
@@ -63,26 +73,41 @@ const AddTask = () => {
       //total
       const totalDays = 365 * years + 30 * months + 1 * days + 1;
       //check hours and days
-      if (+task.hours >= totalDays) {
-        //hours over days
-        // subTasksHrs = Math.ceil(+task.hours / totalDays);
-        subTasksNum = totalDays;
-      } else {
-        subTasksNum = task.hours;
-      }
+      // if (+task.hours >= totalDays) {
+      //   //hours over days
+      //   // subTasksHrs = Math.ceil(+task.hours / totalDays);
+      //   subTasksNum = totalDays;
+      // } else {
+      //   subTasksNum = task.hours;
+      // }
     }
 
-    var day = new Date(task.startDate);
     const UserTasks = taskStore.tasks;
-    for (let i = 0; i < subTasksNum; i++) {
-      let subTaskTime = 0;
+
+    let day = new Date(task.startDate);
+    let taskDays = [];
+    while (day <= new Date(task.endDate)) {
       let dayTasks = UserTasks.filter(
         (task) => task.startDate === formatDate(day)
       ).sort(function (a, b) {
         return +a.time.slice(0, 2) - +b.time.slice(0, 2);
       });
 
-      console.log(dayTasks);
+      if (preferencesStore.preferences[days[day.getDay()]]) {
+        taskDays.push(formatDate(day));
+      }
+      day.setDate(day.getDate() + 1);
+    }
+    subTasksNum = taskDays.length;
+
+    for (let i = 0; i < subTasksNum; i++) {
+      let subTaskTime = 0;
+      let dayTasks = UserTasks.filter(
+        (task) => task.startDate === taskDays[i]
+      ).sort(function (a, b) {
+        return +a.time.slice(0, 2) - +b.time.slice(0, 2);
+      });
+
       if (dayTasks.length === 0) {
         subTaskTime = "09:00";
       } else {
@@ -96,13 +121,13 @@ const AddTask = () => {
         {
           ...task,
           hours: +task.hours / subTasksNum,
-          startDate: formatDate(day),
-          endDate: formatDate(day),
+          startDate: taskDays[i],
+          endDate: taskDays[i],
           time: subTaskTime,
         },
         navigation
       );
-      day.setDate(day.getDate() + 1);
+      // day.setDate(day.getDate() + 1);
     }
   };
 
