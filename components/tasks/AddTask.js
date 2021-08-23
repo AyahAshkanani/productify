@@ -22,7 +22,6 @@ import {
   AddContainer,
 } from "./styles";
 
-
 //components
 import { Input } from "galio-framework";
 import DatePick from "../../datePicking/DatePick";
