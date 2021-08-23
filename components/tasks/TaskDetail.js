@@ -10,10 +10,11 @@ import { Button, View, Text } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import TaskTodoList from "../taskTodos/TaskTodoList";
 import TaskTodoAdd from "../taskTodos/TaskTodoAdd";
+import TaskNoteItem from "../taskNote/TaskNoteItem";
 
 const TaskDetail = ({ route }) => {
   const { task } = route.params;
-  //console.log(task);
+  console.log(route.params);
 
   return (
     <TaskDetailWrapper>
@@ -25,6 +26,7 @@ const TaskDetail = ({ route }) => {
       <Text>{task.endDate}</Text>
       <TaskTodoAdd task={task} />
       <TaskTodoList task={task} />
+      <TaskNoteItem task={task} />
     </TaskDetailWrapper>
   );
 };
