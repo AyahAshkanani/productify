@@ -77,21 +77,6 @@ class TaskStore {
     }
   };
 
-  // ****************** Add Task Todo Item METHOD ******************
-  taskTodoItemAdd = async (newTaskTodoItem, taskId) => {
-    try {
-      const response = await instance.post(
-        `/tasks/${taskId}/taskTodoItems`,
-        newTaskTodoItem
-      );
-      runInAction(() => {
-        this.tasks.taskTodoItems.push({
-          id: response.data.id,
-          text: response.data.text,
-          done: response.data.done,
-        });
-      });
-      
   deleteTask = async (taskId) => {
     try {
       await instance.delete(`/tasks/${taskId}`);
