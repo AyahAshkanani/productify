@@ -17,7 +17,7 @@ class TaskStore {
         this.loading = false;
       });
     } catch (error) {
-      console.error(error);
+      console.error("fetch error", error);
       // network error when we have "fetchTasks",
     }
   };
@@ -77,20 +77,11 @@ class TaskStore {
     }
   };
 
-  // ****************** Add Task Todo Item METHOD ******************
-  taskTodoItemAdd = async (newTaskTodoItem, taskId) => {
+  deleteTask = async (taskId) => {
     try {
-      const response = await instance.post(
-        `/tasks/${taskId}/taskTodoItems`,
-        newTaskTodoItem
-      );
-      runInAction(() => {
-        this.tasks.taskTodoItems.push({
-          id: response.data.id,
-          text: response.data.text,
-          done: response.data.done,
-        });
-      });
+      await instance.delete(`/tasks/${taskId}`);
+      const updatedTask = this.tasks.filter((task) => task.id !== taskId);
+      this.tasks = updatedTask;
     } catch (error) {
       console.error(error);
     }

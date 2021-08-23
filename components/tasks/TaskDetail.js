@@ -1,7 +1,7 @@
 import React from "react";
 //observer
 import { observer } from "mobx-react";
-import { TaskDetailWrapper, TaskDetailsStyle } from "./styles";
+import { TaskDetailWrapper, TaskDetailsStyle, DueDate } from "./styles";
 // components
 import UpdateButton from "../../buttons/UpdateButton";
 import { Ionicons } from "@expo/vector-icons";
@@ -21,10 +21,10 @@ const TaskDetail = ({ route }) => {
       <TaskDetailsStyle>{task.name}</TaskDetailsStyle>
 
       <View style={{ display: "flex", flexDirection: " row " }}></View>
-      <UpdateButton oldTask={task} />
-      <Text>Due Date</Text>
-      <Text>{task.endDate}</Text>
-      <TaskTodoAdd task={task} />
+      <UpdateButton oldTask={task} style={{ margin : 50}}/>
+      <DueDate>Due Date</DueDate>
+      <DueDate>{task.endDate}</DueDate>
+      <TaskTodoAdd task={task}/>
       <TaskTodoList task={task} />
       <TaskNoteItem task={task} />
     </TaskDetailWrapper>

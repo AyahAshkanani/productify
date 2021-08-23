@@ -10,11 +10,12 @@ const TaskCalendar = ({ tasks, handleTaskUpdate }) => {
   let markedDays = {};
   tasks.map((task) => (markedDays[task.startDate] = { marked: true }));
   return (
-    <Calendar
+    <Calendar 
       enableSwipeMonths={true}
       onDayPress={(day) => {
         handleTaskUpdate(day.dateString);
       }}
+      style={{margin:15}}
       markedDates={markedDays}
       theme={{
         selectedDayBackgroundColor: "#DE3E50",

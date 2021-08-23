@@ -13,7 +13,7 @@ const DatePick = ({ setTask, task }) => {
     <>
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
-          <Text>Start Date</Text>
+          <Text style={styles.title}>Start Date</Text>
 
           <DatePicker
             style={styles.datePickerStyle}
@@ -38,18 +38,17 @@ const DatePick = ({ setTask, task }) => {
               },
             }}
             onDateChange={(date) => {
-              setTask({ ...task, startDate: date });
+              setTask({ ...task, startDate: date, endDate: date });
               setDate(date);
               setDate2(date);
             }}
-           
           />
         </View>
       </SafeAreaView>
 
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
-          <Text>End Date</Text>
+          <Text style={styles.title}>End Date</Text>
           <DatePicker
             style={styles.datePickerStyle}
             date={date2} // Initial date from state
@@ -58,6 +57,7 @@ const DatePick = ({ setTask, task }) => {
             format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
+            minDate={new Date()} //user cannot pick a start date before present day
             customStyles={{
               dateIcon: {
                 //display: 'none',
@@ -71,7 +71,6 @@ const DatePick = ({ setTask, task }) => {
                 marginBottom: 7,
               },
             }}
-            
             onDateChange={(date2) => {
               setTask({ ...task, endDate: date2 });
               setDate2(date2);
@@ -88,18 +87,21 @@ export default DatePick;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     justifyContent: "center",
     alignItems: "center",
+
   },
   title: {
     textAlign: "center",
-    fontSize: 20,
-    fontWeight: "bold",
+    alignItems: "center",
+    fontSize: 15,
+    paddingLeft:70,
     padding: 20,
+    // marginEnd:20,
   },
   datePickerStyle: {
     width: 200,
-    marginTop: 20,
+    // paddingTop:5,
+    // paddingBottom:16,
   },
 });

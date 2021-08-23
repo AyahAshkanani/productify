@@ -12,7 +12,7 @@ import WorkingWeekDays from "./WorkingWeekDays";
 const PreferencesPage = () => {
   return (
     <View style={styles.container}>
-      <Text style={{ margin: 20 }}>user name: {authStore.user.username}</Text>
+      <Text style={{ margin: 25 ,fontSize: 20}}>username: {authStore.user.username}</Text>
 
       <WorkingWeekDays />
 
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
+    padding: 20,
     // justifyContent: "center",
   },
 });

@@ -66,7 +66,9 @@ const TaskItem = ({ task, navigation }) => {
         <TaskItemDateAndTime style={{ color: "blue" }}>
           {task.tag}
         </TaskItemDateAndTime>
-        <TaskItemDateAndTime>{task.endDate}</TaskItemDateAndTime>
+        <TaskItemDateAndTime>
+          {task.time} - {+task.time.slice(0, 2) + +task.hours}:00
+        </TaskItemDateAndTime>
       </TaskItemWrapper>
     </List.Item>
   );

@@ -21,7 +21,7 @@ const WorkTime = ({ preferences, setPreferences, isStart }) => {
   };
 
   return (
-    <View style={{ justifyContent: "center" }}>
+    <View style={{ justifyContent: "center" , paddingLeft:10, paddingRight:10}}>
       <View>
         <Button onPress={showTimepicker} title="Pick time" />
       </View>
