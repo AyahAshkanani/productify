@@ -14,6 +14,7 @@ class TaskTodoStore {
       const response = await instance.get(`/tasks/${userId}`);
       runInAction(() => {
         this.userTasks = response.data;
+        console.log(this.userTasks);
         this.loading = false;
       });
       // console.log(this.userTasks);
