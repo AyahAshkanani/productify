@@ -20,6 +20,7 @@ import {
 } from "./styles";
 import { Input } from "galio-framework";
 import DatePick from "../../datePicking/DatePick";
+import { paddingRight } from "styled-system";
 
 const AddTask = () => {
   const navigation = useNavigation();
@@ -40,7 +41,7 @@ const AddTask = () => {
   return (
     <>
       {/* <TaskContainer> */}
-      <AddContainer></AddContainer>
+      <AddContainer>  
       <AddTaskTitle> Add New Task</AddTaskTitle>
       <AddTaskLabels>Task Name</AddTaskLabels>
       <Input
@@ -58,18 +59,21 @@ const AddTask = () => {
       />
 
       <AddTaskLabels>Task Tag</AddTaskLabels>
-      <TaskTextInput
+      <Input
         style={styles.input}
         onChangeText={(tag) => setTask({ ...task, tag })}
         placeholder="Tag"
       />
 
+
       {/* <AddContainer> */}
       <DatePick setTask={setTask} task={task} />
       {/* </AddContainer> */}
+
       <AddTaskButton onPress={handleAddTask}>
         <AddTaskButtonText>Add</AddTaskButtonText>
       </AddTaskButton>
+      </AddContainer>
       {/* </TaskContainer> */}
     </>
   );
@@ -77,12 +81,11 @@ const AddTask = () => {
 
 const styles = StyleSheet.create({
   input: {
-    alignSelf: "stretch",
+    alignSelf: "center",
     alignItems: "center",
     backgroundColor: "white",
     height: 40,
-    marginTop: 12,
-    padding: 10,
+    marginTop: 10,
   },
 });
 const styles2 = StyleSheet.create({
