@@ -6,19 +6,18 @@ import { observer } from "mobx-react";
 
 //stores
 import taskStore from "../../stores/taskStore";
+import preferencesStore from "../../stores/preferencesStore";
 
 //nav
 import { useNavigation } from "@react-navigation/native";
 
 //styled components
 import {
-  TaskContainer,
   TaskTextInput,
   AddTaskTitle,
   AddTaskLabels,
   AddTaskButton,
   AddTaskButtonText,
-  AddTextInput,
   AddContainer,
 } from "./styles";
 
@@ -28,12 +27,21 @@ import DatePick from "../../datePicking/DatePick";
 import { paddingRight } from "styled-system";
 
 const AddTask = () => {
+  var days = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
   const navigation = useNavigation();
   const [task, setTask] = useState({
     name: "",
     startDate: "",
     endDate: "",
-    tag: "none",
+    tag: "",
     hours: 0,
   });
 
@@ -50,40 +58,51 @@ const AddTask = () => {
     return [year, month, day].join("-");
   }
 
+  //code to scheduel task into subtasks.. good luck reading this
   const scheduelSubTasks = async (task) => {
-    let subTasksNum = 1;
+    const UserTasks = taskStore.tasks;
+    let day = new Date(task.startDate);
+    let taskDays = [];
     //check if start and end dates are not equal, otherwise it will remain 1 task
-    if (task.startDate !== task.endDate) {
-      //if not, calculate the days between the two (format: 2021-08-18)
-      const firstDate = task.startDate.split("-");
-      const secondDate = task.endDate.split("-");
-      //years, months, days
-      const years = parseInt(secondDate[0]) - parseInt(firstDate[0]);
-      const months = parseInt(secondDate[1]) - parseInt(firstDate[1]);
-      const days = parseInt(secondDate[2]) - parseInt(firstDate[2]);
-      //total
-      const totalDays = 365 * years + 30 * months + 1 * days + 1;
-      //check hours and days
-      if (+task.hours >= totalDays) {
-        //hours over days
-        // subTasksHrs = Math.ceil(+task.hours / totalDays);
-        subTasksNum = totalDays;
-      } else {
-        subTasksNum = task.hours;
+    if (task.startDate === task.endDate) {
+      taskDays.push(task.startDate);
+    } else {
+      while (day <= new Date(task.endDate)) {
+        let dayTasks = UserTasks.filter(
+          (task) => task.startDate === formatDate(day)
+        ).sort(function (a, b) {
+          return +a.time.slice(0, 2) - +b.time.slice(0, 2);
+        });
+        //initially
+        let lastTaskTime = "00:00";
+        //check for last task time
+        if (dayTasks.length !== 0) {
+          lastTaskTime = `${
+            +dayTasks[dayTasks.length - 1].time.slice(0, 2) +
+            +dayTasks[dayTasks.length - 1].hours
+          }:00`;
+          console.log(`lastTaskTime: ${lastTaskTime}`);
+        }
+        //add day if 1. is a work day, 2. there is time left
+        if (
+          preferencesStore.preferences[days[day.getDay()]] &&
+          +lastTaskTime.slice(0, 2) <
+            +preferencesStore.preferences.timeEnd.slice(0, 2)
+        ) {
+          taskDays.push(formatDate(day));
+        }
+        day.setDate(day.getDate() + 1);
       }
     }
-
-    var day = new Date(task.startDate);
-    const UserTasks = taskStore.tasks;
-    for (let i = 0; i < subTasksNum; i++) {
+    //add tasks based on days i have
+    for (let i = 0; i < taskDays.length; i++) {
       let subTaskTime = 0;
       let dayTasks = UserTasks.filter(
-        (task) => task.startDate === formatDate(day)
+        (task) => task.startDate === taskDays[i]
       ).sort(function (a, b) {
         return +a.time.slice(0, 2) - +b.time.slice(0, 2);
       });
 
-      console.log(dayTasks);
       if (dayTasks.length === 0) {
         subTaskTime = "09:00";
       } else {
@@ -96,14 +115,13 @@ const AddTask = () => {
       await taskStore.taskAdd(
         {
           ...task,
-          hours: +task.hours / subTasksNum,
-          startDate: formatDate(day),
-          endDate: formatDate(day),
+          hours: +task.hours / taskDays.length,
+          startDate: taskDays[i],
+          endDate: taskDays[i],
           time: subTaskTime,
         },
         navigation
       );
-      day.setDate(day.getDate() + 1);
     }
   };
 

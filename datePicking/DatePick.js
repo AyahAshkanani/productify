@@ -38,11 +38,10 @@ const DatePick = ({ setTask, task }) => {
               },
             }}
             onDateChange={(date) => {
-              setTask({ ...task, startDate: date });
+              setTask({ ...task, startDate: date, endDate: date });
               setDate(date);
               setDate2(date);
             }}
-           
           />
         </View>
       </SafeAreaView>
@@ -72,7 +71,6 @@ const DatePick = ({ setTask, task }) => {
                 marginBottom: 7,
               },
             }}
-            
             onDateChange={(date2) => {
               setTask({ ...task, endDate: date2 });
               setDate2(date2);
