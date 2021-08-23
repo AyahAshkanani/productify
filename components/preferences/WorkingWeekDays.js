@@ -57,7 +57,7 @@ const WorkingWeekDays = () => {
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <Text style={{ fontSize: 18 }}>Work Start:</Text>
+        <Text style={{ fontSize: 18 , paddingTop:7 }}>Work Start:</Text>
 
         <WorkTime
           preferences={preferences}
@@ -65,25 +65,28 @@ const WorkingWeekDays = () => {
           isStart={true}
         />
 
-        <Text style={{ fontSize: 18 }}>Work End:</Text>
+        <Text style={{ fontSize: 18 , paddingTop:7 }}>Work End:</Text>
         <WorkTime
           preferences={preferences}
           setPreferences={setPreferences}
           isStart={false}
         />
-      </View>
+        
+      </View> 
       <ScrollView>
-        <View style={styles.box}>
-          <TouchableOpacity>
+      <Text style={{ margin: 10 ,fontSize: 20}}> Working Days</Text>
+      <View style={styles.workcontainer}>
+        <View style={styles.workbox}>
+         
+        <TouchableOpacity>
             <CheckBox
               title="Sunday"
               checked={preferences.sunday}
               onPress={() => {
                 toggleSunday();
               }}
+              
             />
-          </TouchableOpacity>
-          <TouchableOpacity>
             <CheckBox
               title="Monday"
               checked={preferences.monday}
@@ -91,8 +94,6 @@ const WorkingWeekDays = () => {
                 toggleMonday();
               }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity>
             <CheckBox
               title="Tuesday"
               checked={preferences.tuesday}
@@ -100,8 +101,6 @@ const WorkingWeekDays = () => {
                 toggleTuesday();
               }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity>
             <CheckBox
               title="Wednesday"
               checked={preferences.wednesday}
@@ -111,25 +110,21 @@ const WorkingWeekDays = () => {
             />
           </TouchableOpacity>
           <TouchableOpacity>
-            <CheckBox
+             <CheckBox
               title="Thursday"
               checked={preferences.thursday}
               onPress={() => {
                 toggleThursday();
               }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <CheckBox
+             <CheckBox
               title="Friday"
               checked={preferences.friday}
               onPress={() => {
                 toggleFriday();
               }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <CheckBox
+             <CheckBox
               title="Saturday"
               checked={preferences.saturday}
               onPress={() => {
@@ -138,6 +133,7 @@ const WorkingWeekDays = () => {
             />
           </TouchableOpacity>
         </View>
+        </View>
       </ScrollView>
       <TouchableOpacity
         style={styles.SavePreferencesButton}
@@ -145,7 +141,7 @@ const WorkingWeekDays = () => {
       >
         <Text style={styles.SavePreferencesButtonText}>Save</Text>
       </TouchableOpacity>
-    </View>
+      </View>
   );
 };
 
@@ -154,17 +150,37 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    // justifyContent: "center",
+    flexDirection: "column",
   },
   box: {
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 20,
+    alignSelf:"stretch",
+    borderWidth: 1,
+    borderColor: "#DE3E50",
+    borderRadius: 25,
+    padding:10,
+    margin:10,
+    flexDirection: "row",
+
+    
   },
+  workcontainer: {
+    backgroundColor: "#fff",
+    flexDirection: "column",
+  },
+
   workbox: {
     backgroundColor: "#fff",
-    alignItems: "center",
+    // alignItems: "center",
     flexDirection: "row",
+    alignSelf:"stretch",
+    borderWidth: 1,
+    borderColor: "#DE3E50",
+    borderRadius: 25,
+    paddingRight:30,
+    paddingLeft:30,
+    paddingTop:15,
+    paddingBottom:5,
+    
   },
   SavePreferencesButton: {
     alignItems: "center",
@@ -173,6 +189,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#DE3E50",
     marginTop: 10,
     borderRadius: 10,
+    paddingLeft:30,
+    paddingRight:30,
   },
   SavePreferencesButtonText: {
     color: "white",
