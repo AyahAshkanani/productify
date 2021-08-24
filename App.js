@@ -68,7 +68,11 @@ function App() {
     <NativeBaseProvider>
       <ThemeProvider theme={theme[currentTheme]}>
         <NavigationContainer>
-          <RootNavigator theme={theme[currentTheme]} />
+          <RootNavigator
+            theme={theme[currentTheme]}
+            changeTheme={changeTheme}
+            currentTheme={currentTheme}
+          />
         </NavigationContainer>
         <Toast ref={(ref) => Toast.setRef(ref)} style={{ marginTop: 5 }} />
       </ThemeProvider>

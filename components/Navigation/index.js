@@ -23,7 +23,7 @@ import { Ionicons } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function MyTabs({ theme }) {
+export default function MyTabs({ theme, changeTheme, currentTheme }) {
   function Main() {
     return (
       //bottom tab bar
@@ -85,7 +85,12 @@ export default function MyTabs({ theme }) {
             ),
           }}
         >
-          {(props) => <PreferencesPage theme={theme} />}
+          {(props) => (
+            <PreferencesPage
+              changeTheme={changeTheme}
+              currentTheme={currentTheme}
+            />
+          )}
         </Tab.Screen>
       </Tab.Navigator>
     );
