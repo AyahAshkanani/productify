@@ -56,7 +56,7 @@ const AddTask = () => {
 
     return [year, month, day].join("-");
   }
-
+  // 👇🏻 I would clean this up and move it to somewhere else
   //code to scheduel task into subtasks.. good luck reading this
   const scheduelSubTasks = async (task) => {
     const UserTasks = taskStore.tasks;
@@ -80,7 +80,7 @@ const AddTask = () => {
             +dayTasks[dayTasks.length - 1].time.slice(0, 2) +
             +dayTasks[dayTasks.length - 1].hours
           }:00`;
-          console.log(`lastTaskTime: ${lastTaskTime}`);
+          console.log(`lastTaskTime: ${lastTaskTime}`); //remove the log
         }
         //add day if 1. is a work day, 2. there is time left
         if (
@@ -110,7 +110,7 @@ const AddTask = () => {
           +dayTasks[dayTasks.length - 1].hours
         }:00`;
       }
-
+      // 👆🏻
       await taskStore.taskAdd(
         {
           ...task,
@@ -131,7 +131,7 @@ const AddTask = () => {
     setTask({ name: "", startDate: "", endDate: "", hours: 0 });
   };
 
-  const [number, onChangeNumber] = useState(null);
+  const [number, onChangeNumber] = useState(null); //why this is a state? and you are using this for?
   return (
     <>
       {/* <TaskContainer> */}

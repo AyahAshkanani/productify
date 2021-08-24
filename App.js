@@ -24,6 +24,7 @@ const theme = {
 
 export default function App() {
   //to mute warnings for now :P
+  // okay for now 😸
   console.disableYellowBox = true;
   return (
     <NativeBaseProvider>

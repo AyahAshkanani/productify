@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class PreferencesStore {
-  preferences = "";
+  preferences = ""; //its not a string value right? I believe its an object right? so why "" why not null?
 
   constructor() {
     makeAutoObservable(this);

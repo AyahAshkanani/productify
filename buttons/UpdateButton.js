@@ -1,3 +1,5 @@
+//why this cute little buttons folder is outside of the components folder?
+// Lets take the **buttons folder** to where its belong ladies...to the **components folder** please
 import React from "react";
 // navigation
 import { useNavigation } from "@react-navigation/native";

@@ -3,7 +3,7 @@ import { View, Button, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const WorkTime = ({ preferences, setPreferences, isStart }) => {
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date(1598051730000)); //what is this?
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
@@ -21,7 +21,9 @@ const WorkTime = ({ preferences, setPreferences, isStart }) => {
   };
 
   return (
-    <View style={{ justifyContent: "center" , paddingLeft:10, paddingRight:10}}>
+    <View
+      style={{ justifyContent: "center", paddingLeft: 10, paddingRight: 10 }}
+    >
       <View>
         <Button onPress={showTimepicker} title="Pick time" />
       </View>
