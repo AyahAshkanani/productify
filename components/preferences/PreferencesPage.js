@@ -12,6 +12,7 @@ import {
   FlatList,
   Button,
 } from "react-native";
+
 import NumericInput from "react-native-numeric-input";
 import { CheckBox } from "react-native-elements";
 // mobx
@@ -26,7 +27,21 @@ import authStore from "../../stores/authStore";
 import preferencesStore from "../../stores/preferencesStore";
 import ProgressChart from "../tasks/ProgressChart";
 import WorkTime from "./WorkTime";
-const PreferencesPage = () => {
+
+//components
+import DropDownPicker from "react-native-dropdown-picker";
+
+const PreferencesPage = ({ changeTheme, currentTheme }) => {
+  //theme picking
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(currentTheme);
+  const [items, setItems] = useState([
+    { label: "Red", value: "red" },
+    { label: "Blue", value: "blue" },
+    { label: "Purple", value: "purple" },
+    { label: "Green", value: "green" },
+  ]);
+
   const navigation = useNavigation();
   const [greet, setGreet] = useState("");
   const findGreet = () => {
@@ -67,6 +82,15 @@ const PreferencesPage = () => {
       <Text
         style={styles.header}
       >{`Good ${greet} ${authStore.user.username}`}</Text>
+      <DropDownPicker
+        open={open}
+        value={value}
+        items={items}
+        setOpen={setOpen}
+        setValue={changeTheme}
+        setItems={setItems}
+        style={{ width: 150 }}
+      />
       {/* <Text>User name: {authStore.user.username}</Text> */}
 
       {/* //       <View> */}
