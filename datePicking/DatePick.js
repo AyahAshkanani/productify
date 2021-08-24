@@ -5,10 +5,11 @@ import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 //DatePicker
 import DatePicker from "react-native-datepicker";
-
+import { observer } from "mobx-react";
 const DatePick = ({ setTask, task }) => {
   const [date, setDate] = useState();
   const [date2, setDate2] = useState();
+
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -23,10 +24,9 @@ const DatePick = ({ setTask, task }) => {
             format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
-            minDate={new Date()} //user cannot pick a start date before present day
             customStyles={{
               dateIcon: {
-                //display: 'none',
+                // display: "none",
                 position: "absolute",
                 left: 0,
                 top: 4,
@@ -45,14 +45,15 @@ const DatePick = ({ setTask, task }) => {
         </View>
       </SafeAreaView>
 
-      <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
+      <SafeAreaView style={styles.container2}>
+        <View style={styles.container2}>
           <Text>End Date</Text>
           <DatePicker
             style={styles.datePickerStyle}
             date={date2} // Initial date from state
             mode="date" // The enum of date, datetime and time
             placeholder="select end date"
+            minDate={new Date()} //user cannot pick a start date before present day
             format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
@@ -88,6 +89,14 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 40,
+  },
+  container2: {
+    flex: 1,
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 40,
   },
   title: {
     textAlign: "center",

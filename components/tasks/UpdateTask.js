@@ -21,6 +21,7 @@ import {
   TouchableOpacity,
   Alert,
   Text,
+  Input,
 } from "react-native";
 // styles
 import {
@@ -34,10 +35,11 @@ import {
 
 // mobx
 import { observer } from "mobx-react";
-const UpdateTask = ({ route }) => {
+const UpdateTask = ({ route, date }) => {
   const { oldTask } = route.params;
 
   const [task, setTask] = useState(oldTask);
+  const [number, onChangeNumber] = useState(null);
 
   const navigation = useNavigation();
   const handleUpdateTask = async () => {
@@ -66,6 +68,14 @@ const UpdateTask = ({ route }) => {
           placeholder="Task Name"
           defaultValue={oldTask.name}
         />
+        <AddTaskLabels>Hours</AddTaskLabels>
+        <TextInput
+          style={styles.input}
+          onChangeText={(hours) => setTask({ ...task, hours })}
+          value={number}
+          placeholder="Hours"
+          keyboardType="numeric"
+        />
         <AddTaskLabels>Task Start Date</AddTaskLabels>
         <TextInput
           style={styles.input}
@@ -74,11 +84,12 @@ const UpdateTask = ({ route }) => {
           defaultValue={oldTask.startDate}
         />
         <AddTaskLabels>Task End Date</AddTaskLabels>
+
         <TextInput
           style={styles.input}
           onChangeText={(endDate) => setTask({ ...task, endDate })}
-          placeholder="Task End Date"
-          defaultValue={oldTask.startDate}
+          placeholder="Task EndDate"
+          defaultValue={oldTask.endDate}
         />
         <AddTaskButton onPress={handleUpdateTask}>
           <AddTaskButtonText>Update</AddTaskButtonText>

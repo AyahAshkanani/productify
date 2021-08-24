@@ -52,7 +52,7 @@ class AuthStore {
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
     preferencesStore.setUserPreferences(this.user.preferences); //get preferences when user logs/signs in
-    console.log(this.user.preferences);
+
     this.loading = false;
   };
 

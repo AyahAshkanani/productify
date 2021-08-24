@@ -10,7 +10,6 @@ class PreferencesStore {
 
   setUserPreferences = (preferences) => {
     this.preferences = preferences;
-    console.log("this" + preferences);
   };
 
   PreferencesUpdate = async (updatedPreferences) => {

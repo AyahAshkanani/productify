@@ -1,18 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Quote from "react-native-quote-generator";
 //react-native
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  StatusBar,
+  TouchableWithoutFeedback,
+  Keyboard,
+  FlatList,
+  Button,
+} from "react-native";
 import NumericInput from "react-native-numeric-input";
 import { CheckBox } from "react-native-elements";
-
+// mobx
+import { useNavigation } from "@react-navigation/native";
 import { observer } from "mobx-react";
 import WorkTime from "./WorkTime";
 
 //store
 import authStore from "../../stores/authStore";
 import preferencesStore from "../../stores/preferencesStore";
-import ProgressChart from "./progressChart";
+import ProgressChart from "../tasks/ProgressChart";
 
 const PreferencesPage = () => {
+  const navigation = useNavigation();
+  const [greet, setGreet] = useState("");
+  const findGreet = () => {
+    const hrs = new Date().getHours();
+    if (hrs === 0 || hrs < 12) return setGreet("Morning");
+    if (hrs === 1 || hrs < 18) return setGreet("Afternoon");
+    setGreet("Evening");
+  };
+  useEffect(() => {
+    findGreet();
+  }, []);
   const [preferences, setPreferences] = useState(
     preferencesStore.preferences || {
       timeStart: "",
@@ -39,7 +62,14 @@ const PreferencesPage = () => {
 
   return (
     <View style={styles.container}>
-      <Text>User name: {authStore.user.username}</Text>
+      <Text
+        style={styles.header}
+      >{`Good ${greet} ${authStore.user.username}`}</Text>
+      {/* <Text>User name: {authStore.user.username}</Text> */}
+
+      <View>
+        <Quote />
+      </View>
 
       {/* <View style={styles.box}>
         <Text style={styles.text}>Add start time</Text>
@@ -79,6 +109,16 @@ const PreferencesPage = () => {
         <Text style={styles.SavePreferencesButtonText}>Save</Text>
       </TouchableOpacity>
       {/* <ProgressChart /> */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProgressChart")}
+        style={{
+          backgroundColor: "rgba(52, 52, 52, 0)",
+          alignSelf: "flex-end",
+          marginTop: -20,
+        }}
+      >
+        <Text>Progress</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -122,6 +162,33 @@ const styles = StyleSheet.create({
   SavePreferencesButtonText: {
     color: "white",
     fontSize: 18,
+  },
+  header: {
+    fontSize: 25,
+    fontWeight: "bold",
+  },
+  container: {
+    paddingHorizontal: 20,
+    flex: 1,
+    zIndex: 1,
+  },
+  emptyHeader: {
+    fontSize: 30,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    opacity: 0.2,
+  },
+  emptyHeaderContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: -1,
+  },
+  addBtn: {
+    position: "absolute",
+    right: 15,
+    bottom: 50,
+    zIndex: 1,
   },
 });
 

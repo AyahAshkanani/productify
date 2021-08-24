@@ -149,7 +149,7 @@ export const AddTaskButton = styled.TouchableOpacity`
   padding: 20px;
   margin: 60px;
   background-color: ${(props) => props.theme.mainColor};
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 export const AddTaskButtonText = styled.Text`
