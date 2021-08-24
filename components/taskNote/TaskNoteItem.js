@@ -1,3 +1,4 @@
+//remove all the unused imports
 import React, { useState } from "react";
 
 //react-native

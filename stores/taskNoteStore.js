@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 
 class TaskNoteStore {
-  loading = true;
+  loading = true; //loading for what? you are not fetching data in this store right?
 
   constructor() {
     makeAutoObservable(this);

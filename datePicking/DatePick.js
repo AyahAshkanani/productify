@@ -1,3 +1,4 @@
+// why its outside of the components folder?😭
 import React, { useState } from "react";
 
 // components
@@ -89,13 +90,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
   },
   title: {
     textAlign: "center",
     alignItems: "center",
     fontSize: 15,
-    paddingLeft:70,
+    paddingLeft: 70,
     padding: 20,
     // marginEnd:20,
   },

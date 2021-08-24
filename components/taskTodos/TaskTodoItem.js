@@ -31,6 +31,8 @@ const TaskTodoItem = ({ todo, task }) => {
           toggleTaskTodoItem();
         }}
       >
+        {/* hmmm if done has a value show me ✅ otherwise nothing right?
+      so I don't think you should use "?" you should use &&  */}
         <Text style={{ color: "#aaa" }}>{done ? "✔" : ""}</Text>
       </TouchableOpacity>
       <Text
@@ -84,6 +86,8 @@ const styles = StyleSheet.create({
 });
 
 export default observer(TaskTodoItem);
+
+//Remove this
 
 /*
   <TaskItemName>

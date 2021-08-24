@@ -9,7 +9,7 @@ class TaskStore {
   constructor() {
     makeAutoObservable(this);
   }
-
+  //why not using this one👇🏻 why using fetchTasks and fetching all the data?
   // fetchUserTasks = async (userId) => {
   //   try {
   //     const response = await instance.get(`/tasks/${userId}`);

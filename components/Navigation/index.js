@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //stores
-import authStore from "../../stores/authStore";
+import authStore from "../../stores/authStore"; // remove this unused import
 
 //components
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -18,7 +18,7 @@ import UpdateTask from "../tasks/UpdateTask";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons"; //remove this also unused import
 
 //navigation
 const Stack = createStackNavigator();

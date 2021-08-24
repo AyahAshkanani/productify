@@ -1,3 +1,4 @@
+//remove the unused imports
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 
@@ -33,6 +34,7 @@ const TaskItem = ({ task, navigation }) => {
       onPress={() => navigation.navigate("TaskDetail", { task: task })}
     >
       <TaskItemWrapper>
+        {/* I would move the checkbox thing to a component */}
         <BouncyCheckbox
           isChecked={done}
           style={{ alignSelf: "flex-start", margin: 10 }}
