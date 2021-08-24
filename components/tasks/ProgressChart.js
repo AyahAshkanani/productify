@@ -5,7 +5,7 @@ import { View, StyleSheet, Text } from "react-native";
 //stores
 import progressStore from "../../stores/progressStore";
 import taskStore from "../../stores/taskStore";
-
+import Quote from "react-native-quote-generator";
 //observer
 import { observer } from "mobx-react";
 import moment from "moment";
@@ -20,7 +20,6 @@ const ProgressChart = () => {
   const progressList = progressStore.progresses.map((progress) =>
     taskStore.getTaskById(progress?.taskId)
   );
-  // .map((progress) => <ProgressItem progress={progress} key={progress.id} />);
 
   function ChangeDateToDayNumber(date) {
     const day = new Date(date);
@@ -43,7 +42,6 @@ const ProgressChart = () => {
   function setProgressHours(dayNumber) {
     return progressList.find((progress) => {
       if (progress?.endDate) {
-        //discuss condition with team
         return ChangeDateToDayNumber(progress?.endDate) === dayNumber;
       } else {
         return ChangeDateToDayNumber(progress?.startDate) === dayNumber;
@@ -61,36 +59,6 @@ const ProgressChart = () => {
       : 0;
   }
 
-  // const [firstWeek, setFirstWeek] = useState({
-  //   hours: 0,
-  // });
-  function reset() {
-    const today = moment();
-    const Sunday = today.day(0);
-    const nextWeek = Sunday.endOf("week");
-    console.log("nextweek", nextWeek);
-    if (Sunday === nextWeek) data.Hours = 0;
-  }
-  // if (currentWeek === nextWeek) return data === 0;
-
-  //   const today = moment();
-  //   const week = today.startOf("week"); //start with sunday and its one week later
-  //   const endweek = today.endOf("week");
-  //   if (currentWeek == endweek) return data == 0;
-  // }
-  // function getSunday(d) {
-  //   d = newDate(d);
-  //   var day = d.getDay();
-  //   diff = d.getDate() - day + (day == 0 ? -7 : 1);
-  //   return new Date(d.setDate(diff));
-  // }
-  // function reset() {
-  //   let week = today.endOf("week").getSunday();
-  //   return data == 0;
-  // }
-
-  // when its a new week set Hours to 0
-
   const data = [
     { Week: "Sun", Hours: totalHours(0) },
     { Week: "Mon", Hours: totalHours(1) },
@@ -103,15 +71,16 @@ const ProgressChart = () => {
 
   return (
     <View style={styles.container}>
+      <Text>Get motivated</Text>
+      <Quote />
       <Text>Weekly Progress</Text>
+
       <VictoryChart width={350} palette="Soft">
         <VictoryAxis label="Week" />
         <VictoryAxis dependentAxis label="Hours" />
-
         <VictoryGroup offset={20} />
         <VictoryBar data={data} x="Week" y="Hours" />
       </VictoryChart>
-      {progressStore.reset()}
     </View>
   );
 };
