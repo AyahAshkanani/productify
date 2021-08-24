@@ -10,37 +10,37 @@ class TaskStore {
     makeAutoObservable(this);
   }
 
-  // fetchUserTasks = async (userId) => {
-  //   try {
-  //     const response = await instance.get(`/tasks/${userId}`);
-  //     runInAction(() => {
-  //       this.tasks = response.data;
-  //       console.log(this.tasks);
-  //       this.loading = false;
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  fetchTasks = async () => {
+  fetchUserTasks = async (userId) => {
     try {
-      const response = await instance.get("/tasks");
+      const response = await instance.get(`/tasks/${userId}`);
       runInAction(() => {
         this.tasks = response.data;
         this.loading = false;
       });
     } catch (error) {
-      console.error("fetch error", error);
-      // network error when we have "fetchTasks",
+      console.error(error);
     }
   };
+
+  // fetchTasks = async () => {
+  //   try {
+  //     const response = await instance.get("/tasks");
+  //     runInAction(() => {
+  //       this.tasks = response.data;
+  //       this.loading = false;
+  //     });
+  //   } catch (error) {
+  //     console.error("fetch error", error);
+  //     // network error when we have "fetchTasks",
+  //   }
+  // };
 
   // ****************** Add Task METHOD ******************
   taskAdd = async (newTask, navigation) => {
     try {
       const response = await instance.post("/tasks", newTask);
       runInAction(() => {
+        response.data.taskTodoItems = [];
         this.tasks.push(response.data);
         navigation.navigate("Home");
         Toast.show({
@@ -48,6 +48,8 @@ class TaskStore {
           text2: `${response.data.name}`,
         });
       });
+      console.log(this.tasks);
+      await this.fetchUserTasks(newTask.userId);
     } catch (error) {
       console.error(error);
     }
@@ -108,5 +110,5 @@ class TaskStore {
 }
 
 const taskStore = new TaskStore();
-taskStore.fetchTasks();
+//taskStore.fetchTasks();
 export default taskStore;

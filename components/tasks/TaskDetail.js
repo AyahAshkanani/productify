@@ -19,10 +19,10 @@ import "moment/locale/en-au";
 const TaskDetail = ({ route }) => {
   const { task } = route.params;
 
+
   // const currentTimeInDays =
   //   "${startDate}.year() * 365 + ${startDate}.dayOfYear()";
   // const futureTimeInDays = endDate.year() * 365 + endDate.dayOfYear();
-
 
   return (
     <TaskDetailWrapper>

@@ -16,14 +16,15 @@ import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
 import { observer } from "mobx-react";
 
 const TaskTodoList = ({ task }) => {
-  const taskTodoItemsList = task.taskTodoItems.map((todo) => (
+  console.log(task);
+  const taskTodoItemsList = task.taskTodoItems?.map((todo) => (
     <TaskTodoItem todo={todo} key={todo.id} task={task} />
   ));
 
   return (
     <>
       <ScrollView>
-        {taskTodoItemsList.length > 0 ? (
+        {taskTodoItemsList?.length > 0 ? (
           <>
             <TodaysTasksText>Task's Checklist items</TodaysTasksText>
             <View>

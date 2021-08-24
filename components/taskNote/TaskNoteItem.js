@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 //react-native
-import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -15,6 +21,7 @@ import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
 
 //observer
 import { observer } from "mobx-react";
+import { style } from "styled-system";
 
 const TaskNoteItem = ({ task }) => {
   const deleteHandler = async () => {
@@ -32,7 +39,15 @@ const TaskNoteItem = ({ task }) => {
             </View>
             <TouchableOpacity onPress={deleteHandler}>
               <View>
-                <MaterialIcons name="delete" size={18} color="#333" />
+                <Text style={styles.clearNote}>
+                  clear note
+                  <MaterialIcons
+                    title="clear"
+                    name="clear"
+                    size={18}
+                    color="red"
+                  />
+                </Text>
               </View>
             </TouchableOpacity>
           </>
@@ -43,5 +58,16 @@ const TaskNoteItem = ({ task }) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  clearNote: {
+    paddingHorizontal: 20,
+    paddingTop: 15,
+    fontSize: 10,
+    color: "gray",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 export default observer(TaskNoteItem);
