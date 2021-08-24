@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 // import Quote from "react-native-quote-generator";
 //react-native
@@ -70,9 +69,9 @@ const PreferencesPage = () => {
       >{`Good ${greet} ${authStore.user.username}`}</Text>
       {/* <Text>User name: {authStore.user.username}</Text> */}
 
-//       <View>
-//         <Quote />
-//       </View>
+      {/* //       <View> */}
+      {/* //         <Quote /> */}
+      {/* //       </View> */}
 
       {/* <View style={styles.box}>
         <Text style={styles.text}>Add start time</Text>
@@ -96,7 +95,6 @@ const PreferencesPage = () => {
       </View> */}
 
       <WorkTime />
-
 
       <WorkingWeekDays />
 
@@ -184,7 +182,6 @@ const styles = StyleSheet.create({
     bottom: 50,
     zIndex: 1,
   },
-
 });
 
 export default observer(PreferencesPage);
