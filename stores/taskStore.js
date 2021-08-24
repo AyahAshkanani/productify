@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
+import Toast from "react-native-toast-message";
 
 class TaskStore {
   tasks = [];
@@ -42,6 +43,10 @@ class TaskStore {
       runInAction(() => {
         this.tasks.push(response.data);
         navigation.navigate("Home");
+        Toast.show({
+          text1: "Task Added Succesfuly!",
+          text2: `${response.data.name}`,
+        });
       });
     } catch (error) {
       console.error(error);
