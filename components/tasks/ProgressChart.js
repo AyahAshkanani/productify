@@ -104,7 +104,7 @@ const ProgressChart = () => {
   return (
     <View style={styles.container}>
       <Text>Weekly Progress</Text>
-      <VictoryChart width={350}>
+      <VictoryChart width={350} palette="Soft">
         <VictoryAxis label="Week" />
         <VictoryAxis dependentAxis label="Hours" />
 
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f5fcff",
+    color: "#333",
   },
 });
 
