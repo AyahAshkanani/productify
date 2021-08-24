@@ -9,9 +9,16 @@ import { List, Spinner } from "native-base";
 //components
 import TaskItem from "./taskItem";
 import TaskCalendar from "./taskCalendar";
+import { Text } from "native-base";
 
 //styles
-import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
+import {
+  ListWrapper,
+  NoTasksText,
+  TodaysTasksText,
+  GreetingMessage,
+  ProgressMessage,
+} from "./styles";
 
 //stores
 import taskStore from "../../stores/taskStore";
@@ -19,6 +26,7 @@ import taskStore from "../../stores/taskStore";
 //observer
 import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
+import authStore from "../../stores/authStore";
 
 const TaskList = ({ navigation }) => {
   //{ navigation }
@@ -54,8 +62,26 @@ const TaskList = ({ navigation }) => {
     .map((task) => (
       <TaskItem task={task} key={task.id} navigation={navigation} />
     ));
+
+  let doneTasks = [];
+  if (taskList.length > 0) {
+    doneTasks = tasks
+      .filter((task) => task.startDate == taskDate)
+      .filter((task) => task.done);
+  }
+
   return (
     <>
+      <GreetingMessage>Hello, {authStore.user.username}</GreetingMessage>
+      {taskList.length === 0 ? (
+        <ProgressMessage>Looks like you're free for today.</ProgressMessage>
+      ) : (
+        <ProgressMessage>
+          You are {(doneTasks.length / taskList.length) * 100}% done with
+          today's tasks
+        </ProgressMessage>
+      )}
+
       <TaskCalendar
         tasks={tasks}
         handleTaskUpdate={handleTaskUpdate}

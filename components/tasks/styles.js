@@ -68,11 +68,11 @@ export const TaskDetailsStyle = styled.Text`
   font-style: italic;
   font-weight: bold;
   align-items: center;
-  align-self:center;
+  align-self: center;
   justify-content: center;
   color: ${(props) => props.theme.mainTextColor};
-  padding:10px;
-  marginBottom: 10px;
+  padding: 10px;
+  marginbottom: 10px;
 `;
 
 export const DueDate = styled.Text`
@@ -81,7 +81,7 @@ export const DueDate = styled.Text`
   color: ${(props) => props.theme.mainTextColor};
   align-items: center;
   justify-content: center;
-  padding:3px;
+  padding: 3px;
 `;
 
 export const TaskTextStyled = styled.Text`
@@ -173,11 +173,11 @@ export const AddTaskButton = styled.TouchableOpacity`
   align-items: center;
   width: 75%;
   padding: 15px;
-  paddingLeft:80px;
-  paddingRight:80px;
+  paddingleft: 80px;
+  paddingright: 80px;
   background-color: ${(props) => props.theme.mainColor};
   margin-top: 5px;
-  marginBottom:20px;
+  marginbottom: 20px;
   border-radius: 40px;
 `;
 
@@ -208,4 +208,22 @@ export const AddTextInput = styled.TextInput`
   margin-bottom: 30px;
   border-bottom-width: 1px;
   color: ${({ theme }) => theme.white};
+`;
+
+export const GreetingMessage = styled.Text`
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 25px;
+  font-weight: 400;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+`;
+
+export const ProgressMessage = styled.Text`
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryColor};
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 10px;
 `;
