@@ -86,7 +86,8 @@ const TaskList = ({ navigation }) => {
           <ProgressMessage>Looks like you're free for today.</ProgressMessage>
         ) : (
           <ProgressMessage>
-            You are {(doneTasks.length / taskList.length) * 100}% done
+            You are {Math.floor((doneTasks.length / taskList.length) * 100)}%
+            done
             {"\n"}with today's tasks!
           </ProgressMessage>
         )}
