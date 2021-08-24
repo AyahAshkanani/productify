@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
 //react-native
-import { ScrollView, View } from "react-native";
+import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+
+import { MaterialIcons } from "@expo/vector-icons";
 
 //native-base
 import { List, Spinner } from "native-base";
+//stores
+import taskNoteStore from "../../stores/taskNoteStore";
 
 //styles
 import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
@@ -13,20 +17,28 @@ import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
 import { observer } from "mobx-react";
 
 const TaskNoteItem = ({ task }) => {
-  // console.log(taskNote);
+  const deleteHandler = async () => {
+    await taskNoteStore.taskNoteDelete(task.id, task, task.taskNote.id);
+  };
+
   return (
     <>
       <ScrollView>
-        {/* {task.length > 0 ? (
-          <> */}
-        <TodaysTasksText>Task's Note</TodaysTasksText>
-        <View>
-          <List>{task.taskNote}</List>
-        </View>
-        {/* </>
+        {task.taskNote ? (
+          <>
+            <TodaysTasksText>Task's Note</TodaysTasksText>
+            <View>
+              <Text>{task.taskNote.text}</Text>
+            </View>
+            <TouchableOpacity onPress={deleteHandler}>
+              <View>
+                <MaterialIcons name="delete" size={18} color="#333" />
+              </View>
+            </TouchableOpacity>
+          </>
         ) : (
           <NoTasksText>No note for this task</NoTasksText>
-        )} */}
+        )}
       </ScrollView>
     </>
   );
