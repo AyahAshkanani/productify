@@ -14,10 +14,8 @@ class TaskTodoStore {
       const response = await instance.get(`/tasks/${userId}`);
       runInAction(() => {
         this.userTasks = response.data;
-        console.log(this.userTasks);
         this.loading = false;
       });
-      // console.log(this.userTasks);
     } catch (error) {
       console.error(error);
     }
@@ -30,9 +28,8 @@ class TaskTodoStore {
         `/tasks/${taskId}/taskTodoItems`,
         newTaskTodoItem
       );
-      //const foundTask = this.userTasks.values(taskId);
+
       //runInAction(() => {
-      // console.log("task:" + this.userTasks.taskTodoItems);
       task.taskTodoItems.push(response.data);
       // });
     } catch (error) {

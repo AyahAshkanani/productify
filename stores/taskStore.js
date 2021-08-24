@@ -9,6 +9,19 @@ class TaskStore {
     makeAutoObservable(this);
   }
 
+  // fetchUserTasks = async (userId) => {
+  //   try {
+  //     const response = await instance.get(`/tasks/${userId}`);
+  //     runInAction(() => {
+  //       this.tasks = response.data;
+  //       console.log(this.tasks);
+  //       this.loading = false;
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   fetchTasks = async () => {
     try {
       const response = await instance.get("/tasks");

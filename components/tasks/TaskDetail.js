@@ -11,21 +11,22 @@ import { useNavigation } from "@react-navigation/native";
 import TaskTodoList from "../taskTodos/TaskTodoList";
 import TaskTodoAdd from "../taskTodos/TaskTodoAdd";
 import TaskNoteItem from "../taskNote/TaskNoteItem";
+import TaskNoteAdd from "../taskNote/TaskNoteAdd";
 
 const TaskDetail = ({ route }) => {
   const { task } = route.params;
-  console.log(route.params);
 
   return (
     <TaskDetailWrapper>
       <TaskDetailsStyle>{task.name}</TaskDetailsStyle>
 
       <View style={{ display: "flex", flexDirection: " row " }}></View>
-      <UpdateButton oldTask={task} style={{ margin : 50}}/>
+      <UpdateButton oldTask={task} style={{ margin: 50 }} />
       <DueDate>Due Date</DueDate>
       <DueDate>{task.endDate}</DueDate>
-      <TaskTodoAdd task={task}/>
+      <TaskTodoAdd task={task} />
       <TaskTodoList task={task} />
+      <TaskNoteAdd task={task} />
       <TaskNoteItem task={task} />
     </TaskDetailWrapper>
   );
