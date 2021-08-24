@@ -30,8 +30,14 @@ export default function MyTabs({ theme }) {
       <Tab.Navigator
         tabBarOptions={{
           showLabel: false,
-          activeBackgroundColor: theme.backgroundColor,
-          inactiveBackgroundColor: theme.backgroundColor,
+          // activeBackgroundColor: theme.backgroundColor,
+          // inactiveBackgroundColor: theme.backgroundColor,
+        }}
+        screenOptions={{
+          tabBarStyle: {
+            backgroundColor: theme.backgroundColor,
+            borderColor: "transparent",
+          },
         }}
       >
         <Tab.Screen
@@ -59,7 +65,7 @@ export default function MyTabs({ theme }) {
                 name="add-circle-sharp"
                 size={80}
                 color={focused ? "transparent" : theme.complementaryOne}
-                style={{ marginTop: -40 }}
+                style={{ marginTop: -30 }}
               />
             ),
           }}
