@@ -1,6 +1,9 @@
 import React from "react";
 import "react-native-gesture-handler";
 
+//components
+import Toast from "react-native-toast-message";
+
 // navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider } from "native-base";
@@ -28,6 +31,7 @@ export default function App() {
         <NavigationContainer>
           <RootNavigator />
         </NavigationContainer>
+        <Toast ref={(ref) => Toast.setRef(ref)} style={{ marginTop: 7 }} />
       </ThemeProvider>
     </NativeBaseProvider>
   );

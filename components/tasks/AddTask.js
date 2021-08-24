@@ -24,7 +24,6 @@ import {
 //components
 import { Input } from "galio-framework";
 import DatePick from "../../datePicking/DatePick";
-import { paddingRight } from "styled-system";
 
 const AddTask = () => {
   var days = [
@@ -136,42 +135,40 @@ const AddTask = () => {
   return (
     <>
       {/* <TaskContainer> */}
-      <AddContainer>  
-      <AddTaskTitle> Add New Task</AddTaskTitle>
-      <AddTaskLabels>Task Name</AddTaskLabels>
-      <Input
-        value={task.name}
-        style={styles.input}
-        onChangeText={(name) => setTask({ ...task, name })}
-        placeholder="Task name"
-      />
-      <AddTaskLabels>Hours</AddTaskLabels>
-      <Input
-        value={task.hours}
-        style={styles.input}
-        onChangeText={(event) => setTask({ ...task, hours: event })}
-        value={number}
-        placeholder="Hours"
-        keyboardType="numeric"
-      />
-         
-          
-      <AddTaskLabels>Task Tag</AddTaskLabels>
-     <TaskTextInput
-        value={task.tag}
-        style={styles.input}
-        onChangeText={(tag) => setTask({ ...task, tag })}
-        placeholder="Tag"
-      />
+      <AddContainer>
+        <AddTaskTitle> Add New Task</AddTaskTitle>
+        <AddTaskLabels>Task Name</AddTaskLabels>
+        <Input
+          value={task.name}
+          style={styles.input}
+          onChangeText={(name) => setTask({ ...task, name })}
+          placeholder="Task name"
+        />
+        <AddTaskLabels>Hours</AddTaskLabels>
+        <Input
+          value={task.hours}
+          style={styles.input}
+          onChangeText={(event) => setTask({ ...task, hours: event })}
+          value={number}
+          placeholder="Hours"
+          keyboardType="numeric"
+        />
 
+        <AddTaskLabels>Task Tag</AddTaskLabels>
+        <TaskTextInput
+          value={task.tag}
+          style={styles.input}
+          onChangeText={(tag) => setTask({ ...task, tag })}
+          placeholder="Tag"
+        />
 
-      {/* <AddContainer> */}
-      <DatePick setTask={setTask} task={task} />
-      {/* </AddContainer> */}
+        {/* <AddContainer> */}
+        <DatePick setTask={setTask} task={task} />
+        {/* </AddContainer> */}
 
-      <AddTaskButton onPress={handleAddTask}>
-        <AddTaskButtonText>Add</AddTaskButtonText>
-      </AddTaskButton>
+        <AddTaskButton onPress={handleAddTask}>
+          <AddTaskButtonText>Add</AddTaskButtonText>
+        </AddTaskButton>
       </AddContainer>
       {/* </TaskContainer> */}
     </>
