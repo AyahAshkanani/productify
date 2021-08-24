@@ -20,12 +20,18 @@ import { observer } from "mobx-react";
 //stores
 import taskStore from "../../stores/taskStore";
 import authStore from "../../stores/authStore";
+import progressStore from "../../stores/progressStore";
+import moment from "moment";
 
 const TaskItem = ({ task, navigation }) => {
   const [done, markTask] = useState(task.done);
+
   const toggleTask = async () => {
     await taskStore.markTask(task);
     markTask(!done);
+
+    const newProgress = { taskId: task.id, hours: task.hours };
+    progressStore.addToProgress(newProgress); //if (task.done)
   };
 
   return (

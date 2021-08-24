@@ -48,7 +48,7 @@ class AuthStore {
       this.user = null;
     });
   };
-  setUser = async (token) => {
+setUser = async (token) => {
     try {
       await AsyncStorage.setItem("myToken", token);
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;

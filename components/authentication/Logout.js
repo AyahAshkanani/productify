@@ -7,7 +7,7 @@ const Logout = () => {
   const navigation = useNavigation();
   handleSignout = async () => {
     await authStore.logout(navigation);
-    navigation.navigate("Register");
+    navigation.navigate("Login");
   };
   return (
     <>

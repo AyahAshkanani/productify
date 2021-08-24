@@ -78,7 +78,6 @@ class TaskStore {
   };
 
   taskUpdate = async (updateTask, navigation) => {
-    console.log(updateTask);
     try {
       const response = await instance.put(
         `/tasks/${updateTask.id}`,
@@ -88,12 +87,13 @@ class TaskStore {
       const task = this.tasks.find((task) => task.id === response.data.id);
 
       for (const key in task) task[key] = response.data[key];
-      // console.log(task);
+
       navigation.replace("TaskDetail", { task: task });
     } catch (error) {
-      console.log(error);
+      error;
     }
   };
+  getTaskById = (taskId) => this.tasks.find((task) => task.id === taskId);
 
   deleteTask = async (taskId) => {
     try {
@@ -104,6 +104,7 @@ class TaskStore {
       console.error(error);
     }
   };
+
 }
 
 const taskStore = new TaskStore();

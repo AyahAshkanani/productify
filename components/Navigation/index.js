@@ -12,7 +12,7 @@ import Register from "../authentication/Register";
 import PreferencesPage from "../preferences/PreferencesPage";
 import TaskDetail from "../tasks/TaskDetail";
 import AddTask from "../tasks/AddTask";
-
+import ProgressChart from "../tasks/ProgressChart";
 //import ProgressPage from "../progress/ProgressPage";
 import UpdateTask from "../tasks/UpdateTask";
 
@@ -137,6 +137,14 @@ export default function MyTabs({ theme }) {
         component={UpdateTask}
         options={{
           headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="ProgressChart"
+        component={ProgressChart}
+        options={{
+          title: "Progress",
         }}
       />
     </Stack.Navigator>

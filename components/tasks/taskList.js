@@ -29,7 +29,6 @@ const TaskList = ({ navigation }) => {
   const handleTaskUpdate = (date) => {
     updateTaskDate(date);
   };
-
   if (taskStore.loading) return <Spinner />;
   let tasks = taskStore.tasks;
 
