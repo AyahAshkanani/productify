@@ -25,7 +25,7 @@ import authStore from "../../stores/authStore";
 
 import preferencesStore from "../../stores/preferencesStore";
 import ProgressChart from "../tasks/ProgressChart";
-
+import WorkTime from "./WorkTime";
 const PreferencesPage = () => {
   const navigation = useNavigation();
   const [greet, setGreet] = useState("");
