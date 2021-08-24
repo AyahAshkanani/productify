@@ -5,13 +5,24 @@ import { ScrollView } from "react-native";
 
 //native-base
 import { List, Spinner } from "native-base";
+import { View } from "react-native";
 
 //components
 import TaskItem from "./taskItem";
 import TaskCalendar from "./taskCalendar";
+import { Text } from "native-base";
 
 //styles
-import { ListWrapper, NoTasksText, TodaysTasksText } from "./styles";
+import {
+  ListWrapper,
+  NoTasksText,
+  TodaysTasksText,
+  GreetingMessage,
+  ProgressMessage,
+  HomeContainer,
+  HomeContent,
+  GreetingUserName,
+} from "./styles";
 
 //stores
 import taskStore from "../../stores/taskStore";
@@ -19,6 +30,7 @@ import taskStore from "../../stores/taskStore";
 //observer
 import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
+import authStore from "../../stores/authStore";
 
 const TaskList = ({ navigation }) => {
   // useEffect(() => {
@@ -56,26 +68,48 @@ const TaskList = ({ navigation }) => {
     .map((task) => (
       <TaskItem task={task} key={task.id} navigation={navigation} />
     ));
+
+  let doneTasks = [];
+  if (taskList.length > 0) {
+    doneTasks = tasks
+      .filter((task) => task.startDate == taskDate)
+      .filter((task) => task.done);
+  }
+
   return (
-    <>
-      <TaskCalendar
-        tasks={tasks}
-        handleTaskUpdate={handleTaskUpdate}
-      ></TaskCalendar>
-      <ScrollView>
-        {taskList.length > 0 ? (
-          <>
-            <TodaysTasksText>Today's tasks</TodaysTasksText>
-            <ListWrapper>
-              <List>{taskList}</List>
-            </ListWrapper>
-          </>
+    <HomeContainer>
+      <HomeContent>
+        <GreetingMessage>
+          Hello, <GreetingUserName>{authStore.user.username} </GreetingUserName>
+        </GreetingMessage>
+        {taskList.length === 0 ? (
+          <ProgressMessage>Looks like you're free for today.</ProgressMessage>
         ) : (
-          <NoTasksText>No tasks for this day</NoTasksText>
+          <ProgressMessage>
+            You are {(doneTasks.length / taskList.length) * 100}% done
+            {"\n"}with today's tasks!
+          </ProgressMessage>
         )}
-        <Logout />
-      </ScrollView>
-    </>
+
+        <TaskCalendar
+          tasks={tasks}
+          handleTaskUpdate={handleTaskUpdate}
+        ></TaskCalendar>
+        <ScrollView>
+          {taskList.length > 0 ? (
+            <>
+              <TodaysTasksText>Today's tasks</TodaysTasksText>
+              <ListWrapper>
+                <List>{taskList}</List>
+              </ListWrapper>
+            </>
+          ) : (
+            <NoTasksText>No tasks for this day</NoTasksText>
+          )}
+          <Logout />
+        </ScrollView>
+      </HomeContent>
+    </HomeContainer>
   );
 };
 

@@ -8,7 +8,12 @@ import { useState } from "react";
 import { List } from "native-base";
 
 //styled components
-import { TaskItemWrapper, TaskItemDateAndTime, TaskItemName } from "./styles";
+import {
+  TaskItemWrapper,
+  TaskItemDateAndTime,
+  TaskItemName,
+  TaskTag,
+} from "./styles";
 import { TouchableOpacity, Alert } from "react-native";
 
 //libs
@@ -39,6 +44,7 @@ const TaskItem = ({ task, navigation }) => {
       onPress={() => navigation.navigate("TaskDetail", { task: task })}
     >
       <TaskItemWrapper>
+        <TaskTag>{task.tag}</TaskTag>
         <BouncyCheckbox
           isChecked={done}
           style={{ alignSelf: "flex-start", margin: 10 }}
@@ -69,9 +75,7 @@ const TaskItem = ({ task, navigation }) => {
             toggleTask();
           }}
         />
-        <TaskItemDateAndTime style={{ color: "blue" }}>
-          {task.tag}
-        </TaskItemDateAndTime>
+
         <TaskItemDateAndTime>
           {task.time} - {+task.time.slice(0, 2) + +task.hours}:00
         </TaskItemDateAndTime>
