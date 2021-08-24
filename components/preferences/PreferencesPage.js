@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from "react";
-import Quote from "react-native-quote-generator";
+// import Quote from "react-native-quote-generator";
 //react-native
 import {
   StyleSheet,
@@ -16,11 +17,13 @@ import NumericInput from "react-native-numeric-input";
 import { CheckBox } from "react-native-elements";
 // mobx
 import { useNavigation } from "@react-navigation/native";
-import { observer } from "mobx-react";
-import WorkTime from "./WorkTime";
 
+import { observer } from "mobx-react";
+
+import WorkingWeekDays from "./WorkingWeekDays";
 //store
 import authStore from "../../stores/authStore";
+
 import preferencesStore from "../../stores/preferencesStore";
 import ProgressChart from "../tasks/ProgressChart";
 
@@ -67,9 +70,9 @@ const PreferencesPage = () => {
       >{`Good ${greet} ${authStore.user.username}`}</Text>
       {/* <Text>User name: {authStore.user.username}</Text> */}
 
-      <View>
-        <Quote />
-      </View>
+//       <View>
+//         <Quote />
+//       </View>
 
       {/* <View style={styles.box}>
         <Text style={styles.text}>Add start time</Text>
@@ -94,20 +97,9 @@ const PreferencesPage = () => {
 
       <WorkTime />
 
-      <TouchableOpacity
-        onPress={() => {
-          toggleSunday();
-        }}
-      >
-        <CheckBox title="Sunday" />
-      </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.SavePreferencesButton}
-        onPress={updatePreferences}
-      >
-        <Text style={styles.SavePreferencesButtonText}>Save</Text>
-      </TouchableOpacity>
+      <WorkingWeekDays />
+
       {/* <ProgressChart /> */}
       <TouchableOpacity
         onPress={() => navigation.navigate("ProgressChart")}
@@ -128,8 +120,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
+    padding: 20,
     // justifyContent: "center",
   },
+
   box: {
     flexDirection: "row",
     alignItems: "center",
@@ -190,6 +184,7 @@ const styles = StyleSheet.create({
     bottom: 50,
     zIndex: 1,
   },
+
 });
 
 export default observer(PreferencesPage);

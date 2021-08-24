@@ -2,52 +2,38 @@ import React, { useState } from "react";
 import { View, Button, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-const WorkTime = () => {
+const WorkTime = ({ preferences, setPreferences, isStart }) => {
   const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
     setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
+    const timeFormat = currentDate.getHours() + ":" + currentDate.getMinutes();
+    isStart
+      ? setPreferences({ ...preferences, timeStart: timeFormat })
+      : setPreferences({ ...preferences, timeEnd: timeFormat });
+    setShow(Platform.OS === "ios");
   };
 
   const showTimepicker = () => {
-    showMode("time");
+    setShow(true);
   };
 
   return (
-    <View style={{ justifyContent: "center" }}>
+    <View style={{ justifyContent: "center" , paddingLeft:10, paddingRight:10}}>
       <View>
-        <Button onPress={showTimepicker} title="Pick work start time:" />
+        <Button onPress={showTimepicker} title="Pick time" />
       </View>
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={mode}
+          mode="time"
           is24Hour={true}
           display="default"
           onChange={onChange}
-        />
-      )}
-      <View>
-        <Button onPress={showTimepicker} title="Pick work end time:" />
-      </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
+          minuteInterval={15}
         />
       )}
     </View>

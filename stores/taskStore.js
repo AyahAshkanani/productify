@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
+import Toast from "react-native-toast-message";
 
 class TaskStore {
   tasks = [];
@@ -9,6 +10,19 @@ class TaskStore {
     makeAutoObservable(this);
   }
 
+  // fetchUserTasks = async (userId) => {
+  //   try {
+  //     const response = await instance.get(`/tasks/${userId}`);
+  //     runInAction(() => {
+  //       this.tasks = response.data;
+  //       console.log(this.tasks);
+  //       this.loading = false;
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   fetchTasks = async () => {
     try {
       const response = await instance.get("/tasks");
@@ -17,7 +31,7 @@ class TaskStore {
         this.loading = false;
       });
     } catch (error) {
-      console.error(error);
+      console.error("fetch error", error);
       // network error when we have "fetchTasks",
     }
   };
@@ -29,6 +43,10 @@ class TaskStore {
       runInAction(() => {
         this.tasks.push(response.data);
         navigation.navigate("Home");
+        Toast.show({
+          text1: "Task Added Succesfuly!",
+          text2: `${response.data.name}`,
+        });
       });
     } catch (error) {
       console.error(error);
@@ -76,6 +94,17 @@ class TaskStore {
     }
   };
   getTaskById = (taskId) => this.tasks.find((task) => task.id === taskId);
+
+  deleteTask = async (taskId) => {
+    try {
+      await instance.delete(`/tasks/${taskId}`);
+      const updatedTask = this.tasks.filter((task) => task.id !== taskId);
+      this.tasks = updatedTask;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 }
 
 const taskStore = new TaskStore();

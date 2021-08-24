@@ -1,48 +1,42 @@
 import React from "react";
 //observer
 import { observer } from "mobx-react";
-import { TaskDetailWrapper, TaskDetailsStyle } from "./styles";
+import { TaskDetailWrapper, TaskDetailsStyle, DueDate } from "./styles";
 // components
 import UpdateButton from "../../buttons/UpdateButton";
 import { Ionicons } from "@expo/vector-icons";
 import { Button, View, Text, StyleSheet } from "react-native";
 // navigation
 import { useNavigation } from "@react-navigation/native";
+import TaskTodoList from "../taskTodos/TaskTodoList";
+import TaskTodoAdd from "../taskTodos/TaskTodoAdd";
+import TaskNoteItem from "../taskNote/TaskNoteItem";
+import TaskNoteAdd from "../taskNote/TaskNoteAdd";
+// moment
 import moment from "moment";
 import "moment/locale/en-au";
-const TaskDetail = ({ route, startDate, endDate }) => {
+
+const TaskDetail = ({ route }) => {
   const { task } = route.params;
 
   // const currentTimeInDays =
   //   "${startDate}.year() * 365 + ${startDate}.dayOfYear()";
   // const futureTimeInDays = endDate.year() * 365 + endDate.dayOfYear();
 
+
   return (
     <TaskDetailWrapper>
       <TaskDetailsStyle>{task.name}</TaskDetailsStyle>
 
       <View style={{ display: "flex", flexDirection: " row " }}></View>
-      <UpdateButton oldTask={task} />
-      <Text>Due Date</Text>
-      <Text>{task.endDate}</Text>
-      <View
-        style={[StyleSheet.absoluteFillObject, styles.emptyHeaderContainer]}
-      >
-        {/* <Text>
-          {futureTimeInDays}-{currentTimeInDays}
-          Days left
-        </Text> */}
-      </View>
-      {/* <AD
-        onPress={() => setModalVisible(true)}
-        antIconName='plus'
-        style={styles.addBtn}
-      />
-      <NoteInputModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSubmit={handleOnSubmit}
-      /> */}
+
+      <UpdateButton oldTask={task} style={{ margin: 50 }} />
+      <DueDate>Due Date</DueDate>
+      <DueDate>{task.endDate}</DueDate>
+      <TaskTodoAdd task={task} />
+      <TaskTodoList task={task} />
+      <TaskNoteAdd task={task} />
+      <TaskNoteItem task={task} />
     </TaskDetailWrapper>
   );
 };

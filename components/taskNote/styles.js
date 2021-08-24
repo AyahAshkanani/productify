@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
 
 export const ListWrapper = styled.View`
-justify-content: center;
-  align-items: center;
-  align-self:center
   margin-left: -8.5px;
 `;
 
@@ -39,14 +36,6 @@ export const TaskItemWrapper = styled.View`
 export const TaskDetailWrapper = styled.View`
   align-items: center;
   justify-content: center;
-  align-self:center
-  marginTop:10%;
-  marginBottom:10%;
-  margin-right: 2%;
-  margin-left: 2%;
-  border-width: 2px;
-  border-color: grey;
-  border-radius: 35px;
 `;
 export const NoTasksText = styled.Text`
   align-self: center;
@@ -64,24 +53,12 @@ export const TodaysTasksText = styled.Text`
   margin: 10px;
 `;
 export const TaskDetailsStyle = styled.Text`
-  font-size: 30px;
-  font-style: italic;
+  font-size: 40px;
   font-weight: bold;
-  align-items: center;
-  align-self:center;
-  justify-content: center;
-  color: ${(props) => props.theme.mainTextColor};
-  padding:10px;
-  marginBottom: 10px;
-`;
-
-export const DueDate = styled.Text`
-  font-size: 20px;
-  font-style: italic;
   color: ${(props) => props.theme.mainTextColor};
   align-items: center;
   justify-content: center;
-  padding:3px;
+  padding-bottom: 10px;
 `;
 
 export const TaskTextStyled = styled.Text`
@@ -140,12 +117,11 @@ export const TaskButton = styled.TouchableOpacity`
   margin-top: 30px;
 `;
 export const AddTaskTitle = styled.Text`
-  color: ${(props) => props.theme.mainColor};
   font-weight: bold;
-  font-size: 35px;
+  font-size: 40px;
   margin: 20px;
   margin-left: 10px;
-  margin-top: 50px;
+  margin-top: 90px;
   text-align: center;
 `;
 export const UpdateTaskTitle = styled.Text`
@@ -168,19 +144,12 @@ export const AddTaskLabels = styled.Text`
 `;
 
 export const AddTaskButton = styled.TouchableOpacity`
-  align-self: center;
-  justify-content: center;
+  align-self: stretch;
   align-items: center;
-  width: 75%;
-  padding: 15px;
-  paddingLeft:80px;
-  paddingRight:80px;
+  padding: 20px;
+  margin: 60px;
   background-color: ${(props) => props.theme.mainColor};
-
-  margin-top: 5px;
-  marginBottom:20px;
-  border-radius: 40px;
-
+  margin-top: 30px;
 `;
 
 export const AddTaskButtonText = styled.Text`
@@ -189,10 +158,13 @@ export const AddTaskButtonText = styled.Text`
   font-size: 18px;
 `;
 export const AddContainer = styled.View`
-  align-self: center;
+  flex: 1;
+  align-self: stretch;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.backgroundColor};
+  padding-right: 60px;
+  padding-left: 60px;
 `;
 
 export const AddTitle = styled.Text`

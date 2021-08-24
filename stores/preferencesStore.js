@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class PreferencesStore {
-  preferences = null;
+  preferences = "";
 
   constructor() {
     makeAutoObservable(this);

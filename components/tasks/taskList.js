@@ -47,10 +47,12 @@ const TaskList = ({ navigation }) => {
 
   const taskList = tasks
     .filter((task) => task.startDate == taskDate)
+    .sort(function (a, b) {
+      return +a.time.slice(0, 2) - +b.time.slice(0, 2);
+    })
     .map((task) => (
       <TaskItem task={task} key={task.id} navigation={navigation} />
     ));
-
   return (
     <>
       <TaskCalendar
