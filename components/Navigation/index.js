@@ -18,7 +18,6 @@ import UpdateTask from "../tasks/UpdateTask";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 
 //navigation
 const Stack = createStackNavigator();
@@ -29,27 +28,24 @@ export default function MyTabs({ theme }) {
     return (
       //bottom tab bar
       <Tab.Navigator
-        screenOptions={{
-          activeTintColor: "blue",
-          tabBarShowLabel: false,
-          style: {
-            backgroundColor: "transparent",
-            borderTopWidth: 0,
-            position: "absolute",
-            left: 50,
-            right: 50,
-            bottom: 20,
-            height: 100,
-          },
+        tabBarOptions={{
+          showLabel: false,
+          activeBackgroundColor: theme.backgroundColor,
+          inactiveBackgroundColor: theme.backgroundColor,
         }}
       >
         <Tab.Screen
           name="Home"
           component={TaskList}
           options={{
+            headerShown: false,
             tabBarLabel: "Home",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="home-outline" size={30} color="black" />
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={focused ? "home" : "home-outline"}
+                size={30}
+                color={focused ? theme.complementaryTwo : theme.secondaryColor}
+              />
             ),
           }}
         />
@@ -58,38 +54,49 @@ export default function MyTabs({ theme }) {
           component={AddTask}
           options={{
             tabBarLabel: "Add Task",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="add-circle-outline" size={30} color="black" />
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name="add-circle-sharp"
+                size={80}
+                color={focused ? "transparent" : theme.complementaryOne}
+                style={{ marginTop: -40 }}
+              />
             ),
           }}
         />
 
         <Tab.Screen
           name="PreferencesPage"
-          component={PreferencesPage}
+          // component={PreferencesPage}
           options={{
             tabBarLabel: "Preferences",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="md-settings-outline" size={30} color="black" />
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={focused ? "md-settings" : "md-settings-outline"}
+                size={30}
+                color={focused ? theme.complementaryTwo : theme.secondaryColor}
+              />
             ),
           }}
-        />
+        >
+          {(props) => <PreferencesPage theme={theme} />}
+        </Tab.Screen>
       </Tab.Navigator>
     );
   }
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName="Login"
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#c77dff",
-        },
-        headerTintColor: "white",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
+      initialRouteName="Main"
+      // screenOptions={{
+      //   headerStyle: {
+      //     backgroundColor: "#c77dff",
+      //   },
+      //   headerTintColor: "white",
+      //   headerTitleStyle: {
+      //     fontWeight: "bold",
+      //   },
+      // }}
     >
       <Stack.Screen
         name="Login"

@@ -5,6 +5,7 @@ import { ScrollView } from "react-native";
 
 //native-base
 import { List, Spinner } from "native-base";
+import { View } from "react-native";
 
 //components
 import TaskItem from "./taskItem";
@@ -18,6 +19,9 @@ import {
   TodaysTasksText,
   GreetingMessage,
   ProgressMessage,
+  HomeContainer,
+  HomeContent,
+  GreetingUserName,
 } from "./styles";
 
 //stores
@@ -71,35 +75,39 @@ const TaskList = ({ navigation }) => {
   }
 
   return (
-    <>
-      <GreetingMessage>Hello, {authStore.user.username}</GreetingMessage>
-      {taskList.length === 0 ? (
-        <ProgressMessage>Looks like you're free for today.</ProgressMessage>
-      ) : (
-        <ProgressMessage>
-          You are {(doneTasks.length / taskList.length) * 100}% done with
-          today's tasks
-        </ProgressMessage>
-      )}
-
-      <TaskCalendar
-        tasks={tasks}
-        handleTaskUpdate={handleTaskUpdate}
-      ></TaskCalendar>
-      <ScrollView>
-        {taskList.length > 0 ? (
-          <>
-            <TodaysTasksText>Today's tasks</TodaysTasksText>
-            <ListWrapper>
-              <List>{taskList}</List>
-            </ListWrapper>
-          </>
+    <HomeContainer>
+      <HomeContent>
+        <GreetingMessage>
+          Hello, <GreetingUserName>{authStore.user.username} </GreetingUserName>
+        </GreetingMessage>
+        {taskList.length === 0 ? (
+          <ProgressMessage>Looks like you're free for today.</ProgressMessage>
         ) : (
-          <NoTasksText>No tasks for this day</NoTasksText>
+          <ProgressMessage>
+            You are {(doneTasks.length / taskList.length) * 100}% done
+            {"\n"}with today's tasks!
+          </ProgressMessage>
         )}
-        <Logout />
-      </ScrollView>
-    </>
+
+        <TaskCalendar
+          tasks={tasks}
+          handleTaskUpdate={handleTaskUpdate}
+        ></TaskCalendar>
+        <ScrollView>
+          {taskList.length > 0 ? (
+            <>
+              <TodaysTasksText>Today's tasks</TodaysTasksText>
+              <ListWrapper>
+                <List>{taskList}</List>
+              </ListWrapper>
+            </>
+          ) : (
+            <NoTasksText>No tasks for this day</NoTasksText>
+          )}
+          <Logout />
+        </ScrollView>
+      </HomeContent>
+    </HomeContainer>
   );
 };
 

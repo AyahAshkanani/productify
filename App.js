@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-native-gesture-handler";
+import { observer } from "mobx-react";
 
 //components
 import Toast from "react-native-toast-message";
@@ -11,28 +12,68 @@ import RootNavigator from "./components/Navigation/index";
 
 // styles
 import { ThemeProvider } from "styled-components";
+
+//themes
 const theme = {
-  mainColor: "#DE3E50",
-  backgroundColor: "#F8E5E0",
-  secondaryColor: "#837B7C",
-  mainTextColor: "#292D50",
-  secondaryTextColor: "#FFFFFF",
-  complementaryOne: "#0ACEDC",
-  complementaryTwo: "#3EDEBB",
-  white: "white",
+  red: {
+    mainColor: "#FF364D",
+    backgroundColor: "#FCEEEA",
+    secondaryColor: "#837B7C",
+    mainTextColor: "#292D50",
+    secondaryTextColor: "#FFFFFF",
+    complementaryOne: "#00E4F4",
+    complementaryTwo: "#0EDAAD",
+    white: "white",
+  },
+  blue: {
+    mainColor: "#12D2FA",
+    backgroundColor: "#EEF4F5",
+    secondaryColor: "#837B7C",
+    mainTextColor: "#292D50",
+    secondaryTextColor: "#FFFFFF",
+    complementaryOne: "#EA564F",
+    complementaryTwo: "#FA9112",
+    white: "white",
+  },
+  purple: {
+    mainColor: "#7A55F5",
+    backgroundColor: "#F5F2FF",
+    secondaryColor: "#837B7C",
+    mainTextColor: "#292D50",
+    secondaryTextColor: "#FFFFFF",
+    complementaryOne: "#F5E055",
+    complementaryTwo: "#F58F55",
+    white: "white",
+  },
+  green: {
+    mainColor: "#14D79F",
+    backgroundColor: "#E2FFF6",
+    secondaryColor: "#837B7C",
+    mainTextColor: "#292D50",
+    secondaryTextColor: "#FFFFFF",
+    complementaryOne: "#D71431",
+    complementaryTwo: "#D76914",
+    white: "white",
+  },
 };
 
-export default function App() {
+function App() {
   //to mute warnings for now :P
   console.disableYellowBox = true;
+  const [currentTheme, setCurrentTheme] = useState("red");
+  const changeTheme = (themeColor) => {
+    setCurrentTheme(themeColor);
+  };
   return (
     <NativeBaseProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme[currentTheme]}>
         <NavigationContainer>
-          <RootNavigator />
+          <RootNavigator theme={theme[currentTheme]} />
         </NavigationContainer>
-        <Toast ref={(ref) => Toast.setRef(ref)} style={{ marginTop: 7 }} />
+        <Toast ref={(ref) => Toast.setRef(ref)} style={{ marginTop: 5 }} />
       </ThemeProvider>
     </NativeBaseProvider>
   );
 }
+
+export default observer(App);
