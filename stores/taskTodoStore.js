@@ -9,17 +9,18 @@ class TaskTodoStore {
     makeAutoObservable(this);
   }
 
-  fetchUserTasks = async (userId) => {
-    try {
-      const response = await instance.get(`/tasks/${userId}`);
-      runInAction(() => {
-        this.userTasks = response.data;
-        this.loading = false;
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // fetchUserTasks = async (userId) => {
+  //   try {
+  //     const response = await instance.get(`/tasks/${userId}`);
+  //     runInAction(() => {
+  //       this.userTasks = response.data;
+  //       this.loading = false;
+  //     });
+  //     console.log(this.userTasks);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // ****************** Add Task Todo Item METHOD ******************
   taskTodoItemAdd = async (newTaskTodoItem, taskId, task) => {

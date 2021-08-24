@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 import taskTodoStore from "../../stores/taskTodoStore";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  Alert,
+  Modal,
+  Text,
+  Pressable,
+} from "react-native";
 
 const TaskTodoAdd = ({ task }) => {
   const [todo, setTodo] = useState({
@@ -18,16 +27,18 @@ const TaskTodoAdd = ({ task }) => {
     <>
       <View>
         <TextInput
+          value={todo.text}
           style={styles.input}
           placeholder="add todo.."
           onChangeText={(text) => setTodo({ ...todo, text })}
         />
-
-        <Button
-          onPress={todoAddHandler}
-          title="Add a todo"
-          color="#DE3E50"
-        ></Button>
+        <View style={styles.button}>
+          <Button
+            onPress={todoAddHandler}
+            title="Add a todo"
+            color="white"
+          ></Button>
+        </View>
       </View>
     </>
   );
@@ -43,39 +54,18 @@ const styles = StyleSheet.create({
     width: 200,
     height: 30,
   },
+  button: {
+    borderRadius: 20,
+    padding: 5,
+    elevation: 2,
+    backgroundColor: "#F194FF",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
 
 export default observer(TaskTodoAdd);
 
 /* 
-const [temp, setTemp] = useState("");
-  const todoAddHandler = async () => {
-    setTodo({ text: temp });
-    await taskTodoStore.taskTodoItemAdd(todo, task.id);
-    setTemp("");
-    console.log(temp);
-  };
 
-  const handleChange = (event) => {
-    setTodo({ ...todo, [event.target.name]: event.target.value });
-  };
-
-  return (
-    <>
-      <View>
-        <TextInput
-          style={styles.input}
-          placeholder="add todo.."
-          onChangeText={(text) => setTemp(text)}
-          //onChangeText={(text) => console.log(text)}
-        />
-        <Button
-          onPress={todoAddHandler}
-          title="Add Todo"
-          color="#DE3E50"
-        ></Button>
-      </View>
-    </>
-  );
-};
 */

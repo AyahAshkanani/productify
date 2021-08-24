@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //react-native
 import { ScrollView } from "react-native";
@@ -21,6 +21,9 @@ import { observer } from "mobx-react";
 import Logout from "../authentication/Logout";
 
 const TaskList = ({ navigation }) => {
+  // useEffect(() => {
+  //   taskStore.fetchUserTasks();
+  // }, []);
   //{ navigation }
   //get today's date
   let today = new Date().toString();

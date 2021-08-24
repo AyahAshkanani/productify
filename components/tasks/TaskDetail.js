@@ -15,7 +15,7 @@ import TaskNoteAdd from "../taskNote/TaskNoteAdd";
 
 const TaskDetail = ({ route }) => {
   const { task } = route.params;
-
+  console.log(task);
   return (
     <TaskDetailWrapper>
       <TaskDetailsStyle>{task.name}</TaskDetailsStyle>

@@ -4,7 +4,7 @@ import decode from "jwt-decode";
 
 //stores
 import preferencesStore from "./preferencesStore";
-import taskTodoStore from "./taskTodoStore";
+import taskStore from "./taskStore";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -54,7 +54,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       this.user = decode(token);
       preferencesStore.setUserPreferences(this.user.preference); //get preferences when user logs/signs in
-      taskTodoStore.fetchUserTasks(this.user.id);
+      taskStore.fetchUserTasks(this.user.id);
       this.loading = false;
     } catch (error) {
       console.log(error);
