@@ -14,7 +14,7 @@ import WorkTime from "./WorkTime";
 
 //store
 import preferencesStore from "../../stores/preferencesStore";
-import { style } from "styled-system";
+import { PrefContainer, PrefContent } from "./styles";
 
 const WorkingWeekDays = () => {
   const [preferences, setPreferences] = useState(
@@ -55,93 +55,96 @@ const WorkingWeekDays = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.box}>
-        <Text style={{ fontSize: 18 , paddingTop:7 }}>Work Start:</Text>
+    <PrefContainer style={{ borderTopWidth: 150 }}>
+      <PrefContent>
+        <View style={styles.container}>
+          <View style={styles.box}>
+            <Text style={{ fontSize: 18, paddingTop: 7 }}>Work Start:</Text>
 
-        <WorkTime
-          preferences={preferences}
-          setPreferences={setPreferences}
-          isStart={true}
-        />
+            <WorkTime
+              preferences={preferences}
+              setPreferences={setPreferences}
+              isStart={true}
+            />
+          </View>
+          <View style={styles.box}>
+            <Text style={{ fontSize: 18, paddingTop: 7 }}>Work End:</Text>
+            <WorkTime
+              preferences={preferences}
+              setPreferences={setPreferences}
+              isStart={false}
+            />
+          </View>
 
-        <Text style={{ fontSize: 18 , paddingTop:7 }}>Work End:</Text>
-        <WorkTime
-          preferences={preferences}
-          setPreferences={setPreferences}
-          isStart={false}
-        />
-        
-      </View> 
-      <ScrollView>
-      <Text style={{ margin: 10 ,fontSize: 20}}> Working Days</Text>
-      <View style={styles.workcontainer}>
-        <View style={styles.workbox}>
-         
-        <TouchableOpacity>
-            <CheckBox
-              title="Sunday"
-              checked={preferences.sunday}
-              onPress={() => {
-                toggleSunday();
-              }}
-              
-            />
-            <CheckBox
-              title="Monday"
-              checked={preferences.monday}
-              onPress={() => {
-                toggleMonday();
-              }}
-            />
-            <CheckBox
-              title="Tuesday"
-              checked={preferences.tuesday}
-              onPress={() => {
-                toggleTuesday();
-              }}
-            />
-            <CheckBox
-              title="Wednesday"
-              checked={preferences.wednesday}
-              onPress={() => {
-                toggleWednesday();
-              }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-             <CheckBox
-              title="Thursday"
-              checked={preferences.thursday}
-              onPress={() => {
-                toggleThursday();
-              }}
-            />
-             <CheckBox
-              title="Friday"
-              checked={preferences.friday}
-              onPress={() => {
-                toggleFriday();
-              }}
-            />
-             <CheckBox
-              title="Saturday"
-              checked={preferences.saturday}
-              onPress={() => {
-                toggleSaturday();
-              }}
-            />
+          <ScrollView>
+            <Text style={{ margin: 10, fontSize: 20 }}> Working Days</Text>
+            <View style={styles.workcontainer}>
+              <View style={styles.workbox}>
+                <TouchableOpacity>
+                  <CheckBox
+                    title="Sunday"
+                    checked={preferences.sunday}
+                    onPress={() => {
+                      toggleSunday();
+                    }}
+                  />
+                  <CheckBox
+                    title="Monday"
+                    checked={preferences.monday}
+                    onPress={() => {
+                      toggleMonday();
+                    }}
+                  />
+                  <CheckBox
+                    title="Tuesday"
+                    checked={preferences.tuesday}
+                    onPress={() => {
+                      toggleTuesday();
+                    }}
+                  />
+                  <CheckBox
+                    title="Wednesday"
+                    checked={preferences.wednesday}
+                    onPress={() => {
+                      toggleWednesday();
+                    }}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <CheckBox
+                    title="Thursday"
+                    checked={preferences.thursday}
+                    onPress={() => {
+                      toggleThursday();
+                    }}
+                  />
+                  <CheckBox
+                    title="Friday"
+                    checked={preferences.friday}
+                    onPress={() => {
+                      toggleFriday();
+                    }}
+                  />
+                  <CheckBox
+                    title="Saturday"
+                    checked={preferences.saturday}
+                    onPress={() => {
+                      toggleSaturday();
+                    }}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+          <TouchableOpacity
+            style={styles.SavePreferencesButton}
+            onPress={updatePreferences}
+          >
+            <Text style={styles.SavePreferencesButtonText}>Save</Text>
           </TouchableOpacity>
         </View>
-        </View>
-      </ScrollView>
-      <TouchableOpacity
-        style={styles.SavePreferencesButton}
-        onPress={updatePreferences}
-      >
-        <Text style={styles.SavePreferencesButtonText}>Save</Text>
-      </TouchableOpacity>
-      </View>
+      </PrefContent>
+    </PrefContainer>
   );
 };
 
@@ -153,15 +156,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   box: {
-    alignSelf:"stretch",
+    alignSelf: "flex-start",
     borderWidth: 1,
     borderColor: "#DE3E50",
-    borderRadius: 25,
-    padding:10,
-    margin:10,
+    borderRadius: 15,
+    padding: 10,
+    margin: 10,
     flexDirection: "row",
-
-    
   },
   workcontainer: {
     backgroundColor: "#fff",
@@ -172,25 +173,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     // alignItems: "center",
     flexDirection: "row",
-    alignSelf:"stretch",
+    // alignSelf: "stretch",
     borderWidth: 1,
     borderColor: "#DE3E50",
     borderRadius: 25,
-    paddingRight:30,
-    paddingLeft:30,
-    paddingTop:15,
-    paddingBottom:5,
-    
+    // paddingRight: 30,
+    // paddingLeft: 20,
+    paddingTop: 10,
+    paddingBottom: 5,
   },
   SavePreferencesButton: {
     alignItems: "center",
     padding: 10,
-    margin: 20,
+    margin: 30,
     backgroundColor: "#DE3E50",
-    marginTop: 10,
     borderRadius: 10,
-    paddingLeft:30,
-    paddingRight:30,
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   SavePreferencesButtonText: {
     color: "white",

@@ -134,8 +134,6 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
         />
       </View> */}
 
-      <WorkTime />
-
       <WorkingWeekDays />
 
       {/* <ProgressChart /> */}
