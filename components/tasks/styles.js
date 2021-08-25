@@ -96,12 +96,12 @@ export const TaskDetailsStyle = styled.Text`
 `;
 
 export const DueDate = styled.Text`
-  font-size: 20px;
-  font-style: italic;
-  color: ${(props) => props.theme.mainTextColor};
-  align-items: center;
-  justify-content: center;
-  padding: 3px;
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryTextColor};
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 25px;
+  margin-bottom: -2px;
 `;
 
 export const TaskTextStyled = styled.Text`
@@ -209,7 +209,6 @@ export const AddTaskButton = styled.TouchableOpacity`
   margin-top: 5px;
   margin-bottom: 20px;
   border-radius: 40px;
-
 `;
 
 export const AddTaskButtonText = styled.Text`
@@ -257,6 +256,16 @@ export const GreetingUserName = styled.Text`
   font-weight: 600;
   margin-left: 25px;
   margin-top: 10px;
+  margin-bottom: 5px;
+`;
+
+export const TaskName = styled.Text`
+  align-self: flex-start;
+  color: ${(props) => props.theme.secondaryTextColor};
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 25px;
+  margin-top: 20px;
   margin-bottom: 5px;
 `;
 

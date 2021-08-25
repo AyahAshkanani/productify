@@ -26,10 +26,10 @@ const TaskTodoList = ({ task }) => {
       <ScrollView>
         {taskTodoItemsList?.length > 0 ? (
           <>
-            <TodaysTasksText>Task's Checklist items</TodaysTasksText>
-            <View>
-              <List>{taskTodoItemsList}</List>
-            </View>
+            <TodaysTasksText>Task's Checklist:</TodaysTasksText>
+            <ListWrapper>
+              <View>{taskTodoItemsList}</View>
+            </ListWrapper>
           </>
         ) : (
           <NoTasksText>No checklist items for this task</NoTasksText>

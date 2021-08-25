@@ -10,7 +10,9 @@ import {
   Modal,
   Text,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
+import { TodoButton, TodoButtonText } from "./styles";
 
 const TaskTodoAdd = ({ task }) => {
   const [todo, setTodo] = useState({
@@ -24,23 +26,19 @@ const TaskTodoAdd = ({ task }) => {
   };
 
   return (
-    <>
-      <View>
-        <TextInput
-          value={todo.text}
-          style={styles.input}
-          placeholder="add todo.."
-          onChangeText={(text) => setTodo({ ...todo, text })}
-        />
-        <View style={styles.button}>
-          <Button
-            onPress={todoAddHandler}
-            title="Add a todo"
-            color="white"
-          ></Button>
-        </View>
+    <View>
+      <TextInput
+        value={todo.text}
+        style={styles.input}
+        placeholder="write a todo.."
+        onChangeText={(text) => setTodo({ ...todo, text })}
+      />
+      <View style={{ alignItems: "center" }}>
+        <TodoButton onPress={todoAddHandler} style={{ width: 100 }}>
+          <TodoButtonText>Add todo</TodoButtonText>
+        </TodoButton>
       </View>
-    </>
+    </View>
   );
 };
 
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 5,
     elevation: 2,
-    backgroundColor: "#F194FF",
+    backgroundColor: "blue",
     fontWeight: "bold",
     textAlign: "center",
   },

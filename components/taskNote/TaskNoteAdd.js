@@ -11,6 +11,7 @@ import {
   Text,
   Pressable,
 } from "react-native";
+import { NoteButton, NoteButtonText } from "./styles";
 
 const TaskNoteAdd = ({ task }) => {
   const [note, setNote] = useState({
@@ -22,45 +23,29 @@ const TaskNoteAdd = ({ task }) => {
     setNote({ text: "" });
   };
 
-  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
+    <View style={styles.container}>
+      {task.taskNote ? (
+        <></>
+      ) : (
+        <>
+          <View style={{ paddingVertical: 10 }}>
             <TextInput
+              backgroundColor="#fff3b0"
               value={note.text}
               multiline
-              placeholder="Add a note..."
+              placeholder="write a note..."
               style={[styles.input, styles.desc]}
               onChangeText={(text) => setNote({ ...note, text })}
             />
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-                noteAddHandler();
-              }}
-            >
-              <Text style={styles.textStyle}>Save</Text>
-            </Pressable>
           </View>
-        </View>
-      </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Add note</Text>
-      </Pressable>
+          <View style={{ alignItems: "center" }}>
+            <NoteButton onPress={noteAddHandler} style={{ width: 100 }}>
+              <NoteButtonText>Add note</NoteButtonText>
+            </NoteButton>
+          </View>
+        </>
+      )}
     </View>
   );
 };
@@ -110,17 +95,47 @@ const styles = StyleSheet.create({
 });
 
 export default observer(TaskNoteAdd);
+
 /*
+const [modalVisible, setModalVisible] = useState(false);
 return (
-    <View style={styles.container}>
-      <TextInput
-        value={note.text}
-        multiline
-        placeholder="Add a note..."
-        style={[styles.input, styles.desc]}
-        onChangeText={(text) => setNote({ ...note, text })}
-      />
-      <Button onPress={noteAddHandler} title="Add" color="#DE3E50"></Button>
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <TextInput
+              value={note.text}
+              multiline
+              placeholder="Add a note..."
+              style={[styles.input, styles.desc]}
+              onChangeText={(text) => setNote({ ...note, text })}
+            />
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+                noteAddHandler();
+              }}
+            >
+              <Text style={styles.textStyle}>Save</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={styles.textStyle}>Add note</Text>
+      </Pressable>
     </View>
   );
 */

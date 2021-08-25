@@ -10,6 +10,19 @@ export const TaskItemName = styled.Text`
   font-weight: 400;
   margin: 10px;
 `;
+export const TodoButtonText = styled.Text`
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+`;
+export const TodoButton = styled.TouchableOpacity`
+  border-radius: 20px;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: ${(props) => props.theme.complementaryOne};
+`;
 
 export const TaskItemDateAndTime = styled.Text`
   align-self: flex-start;
@@ -20,17 +33,13 @@ export const TaskItemDateAndTime = styled.Text`
   margin-bottom: 10px;
 `;
 
-export const TaskItemWrapper = styled.View`
+export const TodoItemWrapper = styled.View`
   flex: 1;
   align-self: stretch;
   justify-content: center;
-  align-items: center;
-  margin-right: 7%;
-  margin-left: 7%;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: transparent;
   background-color: white;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const TaskDetailWrapper = styled.View`
@@ -109,7 +118,7 @@ export const TaskButtonText = styled.Text`
   font-size: 18px;
 `;
 
-export const TaskButton = styled.TouchableOpacity`
+export const TaskButton = styled.View`
   align-self: stretch;
   align-items: center;
   padding: 20px;
