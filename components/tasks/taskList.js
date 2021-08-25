@@ -33,10 +33,6 @@ import Logout from "../authentication/Logout";
 import authStore from "../../stores/authStore";
 
 const TaskList = ({ navigation }) => {
-  // useEffect(() => {
-  //   taskStore.fetchUserTasks();
-  // }, []);
-  //{ navigation }
   //get today's date
   let today = new Date().toString();
   let todaysDate = formatDate(today);
@@ -69,10 +65,12 @@ const TaskList = ({ navigation }) => {
       <TaskItem task={task} key={task.id} navigation={navigation} />
     ));
 
+  const todaysTaskList = tasks.filter((task) => task.startDate == todaysDate);
+
   let doneTasks = [];
-  if (taskList.length > 0) {
+  if (todaysTaskList.length > 0) {
     doneTasks = tasks
-      .filter((task) => task.startDate == taskDate)
+      .filter((task) => task.startDate == todaysDate)
       .filter((task) => task.done);
   }
 
@@ -82,12 +80,12 @@ const TaskList = ({ navigation }) => {
         <GreetingMessage>
           Hello, <GreetingUserName>{authStore.user.username} </GreetingUserName>
         </GreetingMessage>
-        {taskList.length === 0 ? (
+        {todaysTaskList.length === 0 ? (
           <ProgressMessage>Looks like you're free for today.</ProgressMessage>
         ) : (
           <ProgressMessage>
-            You are {Math.floor((doneTasks.length / taskList.length) * 100)}%
-            done
+            You are{" "}
+            {Math.floor((doneTasks.length / todaysTaskList.length) * 100)}% done
             {"\n"}with today's tasks!
           </ProgressMessage>
         )}

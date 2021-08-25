@@ -15,6 +15,7 @@ import {
 
 import NumericInput from "react-native-numeric-input";
 import { CheckBox } from "react-native-elements";
+
 // mobx
 import { useNavigation } from "@react-navigation/native";
 
@@ -30,6 +31,9 @@ import WorkTime from "./WorkTime";
 
 //components
 import DropDownPicker from "react-native-dropdown-picker";
+
+//icons
+import { Ionicons } from "@expo/vector-icons";
 
 const PreferencesPage = ({ changeTheme, currentTheme }) => {
   //theme picking
@@ -82,7 +86,19 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
       <Text
         style={styles.header}
       >{`Good ${greet} ${authStore.user.username}`}</Text>
-      <DropDownPicker
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("ChangeThemePage", changeTheme, currentTheme)
+        }
+        style={{
+          backgroundColor: "rgba(52, 52, 52, 0)",
+          alignSelf: "flex-end",
+          marginTop: -20,
+        }}
+      >
+        <Ionicons name="color-palette-sharp" size={24} color="black" />
+      </TouchableOpacity>
+      {/* <DropDownPicker
         open={open}
         value={value}
         items={items}
@@ -90,7 +106,7 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
         setValue={changeTheme}
         setItems={setItems}
         style={{ width: 150 }}
-      />
+      /> */}
       {/* <Text>User name: {authStore.user.username}</Text> */}
 
       {/* //       <View> */}
