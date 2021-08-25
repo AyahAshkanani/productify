@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 //styled components
-import { TaskItemName } from "./styles";
+import { TodoItemWrapper } from "./styles";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+//native-base
+import { List } from "native-base";
 
 //observer
 import { observer } from "mobx-react";
@@ -24,33 +26,37 @@ const TaskTodoItem = ({ todo, task }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.checkbox}
-        onPress={() => {
-          toggleTaskTodoItem();
-        }}
-      >
-        <Text style={{ color: "#aaa" }}>{done ? "✔" : ""}</Text>
-      </TouchableOpacity>
-      <Text
-        style={[
-          styles.text,
-          {
-            color: done ? "#aaa" : "black",
-            textDecorationLine: done ? "line-through" : "none",
-          },
-        ]}
-      >
-        {todo.text}
-      </Text>
+    <List.Item>
+      <View style={styles.container}>
+        <TodoItemWrapper>
+          <TouchableOpacity
+            style={styles.checkbox}
+            onPress={() => {
+              toggleTaskTodoItem();
+            }}
+          >
+            <Text style={{ color: "#aaa" }}>{done ? "✔" : ""}</Text>
+          </TouchableOpacity>
+          <Text
+            style={[
+              styles.text,
+              {
+                color: done ? "#aaa" : "black",
+                textDecorationLine: done ? "line-through" : "none",
+              },
+            ]}
+          >
+            {todo.text}
+          </Text>
 
-      <TouchableOpacity onPress={deleteHandler}>
-        <View>
-          <MaterialIcons name="delete" size={18} color="#333" />
-        </View>
-      </TouchableOpacity>
-    </View>
+          <TouchableOpacity onPress={deleteHandler}>
+            <View>
+              <MaterialIcons name="delete-forever" size={20} color="red" />
+            </View>
+          </TouchableOpacity>
+        </TodoItemWrapper>
+      </View>
+    </List.Item>
   );
 };
 

@@ -11,6 +11,23 @@ export const TaskItemName = styled.Text`
   margin: 10px;
 `;
 
+export const NoteButtonText = styled.Text`
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+`;
+
+export const NoteButton = styled.TouchableOpacity`
+  border-radius: 20px;
+
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 70px;
+  background-color: ${(props) => props.theme.complementaryOne};
+`;
+
 export const TaskItemDateAndTime = styled.Text`
   align-self: flex-start;
   color: ${(props) => props.theme.secondaryColor};

@@ -1,11 +1,25 @@
 import React from "react";
 //observer
 import { observer } from "mobx-react";
-import { TaskDetailWrapper, TaskDetailsStyle, DueDate } from "./styles";
+import {
+  TaskDetailWrapper,
+  TaskDetailsStyle,
+  DueDate,
+  ListWrapper,
+  NoTasksText,
+  TodaysTasksText,
+  GreetingMessage,
+  ProgressMessage,
+  HomeContainer,
+  HomeContent,
+  GreetingUserName,
+  TaskItemWrapper,
+  TaskName,
+} from "./styles";
 // components
 import UpdateButton from "../../buttons/UpdateButton";
 import { Ionicons } from "@expo/vector-icons";
-import { Button, View, Text, StyleSheet } from "react-native";
+import { Button, View, Text, StyleSheet, ScrollView } from "react-native";
 // navigation
 import { useNavigation } from "@react-navigation/native";
 import TaskTodoList from "../taskTodos/TaskTodoList";
@@ -19,25 +33,33 @@ import "moment/locale/en-au";
 const TaskDetail = ({ route }) => {
   const { task } = route.params;
 
-
   // const currentTimeInDays =
   //   "${startDate}.year() * 365 + ${startDate}.dayOfYear()";
   // const futureTimeInDays = endDate.year() * 365 + endDate.dayOfYear();
 
   return (
-    <TaskDetailWrapper>
-      <TaskDetailsStyle>{task.name}</TaskDetailsStyle>
+    <HomeContainer style={{ borderTopWidth: 120 }}>
+      <HomeContent>
+        <GreetingMessage>
+          <View style={{ flexDirection: "column" }}>
+            <TaskName> {task.name} </TaskName>
 
-      <View style={{ display: "flex", flexDirection: " row " }}></View>
+            <UpdateButton oldTask={task} style={{ margin: 50 }} />
+            <DueDate>Due Date </DueDate>
+            <DueDate>{task.endDate}</DueDate>
+          </View>
+        </GreetingMessage>
+        <ScrollView>
+          <TaskItemWrapper>
+            <TaskTodoAdd task={task} />
+            <TaskTodoList task={task} />
 
-      <UpdateButton oldTask={task} style={{ margin: 50 }} />
-      <DueDate>Due Date</DueDate>
-      <DueDate>{task.endDate}</DueDate>
-      <TaskTodoAdd task={task} />
-      <TaskTodoList task={task} />
-      <TaskNoteAdd task={task} />
-      <TaskNoteItem task={task} />
-    </TaskDetailWrapper>
+            <TaskNoteItem task={task} />
+            <TaskNoteAdd task={task} />
+          </TaskItemWrapper>
+        </ScrollView>
+      </HomeContent>
+    </HomeContainer>
   );
 };
 const styles = StyleSheet.create({

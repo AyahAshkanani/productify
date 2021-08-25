@@ -35,7 +35,7 @@ const TaskNoteItem = ({ task }) => {
           <>
             <TodaysTasksText>Task's Note</TodaysTasksText>
             <View>
-              <Text>{task.taskNote.text}</Text>
+              <Text style={styles.noteText}>{task.taskNote.text}</Text>
             </View>
             <TouchableOpacity onPress={deleteHandler}>
               <View>
@@ -63,10 +63,17 @@ const styles = StyleSheet.create({
   clearNote: {
     paddingHorizontal: 20,
     paddingTop: 15,
-    fontSize: 10,
+    paddingBottom: 50,
+    fontSize: 15,
     color: "gray",
     alignItems: "center",
+    alignContent: "center",
     justifyContent: "center",
+  },
+  noteText: {
+    backgroundColor: "#fff3b0",
+    padding: 10,
+    paddingHorizontal: 20,
   },
 });
 
