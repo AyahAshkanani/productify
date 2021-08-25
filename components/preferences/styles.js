@@ -31,3 +31,16 @@ export const ThemeImage = styled.Image`
   align-self: center;
   margin-top: 50;
 `;
+
+export const PrefContainer = styled.View`
+  flex: 1;
+  border-color: ${(props) => props.theme.mainColor};
+  border-top-width: 220;
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const PrefContent = styled.View`
+  flex: 1;
+  margin-top: -140;
+  background-color: transparent;
+`;
