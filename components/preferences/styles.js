@@ -44,3 +44,13 @@ export const PrefContent = styled.View`
   margin-top: -140;
   background-color: transparent;
 `;
+export const GreetingUser = styled.Text`
+  align-items: center;
+  color: ${(props) => props.theme.mainColor};
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  
+`;

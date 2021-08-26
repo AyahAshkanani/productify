@@ -150,13 +150,14 @@ const WorkingWeekDays = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop:10,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     flexDirection: "column",
   },
   box: {
-    alignSelf: "flex-start",
+    alignSelf: "center",
     borderWidth: 1,
     borderColor: "#DE3E50",
     borderRadius: 15,
