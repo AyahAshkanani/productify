@@ -44,7 +44,7 @@ class TaskStore {
         this.tasks.push(response.data);
         navigation.navigate("Home");
         Toast.show({
-          text1: "Task Added Succesfuly!",
+          text1: "Task Added Successfully!",
           text2: `${response.data.name}`,
         });
       });
@@ -106,7 +106,6 @@ class TaskStore {
       console.error(error);
     }
   };
-
 }
 
 const taskStore = new TaskStore();
