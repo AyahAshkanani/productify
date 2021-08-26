@@ -11,7 +11,10 @@ import {
   Keyboard,
   FlatList,
   Button,
+  ScrollView,
 } from "react-native";
+
+import {GreetingUser} from "./styles"
 
 import NumericInput from "react-native-numeric-input";
 import { CheckBox } from "react-native-elements";
@@ -83,9 +86,7 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={styles.header}
-      >{`Good ${greet} ${authStore.user.username}`}</Text>
+      <GreetingUser style={styles.header}>{`Good ${greet} ${authStore.user.username}`}</GreetingUser>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("ChangeThemePage", changeTheme, currentTheme)
@@ -98,9 +99,9 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
       >
         <Ionicons name="color-palette-sharp" size={24} color="black" />
       </TouchableOpacity>
-      <WorkTime />
+      <ScrollView>
       <WorkingWeekDays />
-
+      </ScrollView>
       <View>
         <TouchableOpacity
           onPress={() => navigation.navigate("ProgressChart")}
