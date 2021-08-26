@@ -74,7 +74,7 @@ export default function MyTabs({ theme, changeTheme, currentTheme }) {
 
         <Tab.Screen
           name="PreferencesPage"
-          // component={PreferencesPage}
+          //component={PreferencesPage}
           options={{
             tabBarLabel: "Preferences",
             tabBarIcon: ({ color, focused }) => (

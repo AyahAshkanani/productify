@@ -99,20 +99,23 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
         <Ionicons name="color-palette-sharp" size={24} color="black" />
       </TouchableOpacity>
       <WorkTime />
-
       <WorkingWeekDays />
 
-      {/* <ProgressChart /> */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProgressChart")}
-        style={{
-          backgroundColor: "rgba(52, 52, 52, 0)",
-          alignSelf: "flex-end",
-          marginTop: -20,
-        }}
-      >
-        <Text>Progress</Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("ProgressChart")}
+          title="Progress Page"
+          style={{
+            alignSelf: "flex-end",
+            marginTop: 20,
+            fontWeight: "bold",
+            fontSize: 18,
+          }}
+        >
+          <Ionicons name="arrow-redo-outline" size={40} color="black" />
+          <Text>Progress Page</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
