@@ -42,11 +42,11 @@ const TaskDetail = ({ route }) => {
       <HomeContent>
         <GreetingMessage>
           <View style={{ flexDirection: "column" }}>
-            <TaskName> {task.name} </TaskName>
-
-            <UpdateButton oldTask={task} style={{ margin: 50 }} />
+            <TaskName> {task.name}</TaskName>
+            <UpdateButton oldTask={task} style={{ margin: 50}} />
             <DueDate>Due Date </DueDate>
             <DueDate>{task.endDate}</DueDate>
+             
           </View>
         </GreetingMessage>
         <ScrollView>

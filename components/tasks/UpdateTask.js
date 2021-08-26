@@ -67,12 +67,13 @@ const UpdateTask = ({ route, date }) => {
           onChangeText={(name) => setTask({ ...task, name })}
           placeholder="Task Name"
           defaultValue={oldTask.name}
+          value={task.name}
         />
         <AddTaskLabels>Hours</AddTaskLabels>
         <TextInput
           style={styles.input}
           onChangeText={(hours) => setTask({ ...task, hours })}
-          value={number}
+          value={task.hours}
           placeholder="Hours"
           keyboardType="numeric"
         />
@@ -82,6 +83,7 @@ const UpdateTask = ({ route, date }) => {
           onChangeText={(startDate) => setTask({ ...task, startDate })}
           placeholder="Task StartDate"
           defaultValue={oldTask.startDate}
+          value={task.startDate}
         />
         <AddTaskLabels>Task End Date</AddTaskLabels>
 
@@ -90,29 +92,22 @@ const UpdateTask = ({ route, date }) => {
           onChangeText={(endDate) => setTask({ ...task, endDate })}
           placeholder="Task EndDate"
           defaultValue={oldTask.endDate}
+          value={task.endDate}
         />
         <AddTaskButton onPress={handleUpdateTask}>
           <AddTaskButtonText>Update</AddTaskButtonText>
         </AddTaskButton>
       </SafeAreaView>
-      <DeleteTaskTitle>Delete</DeleteTaskTitle>
+
       <TouchableOpacity
-        style={{ flex: 1 }}
+        style={{ flex: 1 }, {alignItems:"center"}}
         onPress={submitHandler}
-        // taskStore.deleteTask(task.id)
       >
         {authStore.user?.id === task.userId ? (
           <FontAwesome5
             name="trash"
-            size={50}
+            size={30}
             color="red"
-            align="centre"
-            paddingLeft={8}
-            width={100}
-            flex={1}
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="flex-start"
           />
         ) : (
           <></>

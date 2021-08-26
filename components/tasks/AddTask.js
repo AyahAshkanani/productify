@@ -138,6 +138,7 @@ const AddTask = () => {
         <AddTaskTitle> Add New Task</AddTaskTitle>
         <AddTaskLabels>Task Name</AddTaskLabels>
         <Input
+          value={task.name}
           style={styles.input}
           onChangeText={(name) => setTask({ ...task, name })}
           placeholder="Task name"
@@ -146,19 +147,17 @@ const AddTask = () => {
         <Input
           style={styles.input}
           onChangeText={(event) => setTask({ ...task, hours: event })}
-          value={number}
           placeholder="Hours"
           keyboardType="numeric"
+          value={task.hours}
         />
         <AddTaskLabels>Task Tag</AddTaskLabels>
-        <TaskTextInput
+        <Input
           value={task.tag}
-
           style={styles.input}
           onChangeText={(tag) => setTask({ ...task, tag })}
           placeholder="Tag"
         />
-
         <DatePick setTask={setTask} task={task} />
         <AddTaskButton onPress={handleAddTask}>
           <AddTaskButtonText>Add</AddTaskButtonText>
@@ -175,7 +174,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     height: 40,
-    marginTop: 10,
+    // marginTop: 10,
   },
 });
 

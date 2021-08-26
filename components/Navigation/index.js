@@ -99,7 +99,7 @@ export default function MyTabs({ theme, changeTheme, currentTheme }) {
   return (
     //screen navigations
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="Login"
       // screenOptions={{
       //   headerStyle: {
       //     backgroundColor: "#c77dff",

@@ -105,7 +105,6 @@ const TaskList = ({ navigation }) => {
           ) : (
             <NoTasksText>No tasks for this day</NoTasksText>
           )}
-          {/* <Logout /> */}
         </ScrollView>
       </HomeContent>
     </HomeContainer>

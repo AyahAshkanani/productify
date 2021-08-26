@@ -16,6 +16,8 @@ import {
   VictoryGroup,
 } from "victory-native";
 
+import {ProgressPage} from "./styles";
+
 const ProgressChart = () => {
   const progressList = progressStore.progresses.map((progress) =>
     taskStore.getTaskById(progress?.taskId)
@@ -71,16 +73,18 @@ const ProgressChart = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Get motivated</Text>
-      <Quote />
-      <Text>Weekly Progress</Text>
+      <ProgressPage>Get motivated</ProgressPage>
+      <Quote/>
+      <ProgressPage>Weekly Progress</ProgressPage>
 
-      <VictoryChart width={350} palette="Soft">
+      
+      <VictoryChart width={400} palette="Soft">
         <VictoryAxis label="Week" />
         <VictoryAxis dependentAxis label="Hours" />
-        <VictoryGroup offset={20} />
+        <VictoryGroup offset={20} /> 
         <VictoryBar data={data} x="Week" y="Hours" />
       </VictoryChart>
+      
     </View>
   );
 };

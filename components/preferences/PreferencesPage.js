@@ -98,42 +98,6 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
       >
         <Ionicons name="color-palette-sharp" size={24} color="black" />
       </TouchableOpacity>
-      {/* <DropDownPicker
-        open={open}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        setValue={changeTheme}
-        setItems={setItems}
-        style={{ width: 150 }}
-      /> */}
-      {/* <Text>User name: {authStore.user.username}</Text> */}
-
-      {/* //       <View> */}
-      {/* //         <Quote /> */}
-      {/* //       </View> */}
-
-      {/* <View style={styles.box}>
-        <Text style={styles.text}>Add start time</Text>
-        <NumericInput
-          value={number}
-          minValue={0}
-          onChange={(timeStart) => {
-            setPreferences({ ...preferences, timeStart });
-          }}
-          totalWidth={100}
-          totalHeight={40}
-          iconSize={25}
-          step={1}
-          valueType="real"
-          rounded
-          textColor="#3d5a80"
-          iconStyle={{ color: "white" }}
-          rightButtonBackgroundColor="#DE3E50"
-          leftButtonBackgroundColor="#837B7C"
-        />
-      </View> */}
-
       <WorkTime />
 
       <WorkingWeekDays />
@@ -159,7 +123,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     padding: 20,
-    // justifyContent: "center",
   },
 
   box: {

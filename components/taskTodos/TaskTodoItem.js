@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 //styled components
 import { TodoItemWrapper } from "./styles";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+
 //native-base
 import { List } from "native-base";
 
@@ -29,6 +30,7 @@ const TaskTodoItem = ({ todo, task }) => {
     <List.Item>
       <View style={styles.container}>
         <TodoItemWrapper>
+        {/* <ScrollView> */}
           <TouchableOpacity
             style={styles.checkbox}
             onPress={() => {
@@ -54,6 +56,7 @@ const TaskTodoItem = ({ todo, task }) => {
               <MaterialIcons name="delete-forever" size={20} color="red" />
             </View>
           </TouchableOpacity>
+        {/* </ScrollView> */}
         </TodoItemWrapper>
       </View>
     </List.Item>
