@@ -75,7 +75,6 @@ const PreferencesPage = ({ changeTheme, currentTheme }) => {
     setSunday(!sunday);
     setPreferences({ ...preferences, sunday });
   };
-
   const updatePreferences = () => {
     if (preferences.timeStart === "")
       setPreferences({ ...preferences, timeStart: null });
