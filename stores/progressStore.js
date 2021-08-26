@@ -1,7 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import moment from "moment";
-import data from "../components/tasks/ProgressChart";
+
 import taskStore from "./taskStore";
 
 class ProgressStore {
@@ -47,13 +46,6 @@ class ProgressStore {
     // AsyncStorage.clear("progress");
     // discuss if task was split into different days ,task id ,progressid ?
   };
-  // reset = () => {
-  //   const today = moment();
-  //   const Sunday = today.day(0);
-  //   const nextWeek = Sunday.endOf("week");
-
-  //   if (Sunday === nextWeek) data.Hours = 0;
-  // };
 }
 const progressStore = new ProgressStore();
 progressStore.fetchProgresses();
