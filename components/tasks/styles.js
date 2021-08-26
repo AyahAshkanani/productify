@@ -23,7 +23,7 @@ export const ListWrapper = styled.View`
   justify-content: center;
   align-items: center;
   align-self: center;
-  margin-left: -8.5px;
+
 `;
 
 export const TaskItemName = styled.Text`
@@ -81,6 +81,17 @@ export const TodaysTasksText = styled.Text`
   font-size: 20px;
   font-weight: 600;
   margin: 10px;
+`;
+export const ProgressPage = styled.Text`
+  align-self: center;
+  align-items: center;
+  color: ${(props) => props.theme.mainColor};
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  
 `;
 
 export const TaskDetailsStyle = styled.Text`
@@ -171,17 +182,20 @@ export const TaskButton = styled.TouchableOpacity`
 export const AddTaskTitle = styled.Text`
   color: ${(props) => props.theme.mainColor};
   font-weight: bold;
-  font-size: 35px;
+  font-size: 40px;
   margin: 20px;
   margin-left: 10px;
   margin-top: 50px;
   text-align: center;
 `;
 export const UpdateTaskTitle = styled.Text`
+  color: ${(props) => props.theme.mainColor};
   font-weight: bold;
-  font-size: 30px;
-  margin: 20px;
+  font-style: italic;
+  font-size: 28px;
   margin-left: 10px;
+  text-align: center;
+  borderRadius:30px;
 `;
 export const DeleteTaskTitle = styled.Text`
   font-weight: bold;
@@ -200,14 +214,13 @@ export const AddTaskButton = styled.TouchableOpacity`
   align-self: center;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: 80%;
   padding: 15px;
   padding-left: 80px;
   padding-right: 80px;
   background-color: ${(props) => props.theme.mainColor};
-
-  margin-top: 5px;
-  margin-bottom: 20px;
+  marginTop:10px;
+  margin-bottom: 60px;
   border-radius: 40px;
 `;
 

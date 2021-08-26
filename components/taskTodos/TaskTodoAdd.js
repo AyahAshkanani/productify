@@ -34,8 +34,8 @@ const TaskTodoAdd = ({ task }) => {
         onChangeText={(text) => setTodo({ ...todo, text })}
       />
       <View style={{ alignItems: "center" }}>
-        <TodoButton onPress={todoAddHandler} style={{ width: 100 }}>
-          <TodoButtonText>Add todo</TodoButtonText>
+        <TodoButton onPress={todoAddHandler} style={{ width: 150 }}>
+          <TodoButtonText>Add to do item</TodoButtonText>
         </TodoButton>
       </View>
     </View>

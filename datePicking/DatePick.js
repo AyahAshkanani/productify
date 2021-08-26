@@ -13,7 +13,7 @@ const DatePick = ({ setTask, task }) => {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
+        <View >
           <Text style={styles.title}>Start Date</Text>
 
           <DatePicker
@@ -43,12 +43,9 @@ const DatePick = ({ setTask, task }) => {
               setDate2(date);
             }}
           />
-        </View>
-      </SafeAreaView>
 
-      <SafeAreaView style={styles.container2}>
-        <View style={styles.container2}>
           <Text style={styles.title}>End Date</Text>
+          
           <DatePicker
             style={styles.datePickerStyle}
             date={date2} // Initial date from state
@@ -77,6 +74,7 @@ const DatePick = ({ setTask, task }) => {
               setDate2(date2);
             }}
           />
+
         </View>
       </SafeAreaView>
     </>
@@ -90,28 +88,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
-    marginTop: 40,
-  },
-  container2: {
-    flex: 1,
-    padding: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40,
-
   },
   title: {
     textAlign: "center",
     alignItems: "center",
     fontSize: 15,
-    paddingLeft:70,
-    padding: 20,
-    // marginEnd:20,
+    paddingLeft:40,
+    margin: 10,
   },
   datePickerStyle: {
     width: 200,
-    // paddingTop:5,
-    // paddingBottom:16,
   },
 });

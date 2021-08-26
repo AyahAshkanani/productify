@@ -15,6 +15,7 @@ export const TodoButtonText = styled.Text`
   font-weight: bold;
   text-align: center;
   font-size: 15px;
+  ${'' /* paddingHorizontal:10px; */}
 `;
 export const TodoButton = styled.TouchableOpacity`
   border-radius: 20px;

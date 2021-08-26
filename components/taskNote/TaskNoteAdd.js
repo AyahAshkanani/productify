@@ -29,13 +29,13 @@ const TaskNoteAdd = ({ task }) => {
         <></>
       ) : (
         <>
-          <View style={{ paddingVertical: 10 }}>
+          <View style={{ paddingVertical: 20 }}>
             <TextInput
               backgroundColor="#fff3b0"
               value={note.text}
               multiline
               placeholder="write a note..."
-              style={[styles.input, styles.desc]}
+              style={styles.input}
               onChangeText={(text) => setNote({ ...note, text })}
             />
           </View>
@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
+  },
+  input:{
+    paddingVertical: 20 ,
+    paddingHorizontal:50,
   },
   modalView: {
     margin: 10,

@@ -20,11 +20,11 @@ const UpdateButton = ({ oldTask }) => {
     <>
       <View style={{ display: "flex", flexDirection: " row " }}>
         <TouchableOpacity
-          style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
+          style={{ backgroundColor: "rgba(52, 52, 52, 0)" , paddingHorizontal:20 }}
           onPress={handlePress}
         >
           <Text>
-            <Ionicons name="settings-sharp" size={30} color="grey" />
+            <Ionicons name="settings-sharp" size={30} color="white" />
           </Text>
         </TouchableOpacity>
       </View>
