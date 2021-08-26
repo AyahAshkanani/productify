@@ -74,11 +74,12 @@ const ProgressChart = () => {
   return (
     <View style={styles.container}>
       <ProgressPage>Get motivated</ProgressPage>
-      <Quote/>
+      <View style={styles.quote}><Quote /></View>
+      
       <ProgressPage>Weekly Progress</ProgressPage>
 
       
-      <VictoryChart width={400} palette="Soft">
+      <VictoryChart width={420} height={480} palette="Soft">
         <VictoryAxis label="Week" />
         <VictoryAxis dependentAxis label="Hours" />
         <VictoryGroup offset={20} /> 
@@ -91,10 +92,20 @@ const ProgressChart = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5fcff",
+    backgroundColor: "#f0efeb",
     color: "#333",
+  },
+
+  quote:{
+    // alignItems: "center",
+    justifyContent:"center",
+    marginLeft:20,
+    marginRight:20,
+    padding:10,
+    borderColor:"#2b2d42",
+    borderWidth: 2.5,
+    borderRadius:4,
   },
 });
 

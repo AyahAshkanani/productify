@@ -150,7 +150,6 @@ const WorkingWeekDays = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop:10,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -158,8 +157,8 @@ const styles = StyleSheet.create({
   },
   box: {
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: "#DE3E50",
+    borderWidth: 2,
+    borderColor: "#2B303A",
     borderRadius: 15,
     padding: 10,
     margin: 10,
@@ -172,14 +171,10 @@ const styles = StyleSheet.create({
 
   workbox: {
     backgroundColor: "#fff",
-    // alignItems: "center",
     flexDirection: "row",
-    // alignSelf: "stretch",
-    borderWidth: 1,
-    borderColor: "#DE3E50",
+    borderWidth: 2,
+    borderColor: "#2B303A",
     borderRadius: 25,
-    // paddingRight: 30,
-    // paddingLeft: 20,
     paddingTop: 10,
     paddingBottom: 5,
   },
@@ -187,10 +182,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     margin: 30,
-    backgroundColor: "#DE3E50",
-    borderRadius: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
+    backgroundColor: "#D00000",
+    borderRadius: 25,
+    paddingLeft: 55,
+    paddingRight: 55,
   },
   SavePreferencesButtonText: {
     color: "white",

@@ -86,10 +86,9 @@ export const ProgressPage = styled.Text`
   align-self: center;
   align-items: center;
   color: ${(props) => props.theme.mainColor};
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 35px;
+  font-weight: 500;
   margin: 10px;
-  margin-bottom: 40px;
   margin-top: 40px;
   
 `;
